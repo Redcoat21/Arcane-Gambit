@@ -12,3 +12,4 @@
 *.cs text eol=crlf
 *.sh text eol=lf
 *.aseprite filter=lfs diff=lfs merge=lfs -text
+*.meta text eol=lf
