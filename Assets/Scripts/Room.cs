@@ -5,7 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
-    public RoomType RoomType = RoomType.Normal;
+    [SerializeField]
+    private RoomType roomType = RoomType.Normal;
+
+    public RoomType RoomType
+    {
+        get => roomType;
+        set => roomType = value;
+    }
+    
     public Vector2Int GridPosition;
     public RoomNode Node;
     
@@ -27,66 +35,11 @@ public class Room : MonoBehaviour
         CalculateRoomBounds();
     }
     
-    private void FindTilemaps()
-    {
-        // Find the Grid component
-        Transform gridTransform = transform.Find("Grid");
-        if (gridTransform == null)
-        {
-            Debug.LogError("Room prefab is missing a Grid component!");
-            return;
-        }
-        
-        // Look for Tilemap components
-        Tilemap[] tilemaps = gridTransform.GetComponentsInChildren<Tilemap>();
-        if (tilemaps.Length == 0)
-        {
-            Debug.LogError("No Tilemaps found in the room prefab!");
-            return;
-        }
-        
-        // If we have multiple tilemaps, try to identify which is which
-        if (tilemaps.Length > 1)
-        {
-            // Look for tilemaps with specific names
-            foreach (Tilemap tilemap in tilemaps)
-            {
-                if (tilemap.name.ToLower().Contains("wall"))
-                {
-                    wallTilemap = tilemap;
-                }
-                else if (tilemap.name.ToLower().Contains("floor"))
-                {
-                    floorTilemap = tilemap;
-                }
-            }
-            
-            // If we didn't find tilemaps with specific names, use the first two
-            if (floorTilemap == null)
-                floorTilemap = tilemaps[0];
-                
-            if (wallTilemap == null && tilemaps.Length > 1)
-                wallTilemap = tilemaps[1];
-            else if (wallTilemap == null)
-                wallTilemap = tilemaps[0]; // Use the same tilemap for both if only one exists
-        }
-        else
-        {
-            // If we only have one tilemap, use it for both floor and walls
-            floorTilemap = tilemaps[0];
-            wallTilemap = tilemaps[0];
-        }
-        
-        if (floorTilemap == null)
-        {
-            Debug.LogError("Failed to find a floor tilemap in room: " + name);
-        }
-    }
-    
-    private void CalculateRoomBounds()
+    public void CalculateRoomBounds()
     {
         if (floorTilemap != null)
         {
+            floorTilemap.CompressBounds();
             // Get the bounds of the tilemap (area where tiles exist)
             roomBounds = floorTilemap.cellBounds;
             
@@ -97,8 +50,10 @@ public class Room : MonoBehaviour
                 0
             );
             
+            
             // Debug log to verify
             Debug.Log($"Room {name} bounds: {roomBounds.min} to {roomBounds.max}, center: {roomCenter}");
+            Debug.Log($"Size is ${roomBounds.size}");
         }
     }
     
@@ -177,6 +132,72 @@ public class Room : MonoBehaviour
             // Remove the wall tile
             wallTilemap.SetTile(doorTile, null);
         }
+    }
+    
+    public void FindTilemaps()
+    {
+        // Find the Grid component
+        Transform gridTransform = transform.Find("Grid");
+        if (gridTransform == null)
+        {
+            Debug.LogError("Room prefab is missing a Grid component!");
+            return;
+        }
+        
+        // Look for Tilemap components
+        Tilemap[] tilemaps = gridTransform.GetComponentsInChildren<Tilemap>();
+        if (tilemaps.Length == 0)
+        {
+            Debug.LogError("No Tilemaps found in the room prefab!");
+            return;
+        }
+        
+        // If we have multiple tilemaps, try to identify which is which
+        if (tilemaps.Length > 1)
+        {
+            // Look for tilemaps with specific names
+            foreach (Tilemap tilemap in tilemaps)
+            {
+                if (tilemap.name.ToLower().Contains("wall"))
+                {
+                    wallTilemap = tilemap;
+                }
+                else if (tilemap.name.ToLower().Contains("floor"))
+                {
+                    floorTilemap = tilemap;
+                }
+            }
+            
+            // If we didn't find tilemaps with specific names, use the first two
+            if (floorTilemap == null)
+                floorTilemap = tilemaps[0];
+                
+            if (wallTilemap == null && tilemaps.Length > 1)
+                wallTilemap = tilemaps[1];
+            else if (wallTilemap == null)
+                wallTilemap = tilemaps[0]; // Use the same tilemap for both if only one exists
+        }
+        else
+        {
+            // If we only have one tilemap, use it for both floor and walls
+            floorTilemap = tilemaps[0];
+            wallTilemap = tilemaps[0];
+        }
+        
+        if (floorTilemap == null)
+        {
+            Debug.LogError("Failed to find a floor tilemap in room: " + name);
+        }
+    }
+    
+    // Get the room bounds for external use
+    public BoundsInt GetRoomBounds()
+    {
+        if (roomBounds.size.x == 0 || roomBounds.size.y == 0)
+        {
+            CalculateRoomBounds();
+        }
+        return roomBounds;
     }
 
     // Visualization for debugging in editor
