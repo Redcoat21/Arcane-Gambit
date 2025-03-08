@@ -135,16 +135,16 @@ public class DungeonGenerator : MonoBehaviour
             tempRoom.AddComponent<Room>();
             Room roomComponent = tempRoom.GetComponent<Room>();
             
-                // Make sure tilemaps are initialized
-                roomComponent.FindTilemaps();
-                roomComponent.CalculateRoomBounds();
-                
-                // Get the bounds and store the size
-                BoundsInt bounds = roomComponent.GetRoomBounds();
-                Vector2Int size = new Vector2Int(bounds.size.x, bounds.size.y);
-                
-                // Store the size for this room position
-                roomSizes[node.Position] = size;
+            // Make sure tilemaps are initialized
+            roomComponent.FindTilemaps();
+            roomComponent.CalculateRoomBounds();
+            
+            // Get the bounds and store the size
+            BoundsInt bounds = roomComponent.GetRoomBounds();
+            Vector2Int size = new Vector2Int(bounds.size.x, bounds.size.y);
+            
+            // Store the size for this room position
+            roomSizes[node.Position] = size;
             // else
             // {
             //     // Default size if Room component not found
@@ -203,8 +203,8 @@ public class DungeonGenerator : MonoBehaviour
         
         // Calculate position based on direction and spacing
         Vector3 newPosition = new Vector3(
-            connectedRoomPos.x + direction.x * spacingX,
-            connectedRoomPos.y + direction.y * spacingY,
+            Mathf.Round(connectedRoomPos.x + direction.x * spacingX),
+            Mathf.Round(connectedRoomPos.y + direction.y * spacingY),
             0
         );
         
