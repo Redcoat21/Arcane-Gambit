@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022850437}
   - component: {fileID: 2022850436}
+  - component: {fileID: 2022850438}
   m_Layer: 0
   m_Name: DungeonGenerator
   m_TagString: Untagged
@@ -290,11 +291,13 @@ MonoBehaviour:
   - {fileID: 6893563747680685711, guid: 11f1dc0e87a728547b4702ee18b8ca1a, type: 3}
   minRooms: 10
   maxRooms: 50
-  baseRoomSpacing: 20
-  spacingMultiplier: 1.2
+  baseRoomSpacing: 28.7
+  spacingMultiplier: 1.776
   generateBossRoom: 1
   generateStartRoom: 1
   generateTreasureRoom: 1
+  floorTile: {fileID: 11400000, guid: 5fd972c5a91f70f43820edb7abd83a94, type: 2}
+  wallTile: {fileID: 11400000, guid: 4a67d70db64ed9f49b9035c971171650, type: 2}
 --- !u!4 &2022850437
 Transform:
   m_ObjectHideFlags: 0
@@ -310,6 +313,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022850438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022850435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd93eddc33e84f2aba172f046b32b91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefabs: []
+  roomCount: 10
+  roomSpawnChance: 60
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
