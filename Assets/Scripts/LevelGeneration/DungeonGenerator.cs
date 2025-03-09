@@ -6,8 +6,11 @@ using Random = UnityEngine.Random;
 
 namespace LevelGeneration
 {
+    //TODO: Do post processing to assign room types to rooms, and make it more balanced (Merchant and treasure should spawn atleast once).
     public class DungeonGenerator : MonoBehaviour
     {
+        [SerializeField]
+        private bool debugMode;
         [Header("Room Configuration")]
         [SerializeField]
         private GameObject[] roomPrefabs;
@@ -19,18 +22,21 @@ namespace LevelGeneration
         [SerializeField]
         [Range(1, 100)]
         [Tooltip(
-            "The chance of a room spawning in a given direction. 100 mean that each room always have 4 rooms connected to it.")]
+            "The chance of a room spawning in a given direction. 100 mean that each room always have 4 rooms connected to it. Higher chance tend to create a more diamond like structure.")]
         private float roomSpawnChance = 60;
 
         private RoomGraph _roomGraph = RoomGraph.Instance;
 
-
         public void CreateLevel()
         {
+            // Flush out the old graph and generate a new one. Just to be safe.
+            RoomGraph.ClearGraph();
             GenerateGraph();
-            Debug.Log(_roomGraph.Rooms.Count);
-            _roomGraph.Traverse(_roomGraph.Rooms.First().Key, new DepthFirstTraversal(),
-                (node => Debug.Log($"Position: {node.Position} Type is: {node.RoomType}")));
+            if (debugMode)
+            {
+                _roomGraph.Traverse(_roomGraph.Rooms.First().Key, new BreadthFirstTraversal(), node => Debug.Log(node.RoomType));
+                GraphVisualizer.DrawGraph(_roomGraph);
+            }
         }
 
         /// <summary>
@@ -71,7 +77,7 @@ namespace LevelGeneration
                     {
                         merchantSpawned = true;
                     }
-                    validRoomNodes.Add(new RoomNode(roomPosition));
+                    validRoomNodes.Add(newRoomNode);
 
                     // Prevent overflow by stopping when we reach the room limit
                     if (_roomGraph.Rooms.Count + validRoomNodes.Count >= roomCount)
@@ -97,6 +103,18 @@ namespace LevelGeneration
                     AddConnection(currentNode, newRoomNode);
                     roomQueue.Enqueue(newRoomNode);
                 }
+            }
+
+            Debug.Log(merchantSpawned);
+            // IF a merchant room never spawned, then pick a random room and turn it into a merchant room.
+            // TODO: room is not modified.
+            if (!merchantSpawned)
+            {
+                // Exclude the boss and start room for obvious reason
+                var randomRoom = _roomGraph.Rooms.ElementAt(Random.Range(1, _roomGraph.Rooms.Count - 1)).Key;
+                randomRoom.RoomType = RoomType.Merchant;
+                Debug.Log($"{randomRoom.Position} + {randomRoom.RoomType}");
+                Debug.Log(_roomGraph.Rooms.First((pair => pair.Key.Position == randomRoom.Position)));
             }
         }
         

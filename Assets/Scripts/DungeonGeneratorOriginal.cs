@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
@@ -183,7 +183,7 @@ public class DungeonGeneratorOriginal : MonoBehaviour
 
         if (connectedNode == null)
         {
-            Debug.LogError($"Cannot place room at {node.Position}: No connected rooms have been placed yet!");
+            UnityEngine.Debug.LogError($"Cannot place room at {node.Position}: No connected rooms have been placed yet!");
             return Vector3.zero;
         }
 
@@ -331,7 +331,7 @@ public class DungeonGeneratorOriginal : MonoBehaviour
         {
             if (!_placedRooms.TryGetValue(node.Position, out var currentRoom))
             {
-                Debug.LogError($"Missing room at position {node.Position}");
+                UnityEngine.Debug.LogError($"Missing room at position {node.Position}");
                 continue;
             }
 
@@ -340,7 +340,7 @@ public class DungeonGeneratorOriginal : MonoBehaviour
             {
                 if (!_placedRooms.TryGetValue(connectedNode.Position, out var targetRoom))
                 {
-                    Debug.LogError($"Missing connected room at position {connectedNode.Position}");
+                    UnityEngine.Debug.LogError($"Missing connected room at position {connectedNode.Position}");
                     continue;
                 }
 
@@ -379,7 +379,7 @@ public class DungeonGeneratorOriginal : MonoBehaviour
             }
         }
 
-        Debug.Log("Room connections complete: " + _roomGraph.Count + " rooms connected with corridors.");
+        UnityEngine.Debug.Log("Room connections complete: " + _roomGraph.Count + " rooms connected with corridors.");
     }
 
     private string GetConnectionId(Vector2Int pos1, Vector2Int pos2)

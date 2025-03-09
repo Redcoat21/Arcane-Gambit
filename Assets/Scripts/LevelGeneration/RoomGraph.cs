@@ -33,10 +33,10 @@ namespace LevelGeneration
 
         private RoomGraph()
         {
-            Rooms = new Dictionary<RoomNode, List<RoomNode>>();
+            Rooms = new Dictionary<RoomNode, HashSet<RoomNode>>();
         }
-        
-        public Dictionary<RoomNode, List<RoomNode>> Rooms { get; }
+
+        public Dictionary<RoomNode, HashSet<RoomNode>> Rooms { get; }
 
         /// <summary>
         /// Add a connection between two rooms in the graph.
@@ -59,7 +59,7 @@ namespace LevelGeneration
         /// <param name="node">The node to be added</param>
         public void AddNode(RoomNode node)
         {
-            Rooms[node] = new List<RoomNode>();
+            Rooms[node] = new HashSet<RoomNode>();
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace LevelGeneration
         {
             lock (Lock)
             {
-                _instance = new RoomGraph();
+                _instance?.Rooms.Clear();
             }
         }
     }
@@ -111,10 +111,10 @@ namespace LevelGeneration
     /// Room node in the graph. Contains the room's metadata.
     /// <see cref="RoomGraph"/>
     /// </summary>
-    public readonly struct RoomNode : IEquatable<RoomNode>
+    public struct RoomNode : IEquatable<RoomNode>
     {
         public Vector2Int Position { get; }
-        public RoomType RoomType { get; }
+        public RoomType RoomType { get; set; }
 
         /// <summary>
         /// Instantiate a new room node with the specified position and room type.
@@ -131,7 +131,9 @@ namespace LevelGeneration
         /// Instantiate a new room node with the specified room type. Position defaulted to (0, 0)
         /// </summary>
         /// <param name="roomType">The type of the room</param>
-        public RoomNode(RoomType roomType): this(Vector2Int.zero, roomType) { }
+        public RoomNode(RoomType roomType) : this(Vector2Int.zero, roomType)
+        {
+        }
 
         public bool Equals(RoomNode other)
         {
