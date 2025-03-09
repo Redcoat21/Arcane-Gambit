@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(AbstractDungeonGenerator), true)]
-public class RandomDungeonGeneratorDungeonEditor : Editor
+public class RandomDungeonGeneratorDungeonEditor : UnityEditor.Editor
 {
     private AbstractDungeonGenerator _generator;
 
