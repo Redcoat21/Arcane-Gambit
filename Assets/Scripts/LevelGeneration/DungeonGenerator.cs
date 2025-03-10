@@ -115,7 +115,6 @@ namespace LevelGeneration
             }
 
             // IF a merchant room never spawned, then pick a random room and turn it into a merchant room.
-            // TODO: room is not modified.
             if (!merchantSpawned)
             {
                 // Exclude the boss and start room for obvious reason
@@ -123,7 +122,24 @@ namespace LevelGeneration
                 _roomGraph.UpdateNode(randomRoom, new RoomNode(randomRoom.Position, RoomType.Merchant));
             }
         }
+
+        private void PostProcessing()
+        {
+            // TODO: Implement post processing to assign room types to rooms.
+            
+            // First assign the boss room type. Boss room is the last room generated. (Might need to change into the farthest one)
+            var lastRoom = _roomGraph.Rooms.Last().Value;
+            _roomGraph.UpdateNode(lastRoom, new RoomNode(lastRoom.Position, RoomType.Boss));
+            
+            throw new NotImplementedException();
+        }
+
+        private void AssignRoomTypes(RoomNode roomNode, RoomType? roomType)
+        {
+            throw new NotImplementedException();
+        }
         
+        // TODO: Decide whether to keep this function or not. To assign room type at post processing or not.
         /// <summary>
         /// Create a room node with the specified room type.
         /// </summary>
@@ -139,6 +155,7 @@ namespace LevelGeneration
             }
 
             // Try spawning a merchant room (30% chance) if one hasn't been spawned yet.
+            // Why the randomness? So the merchant room isn't always next to the starting room.
             if (canSpawnMerchant && Random.Range(0, 100) < 30)
             {
                 return new RoomNode(roomPosition, RoomType.Merchant);
