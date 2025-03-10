@@ -145,10 +145,13 @@ namespace LevelGeneration
         {
         }
 
+        /// <summary>
+        /// Add a neighbor to the room node.
+        /// </summary>
+        /// <param name="neighbor">The room node to be added as a neighbor</param>
         public void AddNeighbor(RoomNode neighbor)
         {
             Neighbors.Add(neighbor);
-            neighbor.Neighbors.Add(this);
         }
 
         public bool Equals(RoomNode other)
@@ -201,7 +204,7 @@ namespace LevelGeneration
                     }
                 
                     // Get the actual node from the graph
-                    RoomNode actualNeighbor = graph.Rooms[neighbor.Position];
+                    var actualNeighbor = graph.Rooms[neighbor.Position];
                     visited.Add(actualNeighbor.Position);
                     queue.Enqueue(actualNeighbor);
                 }
