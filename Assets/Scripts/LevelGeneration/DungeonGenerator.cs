@@ -6,35 +6,44 @@ using Random = UnityEngine.Random;
 
 namespace LevelGeneration
 {
-    //TODO: Do post processing to assign room types to rooms, and make it more balanced (Merchant and treasure should spawn atleast once).
+    //TODO: Do post processing to assign room types to rooms, and make it more balanced (Merchant and treasure should spawn least once).
     public class DungeonGenerator : MonoBehaviour
     {
         [SerializeField]
         private bool debugMode;
+        
+        [Header("Level Configuration")]
+        [SerializeField]
+        private bool spawnBoss;
+        
         [Header("Room Configuration")]
         [SerializeField]
         private GameObject[] roomPrefabs;
-
+        
         [SerializeField]
         [Range(10, 100)]
         private int roomCount = 20;
-
+        
         [SerializeField]
         [Range(1, 100)]
         [Tooltip(
             "The chance of a room spawning in a given direction. 100 mean that each room always have 4 rooms connected to it. Higher chance tend to create a more diamond like structure.")]
         private float roomSpawnChance = 60;
 
-        private RoomGraph _roomGraph = RoomGraph.Instance;
+        private readonly RoomGraph _roomGraph = RoomGraph.Instance;
 
+        /// <summary>
+        /// Entry point for the dungeon generation.
+        /// </summary>
         public void CreateLevel()
         {
             // Flush out the old graph and generate a new one. Just to be safe.
             RoomGraph.ClearGraph();
             GenerateGraph();
+            
+            // If debug mode is enabled, visualize the graph.
             if (debugMode)
             {
-                _roomGraph.Traverse(_roomGraph.Rooms.First().Key, new BreadthFirstTraversal(), node => Debug.Log(node.RoomType));
                 GraphVisualizer.DrawGraph(_roomGraph);
             }
         }
@@ -66,7 +75,7 @@ namespace LevelGeneration
                     int spawnChance = Random.Range(0, 101);
 
                     // Check if the room should be spawned and if it doesn't already exist
-                    if (spawnChance > roomSpawnChance || _roomGraph.CheckNode(roomPosition))
+                    if (spawnChance > roomSpawnChance || _roomGraph.Rooms.ContainsKey(roomPosition))
                     {
                         continue;
                     }
@@ -105,23 +114,26 @@ namespace LevelGeneration
                 }
             }
 
-            Debug.Log(merchantSpawned);
             // IF a merchant room never spawned, then pick a random room and turn it into a merchant room.
             // TODO: room is not modified.
             if (!merchantSpawned)
             {
                 // Exclude the boss and start room for obvious reason
-                var randomRoom = _roomGraph.Rooms.ElementAt(Random.Range(1, _roomGraph.Rooms.Count - 1)).Key;
-                randomRoom.RoomType = RoomType.Merchant;
-                Debug.Log($"{randomRoom.Position} + {randomRoom.RoomType}");
-                Debug.Log(_roomGraph.Rooms.First((pair => pair.Key.Position == randomRoom.Position)));
+                var randomRoom = _roomGraph.Rooms.ElementAt(Random.Range(1, _roomGraph.Rooms.Count - 1)).Value;
+                _roomGraph.UpdateNode(randomRoom, new RoomNode(randomRoom.Position, RoomType.Merchant));
             }
         }
         
+        /// <summary>
+        /// Create a room node with the specified room type.
+        /// </summary>
+        /// <param name="roomPosition">The position to create the room to. Note that this position is the position in the graph.</param>
+        /// <param name="canSpawnMerchant">Track whether merchant room already spawned or not</param>
+        /// <returns>The created room node</returns>
         private RoomNode CreateRoomNode(Vector2Int roomPosition, bool canSpawnMerchant)
         {
-            // If it's the last room, spawn a boss room.
-            if (_roomGraph.Rooms.Count == roomCount - 1)
+            // If it's the last room, spawn a boss room. And also if the boss room spawn is checked.
+            if (_roomGraph.Rooms.Count == roomCount - 1 && spawnBoss)
             {
                 return new RoomNode(roomPosition, RoomType.Boss);
             }

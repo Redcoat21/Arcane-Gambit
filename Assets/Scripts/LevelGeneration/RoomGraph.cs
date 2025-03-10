@@ -8,6 +8,9 @@ namespace LevelGeneration
     /// <summary>
     /// Singleton that represents a graph of rooms. Only stores the room's metadata, not the room itself.
     /// </summary>
+    /// <summary>
+    /// Singleton that represents a graph of rooms. Only stores the room's metadata, not the room itself.
+    /// </summary>
     public class RoomGraph
     {
         private static RoomGraph _instance;
@@ -33,66 +36,71 @@ namespace LevelGeneration
 
         private RoomGraph()
         {
-            Rooms = new Dictionary<RoomNode, HashSet<RoomNode>>();
+            Rooms = new Dictionary<Vector2Int, RoomNode>();
         }
 
-        public Dictionary<RoomNode, HashSet<RoomNode>> Rooms { get; }
+        public Dictionary<Vector2Int, RoomNode> Rooms { get; }
 
         /// <summary>
         /// Add a connection between two rooms in the graph.
         /// </summary>
-        /// <param name="source">The source node to be connected from</param>
-        /// <param name="target">The target node to be connected to</param>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
         public void AddConnection(RoomNode source, RoomNode target)
         {
-            if (!Rooms.ContainsKey(source))
+            if (!Rooms.ContainsKey(source.Position))
             {
                 AddNode(source);
             }
 
-            Rooms[source].Add(target);
+            source.AddNeighbor(target);
+        }
+
+        /// <summary>
+        /// Replace the old node with a new node in the graph.
+        /// </summary>
+        /// <param name="oldNode">The node to be replaced</param>
+        /// <param name="newNode">The node to replace with</param>
+        public void UpdateNode(RoomNode oldNode, RoomNode newNode)
+        {
+            // Update the graph with the new node. Note that at this point our newNode have all the neighbors from the old node.
+            // But our neighbors still have the old node as their neighbor.
+            newNode.Neighbors = oldNode.Neighbors;
+            Rooms.Remove(oldNode.Position);
+            Rooms[newNode.Position] = newNode;
+            
+            // We need to update all the neighbors of the old node to point to the new node.
+            foreach (var neighbor in newNode.Neighbors)
+            {
+                neighbor.Neighbors.Remove(oldNode);
+                neighbor.Neighbors.Add(oldNode);
+            }
         }
 
         /// <summary>
         /// Add a new node without a connection to the graph.
+        /// <param name="node">The node to be added into the graph.</param>
         /// </summary>
-        /// <param name="node">The node to be added</param>
         public void AddNode(RoomNode node)
         {
-            Rooms[node] = new HashSet<RoomNode>();
-        }
-
-        /// <summary>
-        /// Check if the given node exists in the graph.
-        /// </summary>
-        /// <typeparam name="T">Should be either RoomNode or Vector2Int to represent position.</typeparam>
-        /// <param name="identifier">The node to be checked.</param>
-        /// <returns>True if the node exists, false otherwise.</returns>
-        public bool CheckNode<T>(T identifier) where T : struct
-        {
-            return identifier switch
-            {
-                RoomNode roomNode => Rooms.ContainsKey(roomNode),
-                Vector2Int position => Rooms.Any(room => room.Key.Position == position),
-                _ => throw new ArgumentException(identifier + " is not a valid room node")
-            };
+            Rooms[node.Position] = node;
         }
 
         /// <summary>
         /// Traverse the graph using the specified traversal strategy.
         /// </summary>
-        /// <param name="startNode">The starting node for traversal</param>
+        /// <param name="startPosition">The starting position to traverse the graph from</param>
         /// <param name="strategy">The traversal strategy to use (BFS or DFS)</param>
         /// <param name="nodeAction">Action to perform on each visited node</param>
-        public void Traverse(RoomNode startNode, ITraversalStrategy strategy, Action<RoomNode> nodeAction)
+        public void Traverse(Vector2Int startPosition, ITraversalStrategy strategy, Action<RoomNode> nodeAction)
         {
-            if (!Rooms.ContainsKey(startNode))
+            if (!Rooms.TryGetValue(startPosition, out var room))
             {
                 Debug.LogWarning("Start node does not exist in the graph.");
                 return;
             }
 
-            strategy.Traverse(this, startNode, nodeAction);
+            strategy.Traverse(this, room, nodeAction);
         }
 
         /// <summary>
@@ -115,6 +123,7 @@ namespace LevelGeneration
     {
         public Vector2Int Position { get; }
         public RoomType RoomType { get; set; }
+        public HashSet<RoomNode> Neighbors { get; set; }
 
         /// <summary>
         /// Instantiate a new room node with the specified position and room type.
@@ -125,6 +134,7 @@ namespace LevelGeneration
         {
             Position = position;
             RoomType = roomType;
+            Neighbors = new HashSet<RoomNode>();
         }
 
         /// <summary>
@@ -135,9 +145,15 @@ namespace LevelGeneration
         {
         }
 
+        public void AddNeighbor(RoomNode neighbor)
+        {
+            Neighbors.Add(neighbor);
+            neighbor.Neighbors.Add(this);
+        }
+
         public bool Equals(RoomNode other)
         {
-            return Position.Equals(other.Position) && RoomType == other.RoomType;
+            return Position.Equals(other.Position);
         }
 
         public override bool Equals(object obj)
@@ -147,7 +163,7 @@ namespace LevelGeneration
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Position, (int)RoomType);
+            return Position.GetHashCode();
         }
     }
 
@@ -166,31 +182,33 @@ namespace LevelGeneration
     {
         public void Traverse(RoomGraph graph, RoomNode startNode, Action<RoomNode> nodeAction)
         {
-            var visited = new HashSet<RoomNode>();
+            var visited = new HashSet<Vector2Int>();
             var queue = new Queue<RoomNode>();
 
             queue.Enqueue(startNode);
-            visited.Add(startNode);
+            visited.Add(startNode.Position);
 
             while (queue.Count > 0)
             {
                 var currentNode = queue.Dequeue();
                 nodeAction(currentNode);
 
-                if (!graph.Rooms.TryGetValue(currentNode, out var neighbors))
+                foreach (var neighbor in currentNode.Neighbors)
                 {
-                    continue;
-                }
-
-                foreach (var neighbor in neighbors.Where(neighbor => !visited.Contains(neighbor)))
-                {
-                    visited.Add(neighbor);
-                    queue.Enqueue(neighbor);
+                    if (visited.Contains(neighbor.Position))
+                    {
+                        continue;
+                    }
+                
+                    // Get the actual node from the graph
+                    RoomNode actualNeighbor = graph.Rooms[neighbor.Position];
+                    visited.Add(actualNeighbor.Position);
+                    queue.Enqueue(actualNeighbor);
                 }
             }
         }
     }
-
+    
     /// <summary>
     /// Depth-First traversal implementation.
     /// </summary>
@@ -198,24 +216,26 @@ namespace LevelGeneration
     {
         public void Traverse(RoomGraph graph, RoomNode startNode, Action<RoomNode> nodeAction)
         {
-            var visited = new HashSet<RoomNode>();
+            var visited = new HashSet<Vector2Int>();
             DfsRecursive(graph, startNode, visited, nodeAction);
         }
 
-        private static void DfsRecursive(RoomGraph graph, RoomNode currentNode, HashSet<RoomNode> visited,
+        private static void DfsRecursive(RoomGraph graph, RoomNode currentNode, HashSet<Vector2Int> visited,
             Action<RoomNode> nodeAction)
         {
-            visited.Add(currentNode);
+            visited.Add(currentNode.Position);
             nodeAction(currentNode);
 
-            if (!graph.Rooms.TryGetValue(currentNode, out var neighbors))
+            foreach (var neighbor in currentNode.Neighbors)
             {
-                return;
-            }
-
-            foreach (var neighbor in neighbors.Where(neighbor => !visited.Contains(neighbor)))
-            {
-                DfsRecursive(graph, neighbor, visited, nodeAction);
+                if (visited.Contains(neighbor.Position))
+                {
+                    continue;
+                }
+            
+                // Get the actual node from the graph
+                RoomNode actualNeighbor = graph.Rooms[neighbor.Position];
+                DfsRecursive(graph, actualNeighbor, visited, nodeAction);
             }
         }
     }
