@@ -15,6 +15,8 @@ namespace LevelGeneration
     {
         private static RoomGraph _instance;
         private static readonly object Lock = new object();
+        
+        public RoomNode? Root { get; set; }
 
         public static RoomGraph Instance
         {
@@ -42,15 +44,17 @@ namespace LevelGeneration
         public Dictionary<Vector2Int, RoomNode> Rooms { get; }
 
         /// <summary>
-        /// Add a connection between two rooms in the graph.
+        /// Add a connection between two rooms in the graph. Note that the connection is one way.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
+        /// <param name="source">The source node</param>
+        /// <param name="target">The target node</param>
         public void AddConnection(RoomNode source, RoomNode target)
         {
             if (!Rooms.ContainsKey(source.Position))
             {
                 AddNode(source);
+
+                Root ??= source;
             }
 
             source.AddNeighbor(target);
@@ -63,7 +67,7 @@ namespace LevelGeneration
         /// <param name="newNode">The node to replace with</param>
         public void UpdateNode(RoomNode oldNode, RoomNode newNode)
         {
-            // Update the graph with the new node. Note that at this point our newNode have all the neighbors from the old node.
+            // Update the graph with the new node. Note that at this point, our newNode have all the neighbors from the old node.
             // But our neighbors still have the old node as their neighbor.
             newNode.Neighbors = oldNode.Neighbors;
             Rooms.Remove(oldNode.Position);
@@ -152,6 +156,16 @@ namespace LevelGeneration
         public void AddNeighbor(RoomNode neighbor)
         {
             Neighbors.Add(neighbor);
+        }
+        
+        public static bool operator ==(RoomNode left, RoomNode right)
+        {
+            return left.Equals(right);
+        }
+        
+        public static bool operator !=(RoomNode left, RoomNode right)
+        {
+            return !left.Equals(right);
         }
 
         public bool Equals(RoomNode other)

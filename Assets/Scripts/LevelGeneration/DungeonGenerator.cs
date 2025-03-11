@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace LevelGeneration
 {
-    //TODO: Do post processing to assign room types to rooms, and make it more balanced (Merchant and treasure should spawn least once).
+    //TODO: Make room more balanced (Merchant and treasure should spawn least once).
     public class DungeonGenerator : MonoBehaviour
     {
         [SerializeField]
@@ -40,6 +39,7 @@ namespace LevelGeneration
             // Flush out the old graph and generate a new one. Just to be safe.
             RoomGraph.ClearGraph();
             GenerateGraph();
+            PostProcessing();
             
             // If debug mode is enabled, visualize the graph.
             if (debugMode)
@@ -53,15 +53,10 @@ namespace LevelGeneration
         /// </summary>
         private void GenerateGraph()
         {
-            // Create the starting room first and then add it to the graph.
-            var startingNode = new RoomNode(RoomType.Start);
-            _roomGraph.AddNode(startingNode);
-
             // Create a queue to keep track of the rooms that need to be connected.
             var roomQueue = new Queue<RoomNode>();
-            roomQueue.Enqueue(startingNode);
+            roomQueue.Enqueue(new RoomNode(Vector2Int.zero));
 
-            bool merchantSpawned = false;
             while (_roomGraph.Rooms.Count < roomCount)
             {
                 var currentNode = roomQueue.Dequeue();
@@ -80,12 +75,7 @@ namespace LevelGeneration
                         continue;
                     }
 
-                    var newRoomNode = CreateRoomNode(roomPosition, merchantSpawned);
-                    // If the room is a merchant room, set the flag to true to prevent more from spawning
-                    if (newRoomNode.RoomType == RoomType.Merchant)
-                    {
-                        merchantSpawned = true;
-                    }
+                    var newRoomNode = new RoomNode(roomPosition);
                     validRoomNodes.Add(newRoomNode);
 
                     // Prevent overflow by stopping when we reach the room limit
@@ -113,59 +103,63 @@ namespace LevelGeneration
                     roomQueue.Enqueue(newRoomNode);
                 }
             }
-
-            // IF a merchant room never spawned, then pick a random room and turn it into a merchant room.
-            if (!merchantSpawned)
-            {
-                // Exclude the boss and start room for obvious reason
-                var randomRoom = _roomGraph.Rooms.ElementAt(Random.Range(1, _roomGraph.Rooms.Count - 1)).Value;
-                _roomGraph.UpdateNode(randomRoom, new RoomNode(randomRoom.Position, RoomType.Merchant));
-            }
         }
 
+        /// <summary>
+        /// Post-processing the graph to assign room types to rooms.
+        /// </summary>
         private void PostProcessing()
         {
-            // TODO: Implement post processing to assign room types to rooms.
+            // Should be adjusted as needed.
+            const int merchantSpawnLimit = 1;
+            const int merchantRoomSpawnChance = 30;
+
+            const int treasureRoomSpawnChance = 20;
+
+            int merchantNodeCounter = 0;
+            // Start from the root node and traverse the graph. If the root node is not set, then defaulted to (0,0)
+            // Its kind of redundant because most of the time root is at (0,0)
+            var startingPosition = _roomGraph.Root?.Position ?? Vector2Int.zero;
             
-            // First assign the boss room type. Boss room is the last room generated. (Might need to change into the farthest one)
-            var lastRoom = _roomGraph.Rooms.Last().Value;
-            _roomGraph.UpdateNode(lastRoom, new RoomNode(lastRoom.Position, RoomType.Boss));
-            
-            throw new NotImplementedException();
+            _roomGraph.Traverse(startingPosition, new BreadthFirstTraversal(), node =>
+            {
+                // If its last room, then assign it as a boss room.
+                if (node == _roomGraph.Rooms.Last().Value && spawnBoss)
+                {
+                    AssignRoomTypes(node, RoomType.Boss);
+                }
+                else if (node == _roomGraph.Rooms.First().Value)
+                {
+                    AssignRoomTypes(node, RoomType.Start);
+                }
+                else
+                {
+                    int spawnChance = Random.Range(0, 100 + 1);
+                    // Assign a room type based on the room type.
+                    // Limit merchant spawns in a level.
+                    if (spawnChance < merchantRoomSpawnChance && merchantNodeCounter < merchantSpawnLimit)
+                    {
+                        AssignRoomTypes(node, RoomType.Merchant);
+                        merchantNodeCounter++;
+                    }
+                    else if (spawnChance < treasureRoomSpawnChance)
+                    {
+                        AssignRoomTypes(node, RoomType.Treasure);
+                    }
+                }
+            });
         }
 
-        private void AssignRoomTypes(RoomNode roomNode, RoomType? roomType)
+        /// <summary>
+        /// Helper function to update the room type in the graph.
+        /// </summary>
+        /// <param name="roomNode">The room node to be updated</param>
+        /// <param name="roomType">The new room node room type</param>
+        private void AssignRoomTypes(RoomNode roomNode, RoomType roomType = RoomType.Normal)
         {
-            throw new NotImplementedException();
+            _roomGraph.UpdateNode(roomNode, new RoomNode(roomNode.Position, roomType));
         }
         
-        // TODO: Decide whether to keep this function or not. To assign room type at post processing or not.
-        /// <summary>
-        /// Create a room node with the specified room type.
-        /// </summary>
-        /// <param name="roomPosition">The position to create the room to. Note that this position is the position in the graph.</param>
-        /// <param name="canSpawnMerchant">Track whether merchant room already spawned or not</param>
-        /// <returns>The created room node</returns>
-        private RoomNode CreateRoomNode(Vector2Int roomPosition, bool canSpawnMerchant)
-        {
-            // If it's the last room, spawn a boss room. And also if the boss room spawn is checked.
-            if (_roomGraph.Rooms.Count == roomCount - 1 && spawnBoss)
-            {
-                return new RoomNode(roomPosition, RoomType.Boss);
-            }
-
-            // Try spawning a merchant room (30% chance) if one hasn't been spawned yet.
-            // Why the randomness? So the merchant room isn't always next to the starting room.
-            if (canSpawnMerchant && Random.Range(0, 100) < 30)
-            {
-                return new RoomNode(roomPosition, RoomType.Merchant);
-            }
-
-            // Otherwise, spawn a normal room.
-            return new RoomNode(roomPosition);
-        }
-
-
         /// <summary>
         /// Helper functions to add a connection between two rooms in the graph. It will act bidirectionally.
         /// </summary>
