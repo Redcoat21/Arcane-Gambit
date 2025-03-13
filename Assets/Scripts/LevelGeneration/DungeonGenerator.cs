@@ -36,18 +36,28 @@ namespace LevelGeneration
 
         [Header("Corridor Configuration")]
         [SerializeField]
-        private TileBase corridorHorizontalWallTile; // For horizontal walls
-
-        [SerializeField]
-        private TileBase corridorVerticalWallTile; // For vertical walls
-
-        [SerializeField]
         private TileBase corridorFloorTile;
+
+        [Header("Corridor Wall Tiles")]
+        [SerializeField]
+        private TileBase verticalLeftWallTile; // For left walls in vertical corridors
+
+        [SerializeField]
+        private TileBase verticalRightWallTile; // For right walls in vertical corridors
+
+        [SerializeField]
+        private TileBase horizontalUpWallTile; // For upper walls in horizontal corridors
+
+        [SerializeField]
+        private TileBase horizontalDownWallTile; // For lower walls in horizontal corridors
 
         private readonly RoomGraph _roomGraph = RoomGraph.Instance;
 
         [SerializeField]
         private GameObject levelRoot;
+
+        [SerializeField]
+        private TileBase backgroundWallTile; // Dark wall tile for the background
 
         /// <summary>
         /// Entry point for the dungeon generation.
@@ -59,6 +69,8 @@ namespace LevelGeneration
             GenerateGraph();
             PostProcessing();
             PlaceRoomPrefab();
+            // Fill background first (so it's behind everything)
+            FillBackgroundWalls();
             ConnectRooms();
 
             // If debug mode is enabled, visualize the graph.
@@ -272,7 +284,9 @@ namespace LevelGeneration
             // Get the wall tile from either room (assuming both rooms use the same tile)
 
             // Create a corridor between exits
-            CreateCorridorPath(tilemap, exitA, exitB, corridorHorizontalWallTile, corridorVerticalWallTile,
+            CreateCorridorPath(tilemap, exitA, exitB,
+                verticalLeftWallTile, verticalRightWallTile,
+                horizontalUpWallTile, horizontalDownWallTile,
                 corridorFloorTile);
 
             // Create doorways in both rooms
@@ -332,8 +346,10 @@ namespace LevelGeneration
         /// <param name="horizontalWallTile">Wall tile when in a horizontal corridor (along the x-axis)</param>
         /// <param name="verticalWallTile">Wall tile when in a vertical corridor (along the y-axis)</param>
         /// <param name="floorTile">The corridor floor tile</param>
-        private void CreateCorridorPath(Tilemap tilemap, Vector3 startPos, Vector3 endPos, TileBase horizontalWallTile,
-            TileBase verticalWallTile, TileBase floorTile)
+        private void CreateCorridorPath(Tilemap tilemap, Vector3 startPos, Vector3 endPos,
+            TileBase verticalLeftWall, TileBase verticalRightWall,
+            TileBase horizontalUpWall, TileBase horizontalDownWall,
+            TileBase floorTile)
         {
             // Convert world positions to cell positions for the corridor tilemap
             Vector3Int startCell = tilemap.WorldToCell(startPos);
@@ -359,16 +375,14 @@ namespace LevelGeneration
                         tilemap.SetTile(new Vector3Int(x, y + i, 0), floorTile);
                 }
 
-                // Create walls - using horizontal wall tiles
+                // Create walls without extending beyond the corridor ends
                 for (int x = minX; x <= maxX; x++)
                 {
                     // Bottom wall
-                    for (int i = 0; i < corridorWidth / 2; i++)
-                        tilemap.SetTile(new Vector3Int(x, y - i - 1, 0), horizontalWallTile);
+                    tilemap.SetTile(new Vector3Int(x, y - 1, 0), horizontalDownWallTile);
 
                     // Top wall
-                    for (int i = 0; i < corridorWidth / 2; i++)
-                        tilemap.SetTile(new Vector3Int(x, y + corridorWidth + i, 0), horizontalWallTile);
+                    tilemap.SetTile(new Vector3Int(x, y + corridorWidth, 0), horizontalUpWallTile);
                 }
             }
             else
@@ -385,16 +399,14 @@ namespace LevelGeneration
                         tilemap.SetTile(new Vector3Int(x + i, y, 0), floorTile);
                 }
 
-                // Create walls - using vertical wall tiles
+                // Create walls without extending beyond the corridor ends
                 for (int y = minY; y <= maxY; y++)
                 {
                     // Left wall
-                    for (int i = 0; i < corridorWidth / 2; i++)
-                        tilemap.SetTile(new Vector3Int(x - i - 1, y, 0), verticalWallTile);
+                    tilemap.SetTile(new Vector3Int(x - 1, y, 0), verticalLeftWallTile);
 
                     // Right wall
-                    for (int i = 0; i < corridorWidth / 2; i++)
-                        tilemap.SetTile(new Vector3Int(x + corridorWidth + i, y, 0), verticalWallTile);
+                    tilemap.SetTile(new Vector3Int(x + corridorWidth, y, 0), verticalRightWallTile);
                 }
             }
         }
@@ -507,5 +519,91 @@ namespace LevelGeneration
                     $"Room_{node.Position}_{node.RoomType}_{roomComponent.GetWidth()}x{roomComponent.GetHeight()}";
             });
         }
+
+
+        /// <summary>
+        /// Calculates the bounds of the entire dungeon based on room positions
+        /// </summary>
+        private BoundsInt CalculateDungeonBounds()
+        {
+            BoundsInt bounds = new BoundsInt();
+            bool firstRoom = true;
+
+            // Go through all rooms to find the min and max boundaries
+            foreach (Transform roomTransform in levelRoot.transform)
+            {
+                Room room = roomTransform.GetComponent<Room>();
+                if (room == null) continue;
+
+                // Get room bounds in world space
+                BoundsInt roomBounds = room.Area;
+
+                // Adjust for room's position
+                Vector3Int roomPosition = Vector3Int.FloorToInt(room.transform.position);
+                roomBounds.position += roomPosition;
+
+                if (firstRoom)
+                {
+                    bounds = roomBounds;
+                    firstRoom = false;
+                }
+                else
+                {
+                    // Expand bounds to include this room
+                    bounds.min = new Vector3Int(
+                        Mathf.Min(bounds.min.x, roomBounds.min.x),
+                        Mathf.Min(bounds.min.y, roomBounds.min.y),
+                        0);
+
+                    bounds.max = new Vector3Int(
+                        Mathf.Max(bounds.max.x, roomBounds.max.x),
+                        Mathf.Max(bounds.max.y, roomBounds.max.y),
+                        0);
+                }
+            }
+
+            return bounds;
+        }
+
+
+        /// <summary>
+        /// Fills the entire dungeon area with background wall tiles
+        /// </summary>
+        private void FillBackgroundWalls()
+        {
+            // Create a GameObject for the background
+            GameObject background = new GameObject("Background");
+            background.transform.SetParent(levelRoot.transform);
+
+            // Add Grid and Tilemap components
+            Grid grid = background.AddComponent<Grid>();
+            grid.cellSize = new Vector3(1, 1, 0);
+
+            GameObject tilemapObject = new GameObject("Tilemap");
+            tilemapObject.transform.SetParent(background.transform);
+
+            Tilemap tilemap = tilemapObject.AddComponent<Tilemap>();
+            TilemapRenderer tilemapRenderer = tilemapObject.AddComponent<TilemapRenderer>();
+            tilemapRenderer.sortingOrder = -1; // Set this to be behind other tilemaps
+
+            // Calculate bounds that cover all rooms
+            BoundsInt dungeonBounds = CalculateDungeonBounds();
+
+            // Add a buffer around the dungeon bounds
+            int buffer = 10;
+            dungeonBounds.min -= new Vector3Int(buffer, buffer, 0);
+            dungeonBounds.max += new Vector3Int(buffer, buffer, 0);
+
+            // Fill the entire area with background wall tiles
+            for (int x = dungeonBounds.min.x; x < dungeonBounds.max.x; x++)
+            {
+                for (int y = dungeonBounds.min.y; y < dungeonBounds.max.y; y++)
+                {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), backgroundWallTile);
+                }
+            }
+        }
     }
+
+
 }
