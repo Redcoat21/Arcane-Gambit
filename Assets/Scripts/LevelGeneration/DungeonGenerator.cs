@@ -281,8 +281,6 @@ namespace LevelGeneration
             var tilemapRenderer = tilemapObject.AddComponent<TilemapRenderer>();
             tilemapRenderer.sortingOrder = 0;
 
-            // Get the wall tile from either room (assuming both rooms use the same tile)
-
             // Create a corridor between exits
             CreateCorridorPath(tilemap, exitA, exitB,
                 verticalLeftWallTile, verticalRightWallTile,
