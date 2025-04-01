@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      priest3_v1_3_0: -6386849153194044997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

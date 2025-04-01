@@ -734,7 +734,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_Character_0: -5013383146189410228
+      Dungeon_Character_1: 7994224659595031685
+      Dungeon_Character_10: -3430087737662498451
+      Dungeon_Character_11: 1125704706051299662
+      Dungeon_Character_12: -1029701173070085455
+      Dungeon_Character_13: -5323558718126175124
+      Dungeon_Character_14: -2652031405799300071
+      Dungeon_Character_15: 1284442661117680497
+      Dungeon_Character_16: -8935424470997589857
+      Dungeon_Character_17: 5017263337231134796
+      Dungeon_Character_18: -4373745917658779605
+      Dungeon_Character_19: 474557474394889869
+      Dungeon_Character_2: 882884947272013419
+      Dungeon_Character_20: -1568729914967194725
+      Dungeon_Character_21: -1462224651469370528
+      Dungeon_Character_22: -3097454778268114089
+      Dungeon_Character_23: 7812070969208665739
+      Dungeon_Character_24: 3839611741517165852
+      Dungeon_Character_3: -2202683092090327602
+      Dungeon_Character_4: -1622992940848078624
+      Dungeon_Character_5: 6824633224269233963
+      Dungeon_Character_6: -3232108658689241761
+      Dungeon_Character_7: -6589653363612488251
+      Dungeon_Character_8: -5414552479336051574
+      Dungeon_Character_9: 5513427428837754980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

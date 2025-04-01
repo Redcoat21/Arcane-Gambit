@@ -434,7 +434,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_Character_2_0: -5501054352798569629
+      Dungeon_Character_2_1: 3598024242438813033
+      Dungeon_Character_2_10: -4787544169540912965
+      Dungeon_Character_2_11: -262721789967192588
+      Dungeon_Character_2_12: 5876570029868465104
+      Dungeon_Character_2_2: 423828613696989058
+      Dungeon_Character_2_3: 7007010545437925719
+      Dungeon_Character_2_4: -7269266456686481269
+      Dungeon_Character_2_5: 6471500516762935339
+      Dungeon_Character_2_6: 6199791883379630216
+      Dungeon_Character_2_7: -8267076635104238795
+      Dungeon_Character_2_8: -2851127834306816864
+      Dungeon_Character_2_9: -3655150236505813497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

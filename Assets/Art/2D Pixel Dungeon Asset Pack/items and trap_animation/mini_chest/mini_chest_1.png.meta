@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mini_chest_1_0: 9189427641938133556
+      mini_chest_1_1: -4167064446074955242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
