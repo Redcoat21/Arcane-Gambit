@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Components.Movements
 {
@@ -12,16 +13,17 @@ namespace Components.Movements
         [Range(1.0f, 100.0f)]
         private float moveSpeed;
 
-        private Rigidbody2D _rigidbody;
+        [SerializeField]
+        private Rigidbody2D rigidBody;
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            rigidBody ??= GetComponent<Rigidbody2D>();
         }
 
         public void Move(Vector2 direction)
         {
-            _rigidbody.linearVelocity = direction * moveSpeed;
+            rigidBody.linearVelocity = direction * moveSpeed;
         }
     }
 }
