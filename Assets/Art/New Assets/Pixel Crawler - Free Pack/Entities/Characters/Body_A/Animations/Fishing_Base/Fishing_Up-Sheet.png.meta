@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fishing_Up-Sheet_0: -3150286265187791947
+      Fishing_Up-Sheet_1: -2683585229013639301
+      Fishing_Up-Sheet_2: 2042721567183484125
+      Fishing_Up-Sheet_3: -7755738687912851413
+      Fishing_Up-Sheet_4: -4032471913507421573
+      Fishing_Up-Sheet_5: 5069248118419590442
+      Fishing_Up-Sheet_6: 1405582791052539193
+      Fishing_Up-Sheet_7: -61387222700771400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

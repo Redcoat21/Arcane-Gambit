@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grill_04-Sheet_0: 5241900310029514565
+      Grill_04-Sheet_1: -3922507369862172783
+      Grill_04-Sheet_2: -4557993401749686284
+      Grill_04-Sheet_3: -708675995229537558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

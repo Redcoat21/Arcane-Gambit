@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Carry_Walk_Side-Sheet_0: 8874952990030640826
+      Carry_Walk_Side-Sheet_1: 3826205640710079914
+      Carry_Walk_Side-Sheet_2: 4723986034060535855
+      Carry_Walk_Side-Sheet_3: -6381360809034166425
+      Carry_Walk_Side-Sheet_4: 173550558335318874
+      Carry_Walk_Side-Sheet_5: 7518347616115155002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Anvil_03-Sheet_0: 843681670158836910
+      Anvil_03-Sheet_1: -6346267097173356474
+      Anvil_03-Sheet_2: 364026592621638672
+      Anvil_03-Sheet_3: -6249484780688353986
+      Anvil_03-Sheet_4: 2271022978109529463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

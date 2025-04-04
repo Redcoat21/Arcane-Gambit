@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pierce_Top-Sheet_0: -5632517521099474007
+      Pierce_Top-Sheet_1: -795449222107856480
+      Pierce_Top-Sheet_2: -1907045614969576217
+      Pierce_Top-Sheet_3: -5090963442574390503
+      Pierce_Top-Sheet_4: 4742036276796113614
+      Pierce_Top-Sheet_5: -3185504526457091650
+      Pierce_Top-Sheet_6: 5755612700021611872
+      Pierce_Top-Sheet_7: 3512197563054921056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

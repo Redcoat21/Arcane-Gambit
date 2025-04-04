@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Butchery_01-Sheet_0: -1784731013225969279
+      Butchery_01-Sheet_1: -6699830377728170428
+      Butchery_01-Sheet_2: 4687313342773659461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

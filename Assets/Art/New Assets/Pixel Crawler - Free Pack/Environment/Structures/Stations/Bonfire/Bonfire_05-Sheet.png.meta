@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bonfire_05-Sheet_0: -725953185794288686
+      Bonfire_05-Sheet_1: -3559468985446428134
+      Bonfire_05-Sheet_2: -634509981459199234
+      Bonfire_05-Sheet_3: 2598633874590585617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

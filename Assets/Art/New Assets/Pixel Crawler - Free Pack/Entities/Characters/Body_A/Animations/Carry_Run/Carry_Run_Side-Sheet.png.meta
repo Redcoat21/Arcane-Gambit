@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Carry_Run_Side-Sheet_0: 6768844033202961094
+      Carry_Run_Side-Sheet_1: 8028108469474042392
+      Carry_Run_Side-Sheet_2: -4155044159639133246
+      Carry_Run_Side-Sheet_3: 4858443097143912566
+      Carry_Run_Side-Sheet_4: 4778514284267719981
+      Carry_Run_Side-Sheet_5: 1826399903834023181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

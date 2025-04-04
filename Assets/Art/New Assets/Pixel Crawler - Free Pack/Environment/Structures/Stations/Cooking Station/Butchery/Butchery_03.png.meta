@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Butchery_03_0: -9088878315363527819
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

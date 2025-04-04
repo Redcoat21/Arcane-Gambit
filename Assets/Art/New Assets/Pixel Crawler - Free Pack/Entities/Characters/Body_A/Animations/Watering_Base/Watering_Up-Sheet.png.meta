@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Watering_Up-Sheet_0: 6961069792130842343
+      Watering_Up-Sheet_1: -3137935066585158329
+      Watering_Up-Sheet_2: -1310834495231252000
+      Watering_Up-Sheet_3: -9013696973804137808
+      Watering_Up-Sheet_4: 3905166854841350039
+      Watering_Up-Sheet_5: 3144306198498177064
+      Watering_Up-Sheet_6: 6380162627925309988
+      Watering_Up-Sheet_7: -6868660087620312301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
