@@ -39,6 +39,6 @@ namespace LevelGeneration
         Boss,
         Treasure,
         Minigames,
-        Start
+        Start,
     }
 }
