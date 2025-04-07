@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIStartScene.unity
     guid: cd7d43eb212d3fa428348fdbc29e8f4d
+  - enabled: 1
+    path: Assets/Scenes/EtdgLevelGenerationScene.unity
+    guid: 005bb1ea9294d8c4b9c27ee34fdc44fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

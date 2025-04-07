@@ -1715,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163784, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: UIStartScene
+      value: EtdgLevelGenerationScene
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163784, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

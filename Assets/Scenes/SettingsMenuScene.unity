@@ -276,8 +276,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 632150507}
   m_HandleRect: {fileID: 632150506}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.46617776
+  m_Value: 1
+  m_Size: 0.46617773
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1436,7 +1436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 524
+      value: 549
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3582,7 +3582,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -4689,7 +4689,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -5624,7 +5624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 524
+      value: 549
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8135,7 +8135,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -10563,7 +10563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 524
+      value: 549
       objectReference: {fileID: 0}
     - target: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11183,7 +11183,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.45
+  m_fontSize: 47.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11221,7 +11221,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -2.1590595, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11566,7 +11566,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -13335,7 +13335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4158630972530242162, guid: d255bdf763613c54fb9c3294e00d562f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 524
+      value: 549
       objectReference: {fileID: 0}
     - target: {fileID: 4158630972530242162, guid: d255bdf763613c54fb9c3294e00d562f, type: 3}
       propertyPath: m_AnchoredPosition.y
