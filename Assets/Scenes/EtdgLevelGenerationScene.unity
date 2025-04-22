@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &75812204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 75812205}
-  m_Layer: 0
-  m_Name: LevelRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &75812205
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75812204}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826180201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2497758115865933321, guid: 5174f4f72ee68e542a41642ffb141bc1, type: 3}
@@ -387,23 +356,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 2022850435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd93eddc33e84f2aba172f046b32b91d, type: 3}
+  m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
-  spawnBoss: 0
-  roomPrefabs:
-  - {fileID: 6893563747680685711, guid: b85afcda01932f64c96de01b75ff59a9, type: 3}
-  roomGap: 6
-  roomCount: 20
-  roomSpawnChance: 60
-  corridorFloorTile: {fileID: 11400000, guid: d47e08b1c538f9d49a8c125ad6bf916f, type: 2}
-  verticalLeftWallTile: {fileID: 11400000, guid: e93a381d74761d1419be3fa97bd696aa, type: 2}
-  verticalRightWallTile: {fileID: 11400000, guid: 1c9da5e09a4f59744bcdb644d8f02bf9, type: 2}
-  horizontalUpWallTile: {fileID: 11400000, guid: 7cc10d104d0dcad4ca251097bc88f9dd, type: 2}
-  horizontalDownWallTile: {fileID: 11400000, guid: 7cc10d104d0dcad4ca251097bc88f9dd, type: 2}
-  levelRoot: {fileID: 75812204}
-  backgroundWallTile: {fileID: 11400000, guid: 362852f1d85f1c040bdc103d1e69c312, type: 2}
+  version: 3
+  EnableDiagnostics: 0
+  InputType: 0
+  CustomInputTask: {fileID: 0}
+  FixedLevelGraphConfig:
+    LevelGraph: {fileID: 11400000, guid: ae60c7eff21de394291bf896e5ade55e, type: 2}
+    UseCorridors: 1
+  GeneratorConfig:
+    RootGameObject: {fileID: 0}
+    Timeout: 10000
+    RepeatModeOverride: 0
+    MinimumRoomDistance: 1
+  PostProcessConfig:
+    InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
+    TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
+    CopyTilesToSharedTilemaps: 1
+    CenterGrid: 1
+    DisableRoomTemplatesRenderers: 1
+    DisableRoomTemplatesColliders: 1
+  CustomPostProcessTasks: []
+  OtherConfig:
+    UseRandomSeed: 1
+    RandomGeneratorSeed: 0
+    GenerateOnStart: 1
+  AdvancedConfig:
+    ThrowExceptionsImmediately: 0
+  UseRandomSeed: 1
+  RandomGeneratorSeed: 0
+  GenerateOnStart: 1
+  ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!1001 &6582515926328823237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,5 +494,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1583465772}
   - {fileID: 2022850437}
-  - {fileID: 75812205}
   - {fileID: 6582515926328823237}
