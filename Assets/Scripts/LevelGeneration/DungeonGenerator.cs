@@ -71,7 +71,7 @@ namespace LevelGeneration
             PlaceRoomPrefab();
             // Fill background first (so it's behind everything)
             FillBackgroundWalls();
-            ConnectRooms();
+            // ConnectRooms();
 
             // If debug mode is enabled, visualize the graph.
             if (debugMode)
