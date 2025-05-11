@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private InventoryComponent inventoryComponent;    
 
         private Vector2 lastMoveDirection;
 
@@ -21,6 +22,7 @@ namespace Player
             healthComponent ??= GetComponent<HealthComponent>();
             animator ??= GetComponent<Animator>();
             spriteRenderer ??= GetComponent<SpriteRenderer>();
+            inventoryComponent ??= GetComponent<InventoryComponent>();
         }
 
         private void FixedUpdate()
