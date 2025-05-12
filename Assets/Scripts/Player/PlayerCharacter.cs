@@ -12,8 +12,11 @@ namespace Player
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private InventoryComponent inventoryComponent;    
+        [SerializeField] private HealthUI healthUI;
 
         private Vector2 lastMoveDirection;
+        private int baseMaxHealth;
 
         private void Awake()
         {
@@ -21,6 +24,25 @@ namespace Player
             healthComponent ??= GetComponent<HealthComponent>();
             animator ??= GetComponent<Animator>();
             spriteRenderer ??= GetComponent<SpriteRenderer>();
+            inventoryComponent ??= GetComponent<InventoryComponent>();
+            if (inventoryComponent != null){
+                inventoryComponent.OnInventoryChanged += ApplyInventoryModifiers;
+            }
+            healthUI ??= FindFirstObjectByType<HealthUI>();
+        }
+
+        private void Start()
+        {
+            baseMaxHealth = healthComponent.MaximumHealth;
+            Debug.Log("Base Max Health: " + baseMaxHealth);
+
+            Debug.Log("== Inventory Contents at Start ==");
+            foreach (var item in inventoryComponent.GetItems())
+            {
+                Debug.Log($"{item.itemData.itemName} x{item.quantity}");
+            }
+
+            ApplyInventoryModifiers();
         }
 
         private void FixedUpdate()
@@ -49,6 +71,27 @@ namespace Player
             animator.SetFloat("moveX", lastMoveDirection.x);
             animator.SetFloat("moveY", lastMoveDirection.y);
             animator.SetBool("isMoving", isMoving);
+        }
+
+        private void ApplyInventoryModifiers()
+        {
+            float hpBonus = 0;
+
+            foreach (var item in inventoryComponent.GetItems())
+            {
+                if (item.itemData.type == Type.Passive)
+                {
+                    hpBonus += item.itemData.hpModifier * item.quantity;
+                }
+            }
+
+            int newMaxHP = Mathf.RoundToInt(baseMaxHealth + hpBonus);
+            int currentHP = healthComponent.CurrentHealth;
+
+            healthComponent.MaximumHealth = newMaxHP;
+            healthComponent.CurrentHealth = Mathf.Clamp(currentHP, 0, newMaxHP);
+
+            healthUI.UpdateUI();
         }
     }
 }
