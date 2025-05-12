@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Player
 {
 public class InventoryComponent : MonoBehaviour
 {
-[SerializeField] private List<InventoryItem> items = new();
+    public event Action OnInventoryChanged;
+    [SerializeField] private List<InventoryItem> items = new();
     public void AddItem(ItemData itemData, int quantity = 1)
     {
         InventoryItem existing = items.Find(i => i.itemData == itemData);
@@ -18,6 +20,8 @@ public class InventoryComponent : MonoBehaviour
         {
             items.Add(new InventoryItem(itemData, quantity));
         }
+
+        OnInventoryChanged?.Invoke();
     }
 
     public void RemoveItem(ItemData itemData, int quantity = 1)
@@ -29,6 +33,8 @@ public class InventoryComponent : MonoBehaviour
             existing.quantity -= quantity;
             if (existing.quantity <= 0)
                 items.Remove(existing);
+
+            OnInventoryChanged?.Invoke();
         }
     }
 

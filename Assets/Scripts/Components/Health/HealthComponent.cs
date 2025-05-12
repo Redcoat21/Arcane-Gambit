@@ -9,7 +9,7 @@ namespace Components.Health
     public class HealthComponent : MonoBehaviour
     {
         [SerializeField]
-        [Range(1, 100)]
+        [Range(1, 100000)]
         private int maximumHealth;
         
         [SerializeField]
