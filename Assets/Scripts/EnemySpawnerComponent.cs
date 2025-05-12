@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Edgar.Unity;
 using UnityEngine;
 
@@ -13,6 +12,10 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
     
     [Range(1, 30)]
     public int minimumNumberOfEnemiesToSpawn = 1;
+
+    [SerializeField]
+    private List<Enemy> enemiesSpawnPool;
+    
     public override void Run(DungeonGeneratorLevelGrid2D level)
     {
         if (minimumNumberOfEnemiesToSpawn > maximumNumberOfEnemiesToSpawn)
@@ -30,7 +33,7 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
         var rooms = level.RoomInstances;
         foreach(var room in rooms)
         {
-            var markerActivated = 0;
+            int markerActivated = 0;
             var enemiesSpawner = room.RoomTemplateInstance.transform.Find("EnemySpawns");
 
             if (enemiesSpawner == null)
@@ -47,7 +50,7 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
                 {
                     var marker = enemySpawner.gameObject;
 
-                    marker.SetActive(true);
+                    InstantiateEnemy(marker.transform.position, marker.transform);
                     markerActivated++;
                 }
             }
@@ -59,6 +62,7 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
 
                     if (Random.Next(0, 100) < enemySpawnChance && markerActivated < maximumNumberOfEnemiesToSpawn)
                     {
+                        InstantiateEnemy(marker.transform.position, marker.transform);
                         marker.SetActive(true);
                         markerActivated++;
                     }
@@ -70,17 +74,25 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
                 
                 while(markerActivated < minimumNumberOfEnemiesToSpawn)
                 {
-                    Debug.LogError($"Not enough enemies spawned, activating all spawners");
+                    Debug.LogError($"Not enough enemies spawned, activating additional spawners");
                     var marker = enemiesSpawner.GetChild(Random.Next(0, enemiesSpawner.childCount)).gameObject;
                     
                     if(marker.activeSelf == false)
                     {
+                        InstantiateEnemy(marker.transform.position, marker.transform);
                         marker.SetActive(true);
                         markerActivated++;
                     }
                 }
             }
         }
+    }
 
+    private void InstantiateEnemy(Vector3 position, Transform parent)
+    {
+        var enemy = enemiesSpawnPool[Random.Next(0, enemiesSpawnPool.Count)];
+        var enemyInstance = Instantiate(enemy, position, Quaternion.identity);
+        enemyInstance.transform.SetParent(parent);
+        parent.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
