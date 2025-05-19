@@ -6,10 +6,10 @@ using UnityEngine.Pool;
 
 public class PooledEnemy
 {
-    public Enemy Enemy { get; set; }
+    public EnemyScript Enemy { get; set; }
     public bool IsActive { get; set; }
 
-    public PooledEnemy(Enemy enemy, bool isActive = false)
+    public PooledEnemy(EnemyScript enemy, bool isActive = false)
     {
         Enemy = enemy;
         IsActive = isActive;
@@ -28,9 +28,9 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
     public int minimumNumberOfEnemiesToSpawn = 1;
 
     [SerializeField]
-    private List<Enemy> enemiesToSpawn;
+    private List<EnemyScript> enemiesToSpawn;
 
-    private Dictionary<Enemy, ObjectPool<GameObject>> enemyPools = new Dictionary<Enemy, ObjectPool<GameObject>>();
+    private Dictionary<EnemyScript, ObjectPool<GameObject>> enemyPools = new Dictionary<EnemyScript, ObjectPool<GameObject>>();
     private List<GameObject> activeEnemies = new List<GameObject>();
 
 
