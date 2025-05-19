@@ -11,7 +11,6 @@ namespace Enemy
 
         private void Start()
         {
-
             agent = GetComponent<NavMeshAgent>();
             agent.updateRotation = false;
             agent.updateUpAxis = false;
