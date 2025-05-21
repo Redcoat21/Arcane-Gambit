@@ -1,6 +1,11 @@
 using System;
 using Components.Health;
 using Components.Movements;
+using Components.Mana;
+using Components.Attack;
+using Components.ElementalDamage;
+using Components.RangedDamage;
+using Components.MeleeDamage;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,19 +14,41 @@ namespace Player
     public class PlayerCharacter : MonoBehaviour
     {
         [SerializeField] private GroundMovementComponent movementComponent;
-        [SerializeField] private HealthComponent healthComponent;
+        [SerializeField] private GroundMovementUI movementUI;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private InventoryComponent inventoryComponent;    
+        [SerializeField] private InventoryComponent inventoryComponent;
+        [SerializeField] private HealthComponent healthComponent;  
         [SerializeField] private HealthUI healthUI;
+        [SerializeField] private ManaComponent manaComponent;
+        [SerializeField] private ManaUI manaUI;
+        [SerializeField] private AttackComponent attackComponent;
+        [SerializeField] private AttackUI attackUI;
+        [SerializeField] private MeleeDamageComponent meleeDamageComponent;
+        [SerializeField] private MeleeDamageUI meleeDamageUI;
+        [SerializeField] private RangedDamageComponent rangedDamageComponent;
+        [SerializeField] private RangedDamageUI rangedDamageUI;
+        [SerializeField] private ElementalDamageComponent elementalDamageComponent;
+        [SerializeField] private ElementalDamageUI elementalDamageUI;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
+        private int baseMaxMana;
+        private float baseSpeed;
+        private int baseAttack;
+        private float baseMelee;
+        private float baseRanged;
+        private float baseElemental;
 
         private void Awake()
         {
             movementComponent ??= GetComponent<GroundMovementComponent>();
             healthComponent ??= GetComponent<HealthComponent>();
+            manaComponent ??= GetComponent<ManaComponent>();
+            attackComponent ??= GetComponent<AttackComponent>();
+            meleeDamageComponent ??= GetComponent<MeleeDamageComponent>();
+            rangedDamageComponent ??= GetComponent<RangedDamageComponent>();
+            elementalDamageComponent ??= GetComponent<ElementalDamageComponent>();
             animator ??= GetComponent<Animator>();
             spriteRenderer ??= GetComponent<SpriteRenderer>();
             inventoryComponent ??= GetComponent<InventoryComponent>();
@@ -29,12 +56,36 @@ namespace Player
                 inventoryComponent.OnInventoryChanged += ApplyInventoryModifiers;
             }
             healthUI ??= FindFirstObjectByType<HealthUI>();
+            manaUI ??= FindFirstObjectByType<ManaUI>();
+            attackUI ??= FindFirstObjectByType<AttackUI>();
+            movementUI ??= FindFirstObjectByType<GroundMovementUI>();
+            meleeDamageUI ??= FindFirstObjectByType<MeleeDamageUI>();
+            rangedDamageUI ??= FindFirstObjectByType<RangedDamageUI>();
+            elementalDamageUI ??= FindFirstObjectByType<ElementalDamageUI>();
         }
 
         private void Start()
         {
             baseMaxHealth = healthComponent.MaximumHealth;
             Debug.Log("Base Max Health: " + baseMaxHealth);
+
+            baseMaxMana = manaComponent.MaximumMana;
+            Debug.Log("Base Max Mana: " + baseMaxHealth);
+
+            baseSpeed = movementComponent.MoveSpeed;
+            Debug.Log("Base Speed: " + baseMaxHealth);
+
+            baseAttack = attackComponent.BaseAttackDamage;
+            Debug.Log("Base Attack: " + baseAttack);
+
+            baseMelee = meleeDamageComponent.MeleeMultiplier;
+            Debug.Log("Base Melee Damage: " + baseMelee);
+
+            baseRanged = rangedDamageComponent.RangedMultiplier;
+            Debug.Log("Base Ranged Damage: " + baseRanged);
+
+            baseElemental = elementalDamageComponent.ElementalMultiplier;
+            Debug.Log("Base Elemental Damage: " + baseElemental);
 
             Debug.Log("== Inventory Contents at Start ==");
             foreach (var item in inventoryComponent.GetItems())
@@ -76,22 +127,54 @@ namespace Player
         private void ApplyInventoryModifiers()
         {
             float hpBonus = 0;
+            float speedBonus = 0;
+            float manaBonus = 0;
+            float attackBonus = 0;
+            float meleeBonus = 0;
+            float rangedBonus = 0;
+            float elementalBonus = 0;
 
             foreach (var item in inventoryComponent.GetItems())
             {
                 if (item.itemData.type == Type.Passive)
                 {
                     hpBonus += item.itemData.hpModifier * item.quantity;
+                    speedBonus += item.itemData.moveSpeedModifier * item.quantity / 100;
+                    manaBonus += item.itemData.manaModifier * item.quantity;
+                    attackBonus += item.itemData.attackModifier * item.quantity;
+                    meleeBonus += item.itemData.meleeDamageModifier * item.quantity;
+                    rangedBonus += item.itemData.rangedDamageModifier * item.quantity;
+                    elementalBonus += item.itemData.elementalDamageModifier * item.quantity;
                 }
             }
 
             int newMaxHP = Mathf.RoundToInt(baseMaxHealth + hpBonus);
             int currentHP = healthComponent.CurrentHealth;
+            int newMaxMana = Mathf.RoundToInt(baseMaxMana + manaBonus);
+            int currentMana = manaComponent.CurrentMana;
+            float newSpeed = baseSpeed + speedBonus;
+            int newAttack = Mathf.RoundToInt(baseAttack + attackBonus);
+            float newMelee = baseMelee + meleeBonus;
+            float newRanged = baseRanged + rangedBonus;
+            float newElemental = baseElemental + elementalBonus;
 
             healthComponent.MaximumHealth = newMaxHP;
             healthComponent.CurrentHealth = Mathf.Clamp(currentHP, 0, newMaxHP);
+            manaComponent.MaximumMana = newMaxMana;
+            manaComponent.CurrentMana = Mathf.Clamp(currentMana, 0, newMaxMana);
+            movementComponent.MoveSpeed = newSpeed;
+            attackComponent.BaseAttackDamage = newAttack;
+            meleeDamageComponent.MeleeMultiplier = newMelee;
+            rangedDamageComponent.RangedMultiplier = newRanged;
+            elementalDamageComponent.ElementalMultiplier = newElemental;
 
             healthUI.UpdateUI();
+            manaUI.UpdateUI();
+            movementUI.UpdateUI();
+            attackUI.UpdateUI();
+            meleeDamageUI.UpdateUI();
+            rangedDamageUI.UpdateUI();
+            elementalDamageUI.UpdateUI();
         }
     }
 }

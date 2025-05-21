@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_17
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
-  rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
-  hpModifier: 20
-  manaModifier: 0
-  moveSpeedModifier: 5
-  attackModifier: 0
+  itemName: Whispering Hood
+  description: "Sometimes it whispers encouragement. Sometimes it whispers your name.
+    It\u2019s probably just the wind."
+  rarity: 3
+  icon: {fileID: 21300000, guid: 73291901d9ff21244b47fafa7b7a25a2, type: 3}
+  status: whisper
+  hpModifier: 30
+  manaModifier: 50
+  moveSpeedModifier: 0
+  attackModifier: 20
   meleeDamageModifier: 0
   rangedDamageModifier: 0
-  elementalDamageModifier: 0
+  elementalDamageModifier: 50
   type: 0

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_23
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
+  itemName: Gilded Vest of Disuse
+  description: Lined with gold but dulled by time, like wealth that never found its
+    purpose.
   rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
+  icon: {fileID: 21300000, guid: 4c16caeddfd7a73488c836b4b12c7502, type: 3}
+  status: disuse
   hpModifier: 20
   manaModifier: 0
-  moveSpeedModifier: 5
+  moveSpeedModifier: 10
   attackModifier: 0
   meleeDamageModifier: 0
   rangedDamageModifier: 0
