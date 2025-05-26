@@ -57,7 +57,7 @@ namespace Enemy
                 visionRange,
                 obstacleMask
             );
-
+            
             return hit.collider == null;
         }
 
