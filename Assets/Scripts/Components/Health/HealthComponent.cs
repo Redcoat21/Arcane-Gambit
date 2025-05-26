@@ -9,12 +9,12 @@ namespace Components.Health
     public class HealthComponent : MonoBehaviour
     {
         [SerializeField]
-        [Range(1, 100000)]
+        [Range(1, 100)]
         private int maximumHealth;
         
         [SerializeField]
         private int currentHealth;
-        
+
         public int MaximumHealth
         {
             get => maximumHealth;
@@ -30,6 +30,12 @@ namespace Components.Health
         // OnHealthChanged is an event that will be triggered when the health of the object changes
         public event Action<int> OnHealthChanged;
 
+        
+        private void Awake()
+        {
+            currentHealth = maximumHealth;
+        }
+        
         /// <summary>
         /// Decrease the health of the entity by the damage amount
         /// </summary>

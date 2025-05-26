@@ -1,3 +1,4 @@
+using Components.Health;
 using Components.Movements;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -10,33 +11,57 @@ namespace Enemy
         Chasing,
         Attacking
     }
+
     public class EnemyScript : MonoBehaviour
     {
         [SerializeField]
         private IMovementComponent movementComponent;
 
         [SerializeField]
-        private DetectionZoneComponent detectionZoneComponent;
+        private EnemyAttackComponent attackComponent;
 
         [CanBeNull]
-        private Transform target;
+        private GameObject target;
 
         private EnemyState currentState = EnemyState.Idle;
+
+        private int attackDamage = 3;
+
+        public int AttackDamage
+        {
+            get => attackDamage;
+            set => attackDamage = value;
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
         {
             movementComponent ??= GetComponent<IMovementComponent>();
-            detectionZoneComponent ??= GetComponentInChildren<DetectionZoneComponent>();
-
-            if (detectionZoneComponent != null)
-            {
-                detectionZoneComponent.OnPlayerDetected += HandlePlayerDetected;
-            }
+            attackComponent ??= GetComponentInChildren<EnemyAttackComponent>();
+            attackComponent.OnPlayerEntered += HandlePlayerEnteredAttackZone;
         }
 
         void Start()
         {
+            var room = transform.parent;
+            if (room != null)
+            {
+                foreach (Transform child in room)
+                {
+                    if (child.CompareTag("Player"))
+                    {
+                        // Found the sibling with tag "Player"
+                        Debug.Log("Found Player: " + child.name);
+                        target = child.gameObject;
+                        break;
+                    }
+                }
+            }
+
+            if (target != null)
+            {
+                currentState = EnemyState.Chasing;
+            }
         }
 
         // Update is called once per frame
@@ -49,16 +74,18 @@ namespace Enemy
             switch (currentState)
             {
                 case EnemyState.Chasing:
-                    movementComponent.Move(target?.position ?? Vector2.down);
+                    movementComponent.Move(target?.transform.position ?? Vector2.down);
+                    break;
+                case EnemyState.Attacking:
+                    attackComponent.Attack(target: target?.gameObject, damage: attackDamage);
+                    currentState = EnemyState.Chasing;
                     break;
             }
         }
 
-        private void HandlePlayerDetected(GameObject player, Vector3 position)
+        private void HandlePlayerEnteredAttackZone(GameObject player)
         {
-            Debug.Log($"Player detected at position: {position}");
-            target = player.transform;
-            currentState = EnemyState.Chasing;
+            currentState = EnemyState.Attacking;
         }
     }
 }
