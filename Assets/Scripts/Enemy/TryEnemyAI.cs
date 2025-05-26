@@ -18,6 +18,7 @@ namespace Enemy
 
         private void Update()
         {
+            Debug.Log(target.name);
             agent.SetDestination(target.position);
         }
 

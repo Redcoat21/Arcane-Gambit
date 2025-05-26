@@ -1,13 +1,16 @@
 using UnityEngine;
 
-[ExecuteAlways]
-public class SpawnMarker : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
-    
-    private void OnEnable()
+    [ExecuteAlways]
+    public class SpawnMarker : MonoBehaviour
     {
-        enabled = false;
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
+    
+        private void OnEnable()
+        {
+            enabled = false;
+        }
     }
 }
