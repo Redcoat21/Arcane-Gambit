@@ -39,6 +39,7 @@ namespace Enemy
             movementComponent ??= GetComponent<IMovementComponent>();
             attackComponent ??= GetComponentInChildren<EnemyAttackComponent>();
             attackComponent.OnPlayerEntered += HandlePlayerEnteredAttackZone;
+            attackComponent.OnPlayerLeft += HandlePlayerLeftAttackZone;
         }
 
         void Start()
@@ -86,6 +87,11 @@ namespace Enemy
         private void HandlePlayerEnteredAttackZone(GameObject player)
         {
             currentState = EnemyState.Attacking;
+        }
+
+        private void HandlePlayerLeftAttackZone()
+        {
+            currentState = EnemyState.Chasing;
         }
     }
 }
