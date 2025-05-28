@@ -7,6 +7,7 @@ public class HealthUI : MonoBehaviour
 {
     [SerializeField] private HealthComponent healthComponent;
     [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI hpInventory;
     [SerializeField] private Image healthFillImage;
 
     private void Start()
@@ -34,6 +35,7 @@ public class HealthUI : MonoBehaviour
     public void UpdateUI()
     {
         int currentHP = healthComponent.CurrentHealth;
+        hpInventory.text = $"Max HP: {healthComponent.MaximumHealth}";
         hpText.text = $"{currentHP} / {healthComponent.MaximumHealth}";
 
         if (healthFillImage != null)

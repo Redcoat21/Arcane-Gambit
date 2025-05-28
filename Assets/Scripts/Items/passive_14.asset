@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_14
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
+  itemName: Helm of the Faded Champion
+  description: "Painted names chipped away by time. You\u2019re not the first. Won\u2019t
+    be the last."
   rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
-  hpModifier: 20
-  manaModifier: 0
-  moveSpeedModifier: 5
+  icon: {fileID: 21300000, guid: 334b7085edbca194d91ceafd85fa49f5, type: 3}
+  status: faded
+  hpModifier: 30
+  manaModifier: 10
+  moveSpeedModifier: 0
   attackModifier: 0
   meleeDamageModifier: 0
   rangedDamageModifier: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
     Yet, somehow, you still feel like you\u2019re being followed."
   rarity: 0
   icon: {fileID: 21300000, guid: 9c510e7451d947a4da50febbf14557b4, type: 3}
-  status: wind
+  status: sneak
   hpModifier: 0
   manaModifier: 0
   moveSpeedModifier: 10
