@@ -318,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -37.307}
+  m_AnchoredPosition: {x: 0, y: -37.30699}
   m_SizeDelta: {x: -56.865, y: -217.013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330541157
@@ -368,10 +368,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.9
-  m_fontSizeBase: 14
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -733,8 +733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -514.2308, y: -197.3891}
-  m_SizeDelta: {x: 408.073, y: 361.7}
+  m_AnchoredPosition: {x: -519, y: -206.6}
+  m_SizeDelta: {x: 437.767, y: 380.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &569452456
 MonoBehaviour:
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5185045578303202313, guid: 44a8b76b70d48db4aa2dcac3eb64eb88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1636,31 +1636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - weaponName: Pickaxe
-    weaponSprite: {fileID: -8689056887888331274, guid: 16b1a111a03aad449b37dce4b7b906ee, type: 3}
-    attack: 120
-    damagePercent: 40
-    isMelee: 1
-  - weaponName: Axe
-    weaponSprite: {fileID: 8198346204976274233, guid: 16b1a111a03aad449b37dce4b7b906ee, type: 3}
-    attack: 150
-    damagePercent: 30
-    isMelee: 1
-  - weaponName: Scythe
-    weaponSprite: {fileID: -8746745859066350737, guid: 16b1a111a03aad449b37dce4b7b906ee, type: 3}
-    attack: 130
-    damagePercent: 35
-    isMelee: 1
-  - weaponName: Bow
-    weaponSprite: {fileID: 3153871905384636381, guid: 16b1a111a03aad449b37dce4b7b906ee, type: 3}
-    attack: 120
-    damagePercent: 30
-    isMelee: 0
-  - weaponName: Sword
-    weaponSprite: {fileID: -2067898546876541913, guid: 16b1a111a03aad449b37dce4b7b906ee, type: 3}
-    attack: 120
-    damagePercent: 30
-    isMelee: 1
+  - {fileID: 11400000, guid: bc6141564c8c8794082107db73343237, type: 2}
+  - {fileID: 11400000, guid: 5353ec550a59ad043af8aec95b82732b, type: 2}
+  - {fileID: 11400000, guid: de93f82fc96febd4eb5734d1d2ed9986, type: 2}
+  - {fileID: 11400000, guid: 5274b029474c9304ab00e2625e39ac55, type: 2}
+  - {fileID: 11400000, guid: 2bdd95e1940646448a63c598393711c3, type: 2}
+  - {fileID: 11400000, guid: 83edb4114a9e0fd47b6a4343bf3a868c, type: 2}
   weaponImage: {fileID: 1042944371}
   weaponNameText: {fileID: 2067435984}
   weaponStatsText: {fileID: 330541157}
@@ -3498,7 +3479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.358, y: 108.50001}
+  m_AnchoredPosition: {x: 2.3579712, y: 108.50001}
   m_SizeDelta: {x: -56.864494, y: -311.7758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067435984
