@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054309ade27fa15409e93dc09e9439e6, type: 3}
+  m_Name: spell_3
+  m_EditorClassIdentifier: 
+  spellName: Memory Drain
+  description: "The skull\u2019s hollow eyes flash, and something in your enemy forgets
+    how to fight. Not death... but something like it."
+  spellSprite: {fileID: 21300000, guid: 1c728f7cc6548f24cadceb6478fa25cc, type: 3}
+  attack: 100
+  manaCost: 30
+  cooldown: 35
+  rarity: 3
+  effect: skull
+  level: 0
