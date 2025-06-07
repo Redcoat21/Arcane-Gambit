@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_20
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
-  rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
-  hpModifier: 20
-  manaModifier: 0
-  moveSpeedModifier: 5
-  attackModifier: 0
-  meleeDamageModifier: 0
+  itemName: Grasps of Quiet Rage
+  description: Worn by someone who never raised their voice, but always clenched
+    their fists.
+  rarity: 1
+  icon: {fileID: 21300000, guid: 8c63f7691890fda43b180ec76e7c7aff, type: 3}
+  status: quiet
+  hpModifier: 0
+  manaModifier: 20
+  moveSpeedModifier: 0
+  attackModifier: 20
+  meleeDamageModifier: 10
   rangedDamageModifier: 0
   elementalDamageModifier: 0
   type: 0

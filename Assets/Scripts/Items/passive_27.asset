@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_27
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
-  rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
+  itemName: Mantle of Wilted Laurel
+  description: Lined with withered embroidery, it seems to whisper of victories that
+    no longer matter.
+  rarity: 2
+  icon: {fileID: 21300000, guid: f024e34fafedf0448ac06e53c4043de7, type: 3}
+  status: laurel
   hpModifier: 20
-  manaModifier: 0
-  moveSpeedModifier: 5
+  manaModifier: 30
+  moveSpeedModifier: 10
   attackModifier: 0
   meleeDamageModifier: 0
   rangedDamageModifier: 0
-  elementalDamageModifier: 0
+  elementalDamageModifier: 20
   type: 0

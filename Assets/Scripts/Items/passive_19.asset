@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
-  m_Name: passive_2
+  m_Name: passive_19
   m_EditorClassIdentifier: 
-  itemName: Boots of Forgotten Roads
-  description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before."
+  itemName: Gauntlets of the Unshaken
+  description: "Sturdy, worn, and built to outlast grief. The previous owner claimed
+    they \u201Cnever flinched\u201D\u2014even when everything else fell apart."
   rarity: 0
-  icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: roads
-  hpModifier: 20
+  icon: {fileID: 21300000, guid: 441067a78a2670142a4bb41517cb8911, type: 3}
+  status: unshaken
+  hpModifier: 10
   manaModifier: 0
-  moveSpeedModifier: 5
-  attackModifier: 0
+  moveSpeedModifier: 0
+  attackModifier: 20
   meleeDamageModifier: 0
   rangedDamageModifier: 0
   elementalDamageModifier: 0
