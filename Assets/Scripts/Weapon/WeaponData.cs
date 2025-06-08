@@ -1,16 +1,15 @@
 using UnityEngine;
 
-[System.Serializable]
-public class Weapon
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Weapon")]
+public class WeaponData : ScriptableObject
 {
     public string weaponName;
+    [TextArea] public string description; // 🆕 Description field
     public Sprite weaponSprite;
     public int attack;
-    public bool isMelee; // true = melee, false = ranged
+    public bool isMelee;
     public Rarity rarity;
-
-    [Tooltip("How many seconds does 1 attack take")]
-    public float attackSpeed; // e.g., 1.5 means 1.5 attacks per second
+    public float attackSpeed;
 
     public float DPS => attack / attackSpeed;
 
@@ -20,7 +19,7 @@ public class Weapon
         return $"ATK: {attack}\n" +
                $"Type: {type}\n" +
                $"Rarity: {rarity}\n" +
-               $"Speed: {attackSpeed} atk/s\n" +
+               $"Attack Speed: {attackSpeed}s\n" +
                $"DPS: {DPS:F1}";
     }
 }
