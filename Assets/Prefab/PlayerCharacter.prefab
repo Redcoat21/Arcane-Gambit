@@ -226,8 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementComponent: {fileID: 0}
   movementUI: {fileID: 0}
-  animator: {fileID: 6054039538028470413}
-  spriteRenderer: {fileID: 2015741459316965182}
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   inventoryComponent: {fileID: 0}
   healthComponent: {fileID: 0}
   healthUI: {fileID: 0}
@@ -253,12 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336f1449f98f46e0b585556b328fcaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  rigidBody: {fileID: 4410683853275945470}
-  dashMultiplier: 2
-  dashDuration: 0.5
-  dashCooldown: 1
-  dashUI: {fileID: 0}
+  moveSpeed: 10
+  rigidBody: {fileID: 7804683440697342467}
 --- !u!114 &6524157780129063073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,8 +267,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8090d9b07c34b548015d6989cf28287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 100
-  currentHealth: 100
+  maximumHealth: 5
+  currentHealth: 0
+--- !u!50 &7804683440697342467
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!70 &2841551464417378172
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
