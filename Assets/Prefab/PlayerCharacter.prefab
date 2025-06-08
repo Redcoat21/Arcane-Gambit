@@ -107,11 +107,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementComponent: {fileID: 0}
-  healthComponent: {fileID: 0}
+  movementUI: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   inventoryComponent: {fileID: 0}
+  healthComponent: {fileID: 0}
   healthUI: {fileID: 0}
+  manaComponent: {fileID: 0}
+  manaUI: {fileID: 0}
+  attackComponent: {fileID: 0}
+  attackUI: {fileID: 0}
+  meleeDamageComponent: {fileID: 0}
+  meleeDamageUI: {fileID: 0}
+  rangedDamageComponent: {fileID: 0}
+  rangedDamageUI: {fileID: 0}
+  elementalDamageComponent: {fileID: 0}
+  elementalDamageUI: {fileID: 0}
 --- !u!114 &6952811598466505698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336f1449f98f46e0b585556b328fcaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 44
+  moveSpeed: 10
   rigidBody: {fileID: 7804683440697342467}
 --- !u!114 &6524157780129063073
 MonoBehaviour:
@@ -166,7 +177,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &2841551464417378172
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
