@@ -60,7 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 640, y: 320}
   Name: End
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 3ca50ccd8fef8fa43a04523ceda86445, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-6959513814440348574
 MonoBehaviour:
@@ -106,7 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 160, y: 160}
   Name: Spawn
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 238227669fb56a44b95bc61769fbfb57, type: 3}
+  - {fileID: 1040728735224142489, guid: 33a6d0249931b3e4ab48a008524f926a, type: 3}
+  - {fileID: 1040728735224142489, guid: 1a90b40b7e0624a4cacd3a72c67ae34f, type: 3}
+  - {fileID: 1040728735224142489, guid: 4526d462a04337e408f808db51028596, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-4534561006581614601
 MonoBehaviour:
@@ -123,22 +128,6 @@ MonoBehaviour:
   From: {fileID: 4733702146461180846}
   To: {fileID: 7206654886475656453}
   RoomTemplates: []
---- !u!114 &-3155228334490199868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Position: {x: 640, y: 160}
-  Name: Room
-  IndividualRoomTemplates: []
-  RoomTemplateSets: []
 --- !u!114 &-1683919355091895684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,9 +229,20 @@ MonoBehaviour:
   - {fileID: 5483497794555058188}
   - {fileID: -868998240122971191}
   - {fileID: 2712398727646937819}
-  CorridorIndividualRoomTemplates: []
+  CorridorIndividualRoomTemplates:
+  - {fileID: 3435817295084269814, guid: 905f0379e3846a54b8b333516c12f02d, type: 3}
   CorridorRoomTemplateSets: []
-  DefaultIndividualRoomTemplates: []
+  DefaultIndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 5c5324f0403f70c439fcec3908f87cf9, type: 3}
+  - {fileID: 1040728735224142489, guid: 663cdccff8efc9e41b9c300a40de4db4, type: 3}
+  - {fileID: 1040728735224142489, guid: 4f8943d3c56e2364e867fa30516220eb, type: 3}
+  - {fileID: 1040728735224142489, guid: 8fa86d6afa8610d4da8ef432e5a127e3, type: 3}
+  - {fileID: 1040728735224142489, guid: 6270c3c9b54bbdb4bb0cd52dd7faa84a, type: 3}
+  - {fileID: 1040728735224142489, guid: aea23fe67072af94fba7d7144bb89158, type: 3}
+  - {fileID: 1040728735224142489, guid: 866f4a53f210ee64b9b3ea352311f862, type: 3}
+  - {fileID: 1040728735224142489, guid: 8ece17d489473ce4b86cc10813680fa5, type: 3}
+  - {fileID: 1040728735224142489, guid: bfbec6fc511728f45871efc460e30879, type: 3}
   DefaultRoomTemplateSets: []
   Rooms:
   - {fileID: -4875916505390600377}
@@ -255,10 +255,9 @@ MonoBehaviour:
   - {fileID: -7906640624254182613}
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
-  - {fileID: -3155228334490199868}
   EditorData:
-    PanOffset: {x: 46.339264, y: 12.267044}
-    Zoom: 0.73977643
+    PanOffset: {x: 167.68504, y: 120.17605}
+    Zoom: 0.9305966
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
@@ -322,7 +321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 240}
   Name: Shops
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 45c4962e27c6ac746a7f5c14fe91fe1c, type: 3}
+  - {fileID: 1040728735224142489, guid: 366a817f3005dc74bbf0cba3dfa0afac, type: 3}
+  - {fileID: 1040728735224142489, guid: ce13df623841d2f429c97a573000d23c, type: 3}
+  - {fileID: 1040728735224142489, guid: 28880e6f95ad6c74d95f05e05a7a312e, type: 3}
   RoomTemplateSets: []
 --- !u!114 &4733702146461180846
 MonoBehaviour:

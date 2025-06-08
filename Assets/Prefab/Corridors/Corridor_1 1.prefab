@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3032684519848080564}
   - component: {fileID: 6959709175013502262}
   m_Layer: 0
-  m_Name: Corridor_1
+  m_Name: Corridor_1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,14 +306,14 @@ MonoBehaviour:
   HybridDoorModeData:
     DefaultLength: 1
     DoorLines:
-    - From: {x: 11, y: -1, z: 0}
-      To: {x: 11, y: -1, z: 0}
-      Length: 1
+    - From: {x: -6, y: -1, z: 0}
+      To: {x: -6, y: 0, z: 0}
+      Length: 2
       Direction: 0
       Socket: {fileID: 0}
-    - From: {x: -6, y: -1, z: 0}
-      To: {x: -6, y: -1, z: 0}
-      Length: 1
+    - From: {x: 11, y: -1, z: 0}
+      To: {x: 11, y: 0, z: 0}
+      Length: 2
       Direction: 0
       Socket: {fileID: 0}
   ManualDoorModeData:
