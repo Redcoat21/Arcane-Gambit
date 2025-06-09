@@ -125,6 +125,11 @@ GameObject:
   - component: {fileID: 6524157780129063073}
   - component: {fileID: 7804683440697342467}
   - component: {fileID: 2841551464417378172}
+  - component: {fileID: 8108718451362924405}
+  - component: {fileID: 1411416989006097275}
+  - component: {fileID: 5495512234786673296}
+  - component: {fileID: 8399442081581833928}
+  - component: {fileID: 7164499564647937482}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -217,22 +222,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d927232ed5ff42a60f55d59f5ee1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComponent: {fileID: 0}
+  movementComponent: {fileID: 6952811598466505698}
   movementUI: {fileID: 0}
-  animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  animator: {fileID: 5925978316759773137}
+  spriteRenderer: {fileID: 5921528412766511355}
   inventoryComponent: {fileID: 0}
-  healthComponent: {fileID: 0}
+  healthComponent: {fileID: 6524157780129063073}
   healthUI: {fileID: 0}
-  manaComponent: {fileID: 0}
+  manaComponent: {fileID: 5495512234786673296}
   manaUI: {fileID: 0}
-  attackComponent: {fileID: 0}
+  attackComponent: {fileID: 8108718451362924405}
   attackUI: {fileID: 0}
-  meleeDamageComponent: {fileID: 0}
+  meleeDamageComponent: {fileID: 8399442081581833928}
   meleeDamageUI: {fileID: 0}
-  rangedDamageComponent: {fileID: 0}
+  rangedDamageComponent: {fileID: 7164499564647937482}
   rangedDamageUI: {fileID: 0}
-  elementalDamageComponent: {fileID: 0}
+  elementalDamageComponent: {fileID: 1411416989006097275}
   elementalDamageUI: {fileID: 0}
 --- !u!114 &6952811598466505698
 MonoBehaviour:
@@ -247,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 7804683440697342467}
   dashMultiplier: 2
   dashDuration: 0.5
   dashCooldown: 1
@@ -330,6 +335,77 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.15, y: 0.35}
   m_Direction: 0
+--- !u!114 &8108718451362924405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6546feb8a55b346a0421f6a6c4c158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageType: 0
+  meleeDamageComponent: {fileID: 0}
+  rangedDamageComponent: {fileID: 0}
+  elementalDamageComponent: {fileID: 0}
+  baseAttackDamage: 100
+  attackCooldown: 1
+--- !u!114 &1411416989006097275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d86d88be2d95a408bae3b34399584a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementalMultiplier: 0
+--- !u!114 &5495512234786673296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552730648f29510448fa45bfda5208e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumMana: 100
+  currentMana: 100
+--- !u!114 &8399442081581833928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf2363df94c48a438dae01d6e769650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeMultiplier: 0
+--- !u!114 &7164499564647937482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22d8b528bdfb5347af686df5b31d193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedMultiplier: 0
 --- !u!1 &8574491472031317574
 GameObject:
   m_ObjectHideFlags: 0
