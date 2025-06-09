@@ -10,7 +10,7 @@ namespace DefaultNamespace
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)
         {
-            var camera = GameObject.Find("Main Camera");
+            var camera = GameObject.Find("CinemachineCamera");
             if (camera == null)
             {
                 Debug.LogError("Main Camera not found. Please ensure there is a camera in the scene.");
@@ -32,8 +32,14 @@ namespace DefaultNamespace
                     "PlayerCharacter component not found in the spawn room. Please ensure the player is set up correctly.");
                 return;
             }
+            else
+            {
+                Debug.Log("Player found at " + player.transform.position);
+            }
 
             camera.GetComponent<CinemachineCamera>().Follow = player.transform;
+            var mainCamera = GameObject.Find("Main Camera");
+            mainCamera.transform.position = player.transform.position;
         }
     }
 }

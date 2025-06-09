@@ -106,7 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 160, y: 160}
   Name: Spawn
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 238227669fb56a44b95bc61769fbfb57, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-4534561006581614601
 MonoBehaviour:
@@ -224,9 +225,13 @@ MonoBehaviour:
   - {fileID: 5483497794555058188}
   - {fileID: -868998240122971191}
   - {fileID: 2712398727646937819}
-  CorridorIndividualRoomTemplates: []
+  CorridorIndividualRoomTemplates:
+  - {fileID: 3435817295084269814, guid: 905f0379e3846a54b8b333516c12f02d, type: 3}
   CorridorRoomTemplateSets: []
-  DefaultIndividualRoomTemplates: []
+  DefaultIndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 5c5324f0403f70c439fcec3908f87cf9, type: 3}
+  - {fileID: 1040728735224142489, guid: b4da649681f479a428ac88e1952f9e61, type: 3}
+  - {fileID: 1040728735224142489, guid: 866f4a53f210ee64b9b3ea352311f862, type: 3}
   DefaultRoomTemplateSets: []
   Rooms:
   - {fileID: -4875916505390600377}
@@ -240,8 +245,8 @@ MonoBehaviour:
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
   EditorData:
-    PanOffset: {x: 137.0574, y: 42.105892}
-    Zoom: 0.6657988
+    PanOffset: {x: 318.29416, y: 160.99739}
+    Zoom: 0.8815881
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0

@@ -241,7 +241,7 @@ MonoBehaviour:
   elementalDamageComponent: {fileID: 1411416989006097275}
   elementalDamageUI: {fileID: 0}
   weapon1ImageUI: {fileID: 0}
-  weapon2ImageUI: {fileID: 0}
+  weapon1InventoryImageUI: {fileID: 0}
   currencyComponent: {fileID: 0}
   weapon1: {fileID: 0}
   weapon2: {fileID: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336f1449f98f46e0b585556b328fcaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   rigidBody: {fileID: 7804683440697342467}
   dashMultiplier: 2
   dashDuration: 0.5
