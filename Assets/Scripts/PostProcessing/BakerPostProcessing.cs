@@ -24,7 +24,6 @@ namespace PostProcessing
                     {
                         navigationSurface.BuildNavMesh();
                     }
-                    navigationSurface.BuildNavMeshAsync();
                 }
                 else
                 {

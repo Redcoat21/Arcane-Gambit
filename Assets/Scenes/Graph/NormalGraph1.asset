@@ -138,7 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 80}
   Name: Loots
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 3d4017d409613a945ad33b211d19ade9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-934849765443524684
 MonoBehaviour:
@@ -245,7 +246,7 @@ MonoBehaviour:
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
   EditorData:
-    PanOffset: {x: -51.031445, y: 56.333847}
+    PanOffset: {x: -176.17947, y: -9.441638}
     Zoom: 1.7179657
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
