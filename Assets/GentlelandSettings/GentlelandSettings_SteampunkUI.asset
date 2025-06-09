@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7b322cad1951d45b79a01705b9a67a, type: 3}
   m_Name: GentlelandSettings_SteampunkUI
   m_EditorClassIdentifier: 
-  isFirstTimeUsingTheAsset: 1
+  isFirstTimeUsingTheAsset: 0
