@@ -17,7 +17,7 @@ public class TilemapChest : MonoBehaviour
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("player nearby");
+            Debug.Log(player);
             OpenChest();
         }
     }
