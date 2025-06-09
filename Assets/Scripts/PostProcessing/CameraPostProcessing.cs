@@ -3,7 +3,7 @@ using Player;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace PostProcessing
 {
     [CreateAssetMenu(fileName = "CameraPostProcessing", menuName = "Features/Camera Post Processing", order = 0)]
     public class CameraPostProcessing : DungeonGeneratorPostProcessingGrid2D
