@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 5495512234786673296}
   - component: {fileID: 8399442081581833928}
   - component: {fileID: 7164499564647937482}
+  - component: {fileID: -7652540644085256556}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -239,6 +240,11 @@ MonoBehaviour:
   rangedDamageUI: {fileID: 0}
   elementalDamageComponent: {fileID: 1411416989006097275}
   elementalDamageUI: {fileID: 0}
+  weapon1ImageUI: {fileID: 0}
+  weapon2ImageUI: {fileID: 0}
+  currencyComponent: {fileID: 0}
+  weapon1: {fileID: 0}
+  weapon2: {fileID: 0}
 --- !u!114 &6952811598466505698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +357,8 @@ MonoBehaviour:
   meleeDamageComponent: {fileID: 0}
   rangedDamageComponent: {fileID: 0}
   elementalDamageComponent: {fileID: 0}
+  rotatingWeaponPrefab: {fileID: 0}
+  currentWeapon: {fileID: 0}
   baseAttackDamage: 100
   attackCooldown: 1
 --- !u!114 &1411416989006097275
@@ -406,6 +414,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangedMultiplier: 0
+--- !u!114 &-7652540644085256556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317d0458270bea148a96fed3ab7287a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGold: 0
 --- !u!1 &8574491472031317574
 GameObject:
   m_ObjectHideFlags: 0
