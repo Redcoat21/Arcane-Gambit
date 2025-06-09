@@ -123,22 +123,6 @@ MonoBehaviour:
   From: {fileID: 4733702146461180846}
   To: {fileID: 7206654886475656453}
   RoomTemplates: []
---- !u!114 &-3155228334490199868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Position: {x: 640, y: 160}
-  Name: Room
-  IndividualRoomTemplates: []
-  RoomTemplateSets: []
 --- !u!114 &-1683919355091895684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,10 +239,9 @@ MonoBehaviour:
   - {fileID: -7906640624254182613}
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
-  - {fileID: -3155228334490199868}
   EditorData:
-    PanOffset: {x: 46.339264, y: 12.267044}
-    Zoom: 0.73977643
+    PanOffset: {x: 137.0574, y: 42.105892}
+    Zoom: 0.6657988
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
