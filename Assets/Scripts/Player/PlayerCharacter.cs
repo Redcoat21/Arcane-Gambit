@@ -30,6 +30,7 @@ namespace Player
         [SerializeField] private RangedDamageUI rangedDamageUI;
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private ElementalDamageUI elementalDamageUI;
+        [SerializeField] private CurrencyComponent currencyComponent;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -52,6 +53,7 @@ namespace Player
             animator ??= GetComponent<Animator>();
             spriteRenderer ??= GetComponent<SpriteRenderer>();
             inventoryComponent ??= GetComponent<InventoryComponent>();
+            currencyComponent ??= GetComponent<CurrencyComponent>();
             if (inventoryComponent != null){
                 inventoryComponent.OnInventoryChanged += ApplyInventoryModifiers;
             }
@@ -178,3 +180,4 @@ namespace Player
         }
     }
 }
+

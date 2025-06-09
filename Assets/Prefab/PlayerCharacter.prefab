@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6524157780129063073}
   - component: {fileID: 7804683440697342467}
   - component: {fileID: 2841551464417378172}
+  - component: {fileID: 4427467607925204087}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -123,6 +124,7 @@ MonoBehaviour:
   rangedDamageUI: {fileID: 0}
   elementalDamageComponent: {fileID: 0}
   elementalDamageUI: {fileID: 0}
+  currencyComponent: {fileID: 0}
 --- !u!114 &6952811598466505698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +139,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rigidBody: {fileID: 7804683440697342467}
+  dashMultiplier: 2
+  dashDuration: 0.5
+  dashCooldown: 1
+  dashUI: {fileID: 0}
 --- !u!114 &6524157780129063073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +221,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.45, y: 0.8}
   m_Direction: 0
+--- !u!114 &4427467607925204087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317d0458270bea148a96fed3ab7287a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGold: 0
 --- !u!1 &8574491472031317574
 GameObject:
   m_ObjectHideFlags: 0
