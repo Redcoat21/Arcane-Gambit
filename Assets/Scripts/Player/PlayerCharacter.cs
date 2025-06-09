@@ -78,8 +78,10 @@ namespace Player
                 weapon1 = SelectedWeaponStorage.selectedWeapon;
 
                 if (weapon1ImageUI != null)
+                {
                     weapon1ImageUI.sprite = weapon1.weaponSprite;
                     weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+                }
 
                 Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
 
