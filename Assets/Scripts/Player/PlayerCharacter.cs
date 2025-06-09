@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UI;
 using Components.Health;
 using Components.Movements;
 using Components.Mana;
@@ -30,6 +31,8 @@ namespace Player
         [SerializeField] private RangedDamageUI rangedDamageUI;
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private ElementalDamageUI elementalDamageUI;
+        [SerializeField] private Image weapon1ImageUI;
+        [SerializeField] private Image weapon2ImageUI;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -39,6 +42,8 @@ namespace Player
         private float baseMelee;
         private float baseRanged;
         private float baseElemental;
+        public WeaponData weapon1;
+        public WeaponData weapon2;
 
         private void Awake()
         {
@@ -66,6 +71,21 @@ namespace Player
 
         private void Start()
         {
+            if (SelectedWeaponStorage.selectedWeapon != null)
+            {
+                weapon1 = SelectedWeaponStorage.selectedWeapon;
+
+                if (weapon1ImageUI != null)
+                    weapon1ImageUI.sprite = weapon1.weaponSprite;
+
+                Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
+
+                // Clear stored data after equipping
+                SelectedWeaponStorage.selectedWeapon = null;
+            }
+
+            attackComponent.CurrentWeapon = weapon1;
+
             baseMaxHealth = healthComponent.MaximumHealth;
             Debug.Log("Base Max Health: " + baseMaxHealth);
 
