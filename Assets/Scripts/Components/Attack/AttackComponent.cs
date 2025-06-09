@@ -165,6 +165,12 @@ namespace Components.Attack
         {
             if (Input.GetMouseButtonDown(0)) // left mouse click
             {
+                if(currentWeapon.isMelee){
+                    CurrentDamageType = DamageType.Melee;
+                }
+                else{
+                    CurrentDamageType = DamageType.Ranged;
+                }
                 TryAttack();
             }
             if (Input.GetKeyDown(KeyCode.Alpha1)) // top row number 1 key

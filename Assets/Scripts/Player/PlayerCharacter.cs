@@ -32,7 +32,7 @@ namespace Player
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private ElementalDamageUI elementalDamageUI;
         [SerializeField] private Image weapon1ImageUI;
-        [SerializeField] private Image weapon2ImageUI;
+        [SerializeField] private Image weapon1InventoryImageUI;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -77,6 +77,7 @@ namespace Player
 
                 if (weapon1ImageUI != null)
                     weapon1ImageUI.sprite = weapon1.weaponSprite;
+                    weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
 
                 Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
 
