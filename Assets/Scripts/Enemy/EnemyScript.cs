@@ -3,6 +3,7 @@ using Components.Movements;
 using JetBrains.Annotations;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 using Player;
 
 namespace Enemy
@@ -30,7 +31,8 @@ namespace Enemy
         private EnemyGoldDropComponent goldDropComponent;
 
         [CanBeNull]
-        private GameObject target;
+        [SerializeField]
+        private Transform target;
 
         private EnemyState currentState = EnemyState.Idle;
 
@@ -74,29 +76,44 @@ namespace Enemy
 
         void Start()
         {
-            var room = transform.parent;
-            if (room != null)
-            {
-                foreach (Transform child in room)
-                {
-                    if (child.CompareTag("Player"))
-                    {
-                        // Found the sibling with tag "Player"
-                        Debug.Log("Found Player: " + child.name);
-                        target = child.gameObject;
-                        break;
-                    }
-                }
-            }
-
             if (target != null)
             {
                 currentState = EnemyState.Chasing;
+            }
+            else
+            {
+                Debug.LogWarning("No target found");
             }
         }
 
         private void FixedUpdate()
         {
+
+            if (target == null)
+            {
+                var spawnRoom = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.InstanceID)
+                    .FirstOrDefault(go => go.name.Contains("Spawn - "));
+                
+                if (spawnRoom != null)
+                {
+                    Debug.Log("Found SpawnRoom: " + spawnRoom.name);
+                    foreach (Transform child in spawnRoom.transform)
+                    {
+                        Debug.Log(child.name);
+                        if (child.CompareTag("Player"))
+                        {
+                            // Found the sibling with tag "Player"
+                            Debug.Log("Found Player: " + child.name);
+                            target = child.gameObject.transform;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Could not find any GameObject containing 'SpawnRoom' in its name");
+                }
+            }
             // Don't process movement or attacks if dead
             if (currentState == EnemyState.Dead)
                 return;

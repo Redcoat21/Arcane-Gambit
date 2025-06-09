@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using Edgar.Unity;
+using Edgar.Unity.Examples.CurrentRoomDetection;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace PostProcessing
 {
+    [CreateAssetMenu(fileName = "CurrentRoomDetectionPostProcessing", menuName = "Features/Current Room Detection Processing", order = 0)]
     public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)
@@ -14,11 +16,22 @@ namespace PostProcessing
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 
                 // Find floor tilemap layer
-                var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplateInstance);
-                var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
+                var tilemaps = roomTemplateInstance.GetComponentsInChildren<Tilemap>();
+                var floorTilemap = tilemaps.FirstOrDefault(x => x.gameObject.name.ToLower().Contains("floor"));
+                
+                if (floorTilemap != null)
+                {
+                    // Add floor collider
+                    AddFloorCollider(floorTilemap.gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning($"Could not find floor tilemap in room {roomInstance.Room.GetDisplayName()}");
+                }
 
-                // Add floor collider
-                AddFloorCollider(floor);
+                // Add the room manager component
+                var roomManager = roomTemplateInstance.AddComponent<RoomManager>();
+                roomManager.RoomInstance = roomInstance;
             }
         }
 

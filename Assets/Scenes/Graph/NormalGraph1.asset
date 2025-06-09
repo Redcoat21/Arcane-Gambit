@@ -246,8 +246,8 @@ MonoBehaviour:
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
   EditorData:
-    PanOffset: {x: -176.17947, y: -9.441638}
-    Zoom: 1.7179657
+    PanOffset: {x: -42.661934, y: -85.597084}
+    Zoom: 1.879974
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
@@ -311,7 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 240}
   Name: Shops
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 45c4962e27c6ac746a7f5c14fe91fe1c, type: 3}
   RoomTemplateSets: []
 --- !u!114 &4733702146461180846
 MonoBehaviour:
@@ -327,7 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 240}
   Name: Loots
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 3d4017d409613a945ad33b211d19ade9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &5483497794555058188
 MonoBehaviour:
