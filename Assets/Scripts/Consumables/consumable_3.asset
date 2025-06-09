@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1da2be6e4251c047a75d2d43c557f79, type: 3}
+  m_Name: consumable_3
+  m_EditorClassIdentifier: 
+  itemName: "Old Man\u2019s Remedy"
+  description: "A dusty bottle labeled \u201CFor sleepless nights and aching hearts.\u201D
+    Works surprisingly well on stab wounds."
+  itemSprite: {fileID: 21300000, guid: 9f39bedbc179aed4088082040308e213, type: 3}
+  restoreHealth: 10
+  restoreMana: 0
+  effect: Restores 10% health
+  rarity: 0

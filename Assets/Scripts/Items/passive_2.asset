@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boots of Forgotten Roads
   description: "Sturdy boots that have wandered forgotten paths. Wherever you go,
-    they feel like they\u2019ve been here before. (Maybe it\u2019s time to stop walking
-    in circles?)"
+    they feel like they\u2019ve been here before."
   rarity: 0
   icon: {fileID: 21300000, guid: 608716fb89152f34594d344a65006ae3, type: 3}
-  status: fire
+  status: roads
   hpModifier: 20
   manaModifier: 0
   moveSpeedModifier: 5

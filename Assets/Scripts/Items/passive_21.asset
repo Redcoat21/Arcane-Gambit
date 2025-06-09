@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
+  m_Name: passive_21
+  m_EditorClassIdentifier: 
+  itemName: "Dreamweaver\u2019s Cuffs"
+  description: "Soft and strange, like clouds wrapped in memory. Wearing them feels
+    like you\u2019re touching someone else\u2019s nostalgia."
+  rarity: 2
+  icon: {fileID: 21300000, guid: aac17542da4f00c419f924475ecb69c9, type: 3}
+  status: cuff
+  hpModifier: 20
+  manaModifier: 10
+  moveSpeedModifier: 0
+  attackModifier: 30
+  meleeDamageModifier: 20
+  rangedDamageModifier: 0
+  elementalDamageModifier: 0
+  type: 0

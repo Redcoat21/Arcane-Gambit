@@ -18,6 +18,9 @@ namespace Enemy
         private IMovementComponent movementComponent;
 
         [SerializeField]
+        private HealthComponent healthComponent;
+
+        [SerializeField]
         private EnemyAttackComponent attackComponent;
 
         [CanBeNull]
@@ -25,13 +28,8 @@ namespace Enemy
 
         private EnemyState currentState = EnemyState.Idle;
 
+        [SerializeField]
         private int attackDamage = 3;
-
-        public int AttackDamage
-        {
-            get => attackDamage;
-            set => attackDamage = value;
-        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
@@ -40,6 +38,7 @@ namespace Enemy
             attackComponent ??= GetComponentInChildren<EnemyAttackComponent>();
             attackComponent.OnPlayerEntered += HandlePlayerEnteredAttackZone;
             attackComponent.OnPlayerLeft += HandlePlayerLeftAttackZone;
+            healthComponent ??= GetComponent<HealthComponent>();
         }
 
         void Start()
@@ -63,11 +62,6 @@ namespace Enemy
             {
                 currentState = EnemyState.Chasing;
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
         }
 
         private void FixedUpdate()

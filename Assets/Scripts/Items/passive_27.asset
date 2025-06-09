@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669b079116c2c7d4e8e341a3cbcd297b, type: 3}
+  m_Name: passive_27
+  m_EditorClassIdentifier: 
+  itemName: Mantle of Wilted Laurel
+  description: Lined with withered embroidery, it seems to whisper of victories that
+    no longer matter.
+  rarity: 2
+  icon: {fileID: 21300000, guid: f024e34fafedf0448ac06e53c4043de7, type: 3}
+  status: laurel
+  hpModifier: 20
+  manaModifier: 30
+  moveSpeedModifier: 10
+  attackModifier: 0
+  meleeDamageModifier: 0
+  rangedDamageModifier: 0
+  elementalDamageModifier: 20
+  type: 0
