@@ -184,6 +184,9 @@ namespace Enemy
             {
                 goldDropComponent.DropGold();
             }
+
+            var player = target;
+            player?.GetComponent<CurrencyComponent>()?.AddGold(1);
             
             // Destroy the enemy after a short delay to allow for any death animations or effects
             StartCoroutine(DestroyAfterDelay());

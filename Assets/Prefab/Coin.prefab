@@ -102,4 +102,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldAmount: 1
   destroyDelay: 0.1
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 0bb99c2f433b9374b878e3b7c7de146b, type: 3}
