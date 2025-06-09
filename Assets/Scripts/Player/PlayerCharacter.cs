@@ -45,6 +45,7 @@ namespace Player
         private float baseElemental;
         public WeaponData weapon1;
         public WeaponData weapon2;
+        public ConsumableData consumable;
 
         private void Awake()
         {

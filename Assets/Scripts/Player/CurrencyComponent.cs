@@ -14,7 +14,7 @@ namespace Player
         public int CurrentGold
         {
             get => currentGold;
-            private set => currentGold = value;
+            set => currentGold = value;
         }
 
         // Event that triggers when gold amount changes
