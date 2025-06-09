@@ -150,6 +150,13 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
         enemyInstance.transform.position = position;
         enemyInstance.transform.SetParent(parent);
 
+        // Set the pool reference on the enemy
+        var enemyScript = enemyInstance.GetComponent<EnemyScript>();
+        if (enemyScript != null)
+        {
+            enemyScript.SetPoolComponent(this);
+        }
+
         // Keep track of active enemies
         activeEnemies.Add(enemyInstance);
         

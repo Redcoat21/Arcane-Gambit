@@ -41,6 +41,15 @@ namespace Enemy
         
         [SerializeField]
         private float destroyDelay = 1.5f;
+        
+        // Reference to the pool component that spawned this enemy
+        private EnemySpawnerComponent poolComponent;
+
+        // Method to set the pool component reference
+        public void SetPoolComponent(EnemySpawnerComponent component)
+        {
+            poolComponent = component;
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
@@ -185,7 +194,6 @@ namespace Enemy
             yield return new WaitForSeconds(destroyDelay);
             
             // Return the enemy to the pool if using object pooling, otherwise destroy it
-            var poolComponent = FindFirstObjectByType<EnemySpawnerComponent>();
             if (poolComponent != null)
             {
                 poolComponent.ReturnEnemyToPool(gameObject);
