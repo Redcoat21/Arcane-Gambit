@@ -131,6 +131,17 @@ GameObject:
   - component: {fileID: 8399442081581833928}
   - component: {fileID: 7164499564647937482}
   - component: {fileID: -7652540644085256556}
+  - component: {fileID: 5530815719281282899}
+  - component: {fileID: 4123339194644236412}
+  - component: {fileID: 8542550118036170567}
+  - component: {fileID: 2023578491171684092}
+  - component: {fileID: 764043961205165476}
+  - component: {fileID: 8198097933657878840}
+  - component: {fileID: 8693713042421178606}
+  - component: {fileID: 3664719761040525094}
+  - component: {fileID: 932117362281200686}
+  - component: {fileID: 293825233094578733}
+  - component: {fileID: 8758483940532474560}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -242,7 +253,7 @@ MonoBehaviour:
   elementalDamageUI: {fileID: 0}
   weapon1ImageUI: {fileID: 0}
   weapon1InventoryImageUI: {fileID: 0}
-  currencyComponent: {fileID: 0}
+  currencyComponent: {fileID: -7652540644085256556}
   weapon1: {fileID: 0}
   weapon2: {fileID: 0}
 --- !u!114 &6952811598466505698
@@ -357,7 +368,7 @@ MonoBehaviour:
   meleeDamageComponent: {fileID: 0}
   rangedDamageComponent: {fileID: 0}
   elementalDamageComponent: {fileID: 0}
-  rotatingWeaponPrefab: {fileID: 0}
+  rotatingWeaponPrefab: {fileID: 5366978448550004364, guid: 2cf59542997fd62429aece66dea868d3, type: 3}
   currentWeapon: {fileID: 0}
   baseAttackDamage: 100
   attackCooldown: 1
@@ -427,6 +438,165 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGold: 0
+--- !u!114 &5530815719281282899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595e2111c6ac2f243b33d3cd72d9511e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMovementComponent: {fileID: 6952811598466505698}
+  movementText: {fileID: 0}
+--- !u!114 &4123339194644236412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6091c9d8048cec74f858d92fcdac222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+--- !u!114 &8542550118036170567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496270bbaad50a340be2051bbfca721d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeDamageComponent: {fileID: 8399442081581833928}
+  meleeText: {fileID: 0}
+--- !u!114 &2023578491171684092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e6bebcfd0dbbb439fc068399f0afcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedDamageComponent: {fileID: 7164499564647937482}
+  rangedText: {fileID: 0}
+--- !u!114 &764043961205165476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1073c4e43f7e84c925a1b855313913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementalDamageComponent: {fileID: 1411416989006097275}
+  elementalText: {fileID: 0}
+--- !u!114 &8198097933657878840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63418304d8d4a774dbfd21140f7b11db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackComponent: {fileID: 8108718451362924405}
+  attackText: {fileID: 0}
+  attackIndicatorImage: {fileID: 0}
+--- !u!114 &8693713042421178606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b153bde880966af4bb2fd527a52d7d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 6524157780129063073}
+  hpText: {fileID: 0}
+  hpInventory: {fileID: 0}
+  healthFillImage: {fileID: 0}
+--- !u!114 &3664719761040525094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7821e0a0ea80f0049a2f3f88999b64e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaComponent: {fileID: 5495512234786673296}
+  manaText: {fileID: 0}
+  manaInventory: {fileID: 0}
+  manaFillImage: {fileID: 0}
+--- !u!114 &932117362281200686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f70e3e533a85d94cb4677fc933d340e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryComponent: {fileID: 4123339194644236412}
+  itemSlotPrefab: {fileID: 0}
+  contentPanel: {fileID: 0}
+--- !u!114 &293825233094578733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7960e37671813c843886c2afd1b40920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pivot: {fileID: 0}
+  rotationSpeed: 360
+  duration: 1
+--- !u!114 &8758483940532474560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94eb2be77c5458e45b460e394330ec31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
 --- !u!1 &8574491472031317574
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EtdgLevelGenerationScene 1.unity
     guid: c6c4351737cb63c43b3454759506dc5a
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 38787562357112843be7d7f12413d9a4
+  - enabled: 1
+    path: Assets/Scenes/MainScene 1.unity
+    guid: 6d46fe1f9a21e17499bce0274a49e8f1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
