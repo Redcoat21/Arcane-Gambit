@@ -15,6 +15,8 @@ public class WeaponManager : MonoBehaviour
     public Button rightButton;
 
     private int currentIndex = 0;
+    public int CurrentIndex => currentIndex;
+    public WeaponData CurrentWeapon => weapons != null && weapons.Length > 0 ? weapons[currentIndex] : null;
 
     void Start()
     {

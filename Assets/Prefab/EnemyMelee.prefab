@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 2985648634241661395}
   - component: {fileID: 7893195507042655980}
   - component: {fileID: 8376413255494278691}
+  - component: {fileID: 5475065689952306530}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -325,6 +326,7 @@ MonoBehaviour:
   healthComponent: {fileID: 7893195507042655980}
   attackComponent: {fileID: 0}
   attackDamage: 3
+  destroyDelay: 1.5
 --- !u!195 &2967382930872779299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -458,3 +460,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5ea07f091740b8adaa7600ca971188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5475065689952306530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095799730210586239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c575f279b656d4bbd190b125e3b3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGoldDrop: 1
+  maxGoldDrop: 5
+  goldPrefab: {fileID: 6037433015361667255, guid: e227fd11fe20b034b82497d70b60835e, type: 3}
+  goldCollectionRadius: 1.5
+  attractionSpeed: 5
+  attractionDelay: 0.5
