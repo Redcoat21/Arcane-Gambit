@@ -9,6 +9,7 @@ using Components.RangedDamage;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -126,6 +127,10 @@ namespace Player
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             movementComponent?.Move(input);
+
+            if(healthComponent.CurrentHealth <= 0){
+                SceneManager.LoadScene("MainMenuScene");
+            }
 
             UpdateAnimator(input);
         }
