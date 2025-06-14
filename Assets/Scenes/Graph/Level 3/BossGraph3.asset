@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8400baee4cafd34091c865089a167b2, type: 3}
-  m_Name: NormalGraph4
+  m_Name: BossGraph3
   m_EditorClassIdentifier: 
   Connections:
   - {fileID: -1514432691734611898}
