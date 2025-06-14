@@ -31,6 +31,22 @@ MonoBehaviour:
   Name: Warzone
   IndividualRoomTemplates: []
   RoomTemplateSets: []
+--- !u!114 &-4869392342874245686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 160, y: 320}
+  Name: StoryRoom
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
 --- !u!114 &-4781036426754478461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +163,7 @@ MonoBehaviour:
   - {fileID: 6804057422951296097}
   - {fileID: 107721984429713387}
   - {fileID: 4894402182707098946}
+  - {fileID: 3293645304021343546}
   CorridorIndividualRoomTemplates: []
   CorridorRoomTemplateSets: []
   DefaultIndividualRoomTemplates: []
@@ -162,8 +179,9 @@ MonoBehaviour:
   - {fileID: 2928300807135223985}
   - {fileID: 6190123161801255788}
   - {fileID: 879927244697084623}
+  - {fileID: -4869392342874245686}
   EditorData:
-    PanOffset: {x: -53.333374, y: -40.00003}
+    PanOffset: {x: -10.0000305, y: -65.333374}
     Zoom: 1
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
@@ -215,6 +233,21 @@ MonoBehaviour:
   Name: Loots
   IndividualRoomTemplates: []
   RoomTemplateSets: []
+--- !u!114 &3293645304021343546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f692f83df7c1b5468af64edd22287dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: -1258566854800545649}
+  To: {fileID: -4869392342874245686}
+  RoomTemplates: []
 --- !u!114 &4599184263234161315
 MonoBehaviour:
   m_ObjectHideFlags: 0
