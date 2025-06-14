@@ -68,23 +68,23 @@ MonoBehaviour:
   HybridDoorModeData:
     DefaultLength: 2
     DoorLines:
-    - From: {x: -3, y: -9, z: 0}
+    - From: {x: 6, y: -1, z: 0}
+      To: {x: 6, y: -4, z: 0}
+      Length: 2
+      Direction: 0
+      Socket: {fileID: 0}
+    - From: {x: -9, y: -1, z: 0}
+      To: {x: -9, y: -3, z: 0}
+      Length: 2
+      Direction: 0
+      Socket: {fileID: 0}
+    - From: {x: -2, y: 6, z: 0}
+      To: {x: 2, y: 6, z: 0}
+      Length: 2
+      Direction: 0
+      Socket: {fileID: 0}
+    - From: {x: -2, y: -9, z: 0}
       To: {x: 1, y: -9, z: 0}
-      Length: 2
-      Direction: 0
-      Socket: {fileID: 0}
-    - From: {x: 6, y: -5, z: 0}
-      To: {x: 6, y: 0, z: 0}
-      Length: 2
-      Direction: 0
-      Socket: {fileID: 0}
-    - From: {x: -9, y: 1, z: 0}
-      To: {x: -9, y: -5, z: 0}
-      Length: 2
-      Direction: 0
-      Socket: {fileID: 0}
-    - From: {x: -5, y: 6, z: 0}
-      To: {x: 0, y: 6, z: 0}
       Length: 2
       Direction: 0
       Socket: {fileID: 0}
