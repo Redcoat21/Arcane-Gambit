@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Components.Attack;
 using Components.ElementalDamage;
 using Components.Health;
@@ -73,8 +74,9 @@ namespace Player
             elementalDamageUI ??= FindFirstObjectByType<ElementalDamageUI>();
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return null;
             if (SelectedWeaponStorage.selectedWeapon != null)
             {
                 weapon1 = SelectedWeaponStorage.selectedWeapon;
