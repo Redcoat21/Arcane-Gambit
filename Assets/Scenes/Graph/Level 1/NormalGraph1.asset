@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 160, y: 320}
   Name: StoryRoom
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 74950969f1e4c8642b3b1c6697c8dae5, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-8928315328242028303
 MonoBehaviour:
@@ -76,7 +77,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 640, y: 320}
   Name: End
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 7c6c6647b2026954ea7d43a37ce027e8, type: 3}
+  - {fileID: 1040728735224142489, guid: 4703be96229765f48851078fbc88cc8c, type: 3}
+  - {fileID: 1040728735224142489, guid: a0c26a85ab3ca4245a223c0c23d54143, type: 3}
+  - {fileID: 1040728735224142489, guid: 30e9d56b1e1bc144e911139740a9fbe1, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-6959513814440348574
 MonoBehaviour:
@@ -156,6 +161,15 @@ MonoBehaviour:
   Name: Loots
   IndividualRoomTemplates:
   - {fileID: 1040728735224142489, guid: 3d4017d409613a945ad33b211d19ade9, type: 3}
+  - {fileID: 1040728735224142489, guid: 3cdccff9a38d86048b5abf5b4d869ff9, type: 3}
+  - {fileID: 1040728735224142489, guid: c05187544f0595443a0ffe1d67113e9f, type: 3}
+  - {fileID: 1040728735224142489, guid: f0bb1ee9043e25348ac590ba9d41f604, type: 3}
+  - {fileID: 1040728735224142489, guid: 2921459bad4e25042a1ee014ef609365, type: 3}
+  - {fileID: 1040728735224142489, guid: e687021203109bd40b54d21807206c03, type: 3}
+  - {fileID: 1040728735224142489, guid: 9860046b4dd7f534a9016ae469f42f83, type: 3}
+  - {fileID: 1040728735224142489, guid: 235924c8fa9ae054aae911078fa52c01, type: 3}
+  - {fileID: 1040728735224142489, guid: d48e697d2417bcb4b9e8a82668fea657, type: 3}
+  - {fileID: 1040728735224142489, guid: 1e248b578fc83c54697e2c0642731110, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-934849765443524684
 MonoBehaviour:
@@ -264,8 +278,8 @@ MonoBehaviour:
   - {fileID: 5553203321429453495}
   - {fileID: -9067363717446114987}
   EditorData:
-    PanOffset: {x: -10.865148, y: -53.86532}
-    Zoom: 0.89452803
+    PanOffset: {x: -44.58754, y: -17.235294}
+    Zoom: 1.0447912
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
@@ -348,6 +362,15 @@ MonoBehaviour:
   Name: Loots
   IndividualRoomTemplates:
   - {fileID: 1040728735224142489, guid: 3d4017d409613a945ad33b211d19ade9, type: 3}
+  - {fileID: 1040728735224142489, guid: 3cdccff9a38d86048b5abf5b4d869ff9, type: 3}
+  - {fileID: 1040728735224142489, guid: c05187544f0595443a0ffe1d67113e9f, type: 3}
+  - {fileID: 1040728735224142489, guid: f0bb1ee9043e25348ac590ba9d41f604, type: 3}
+  - {fileID: 1040728735224142489, guid: 2921459bad4e25042a1ee014ef609365, type: 3}
+  - {fileID: 1040728735224142489, guid: e687021203109bd40b54d21807206c03, type: 3}
+  - {fileID: 1040728735224142489, guid: 9860046b4dd7f534a9016ae469f42f83, type: 3}
+  - {fileID: 1040728735224142489, guid: 235924c8fa9ae054aae911078fa52c01, type: 3}
+  - {fileID: 1040728735224142489, guid: d48e697d2417bcb4b9e8a82668fea657, type: 3}
+  - {fileID: 1040728735224142489, guid: 1e248b578fc83c54697e2c0642731110, type: 3}
   RoomTemplateSets: []
 --- !u!114 &5483497794555058188
 MonoBehaviour:
