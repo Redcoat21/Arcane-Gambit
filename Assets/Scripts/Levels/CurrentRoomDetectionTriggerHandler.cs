@@ -4,7 +4,6 @@ namespace Levels
 {
     public class CurrentRoomDetectionTriggerHandler : MonoBehaviour
     {
-        [SerializeField]
         private RoomManager roomManager;
 
         private void Awake()

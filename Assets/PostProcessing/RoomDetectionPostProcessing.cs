@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Edgar.Unity;
-using Edgar.Unity.Examples.CurrentRoomDetection;
+using Levels;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
