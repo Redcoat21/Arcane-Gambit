@@ -2095,6 +2095,7 @@ GameObject:
   - component: {fileID: 4838112172402020746}
   - component: {fileID: 2907224571979283224}
   - component: {fileID: 3159036374497637154}
+  - component: {fileID: 1684314280904437754}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -3997,6 +3998,19 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &1684314280904437754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4670980207172727857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5bd83b97514b5b8974c3655a712c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomManager: {fileID: 0}
 --- !u!1 &6797432334412089808
 GameObject:
   m_ObjectHideFlags: 0
