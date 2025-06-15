@@ -64,10 +64,20 @@ MonoBehaviour:
   DoorLength: 1
   DoorsList: []
   Socket: {fileID: 0}
-  SelectedMode: 0
+  SelectedMode: 2
   HybridDoorModeData:
-    DefaultLength: 1
-    DoorLines: []
+    DefaultLength: 2
+    DoorLines:
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -2, y: 3, z: 0}
+      Length: 2
+      Direction: 0
+      Socket: {fileID: 0}
+    - From: {x: -3, y: -4, z: 0}
+      To: {x: -2, y: -4, z: 0}
+      Length: 2
+      Direction: 0
+      Socket: {fileID: 0}
   ManualDoorModeData:
     DoorsList: []
   SimpleDoorModeData:
