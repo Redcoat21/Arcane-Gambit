@@ -27,9 +27,9 @@ namespace Enemy
         private void Awake()
         {
             // Get the EnemyScript component
-            EnemyScript enemyScript = GetComponent<EnemyScript>();
+            Enemy enemy = GetComponent<Enemy>();
             
-            if (enemyScript == null)
+            if (enemy == null)
             {
                 Debug.LogError("No EnemyScript found on the same GameObject! Gold drops won't work.", this);
             }

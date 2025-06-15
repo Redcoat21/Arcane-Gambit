@@ -11,7 +11,7 @@ namespace Components.Health
         [SerializeField]
         [Range(1, 100)]
         private int maximumHealth;
-        
+
         [SerializeField]
         private int currentHealth;
 
@@ -20,25 +20,28 @@ namespace Components.Health
             get => maximumHealth;
             set => maximumHealth = value;
         }
-        
+
         public int CurrentHealth
         {
             get => currentHealth;
-            set => currentHealth = value;
+            set
+            {
+                currentHealth = value;
+                OnHealthChanged?.Invoke(currentHealth);
+            }
         }
 
         // OnHealthChanged is an event that will be triggered when the health of the object changes
         public event Action<int> OnHealthChanged;
-        
+
         // OnDeath is an event that will be triggered when health reaches zero or below
         public event Action OnDeath;
 
-        
         private void Awake()
         {
             currentHealth = maximumHealth;
         }
-        
+
         /// <summary>
         /// Decrease the health of the entity by the damage amount
         /// </summary>
@@ -46,8 +49,7 @@ namespace Components.Health
         public void TakeDamage(int damage)
         {
             currentHealth -= damage;
-            OnHealthChanged?.Invoke(currentHealth);
-            
+
             // Check if entity has died
             if (currentHealth <= 0)
             {
@@ -55,7 +57,7 @@ namespace Components.Health
                 OnDeath?.Invoke();
             }
         }
-        
+
         /// <summary>
         /// Increase the health of the entity by heal amount
         /// </summary>
@@ -64,7 +66,6 @@ namespace Components.Health
         {
             int tempHealth = currentHealth + healAmount;
             currentHealth = tempHealth > maximumHealth ? maximumHealth : tempHealth;
-            OnHealthChanged?.Invoke(currentHealth);
         }
     }
 }

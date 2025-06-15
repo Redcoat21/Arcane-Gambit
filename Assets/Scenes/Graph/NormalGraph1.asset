@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9217247343436428868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f692f83df7c1b5468af64edd22287dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: -5341127157405296221}
+  To: {fileID: -4875916505390600377}
+  RoomTemplates: []
 --- !u!114 &-8928315328242028303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +107,23 @@ MonoBehaviour:
   From: {fileID: -1683919355091895684}
   To: {fileID: 4301083869101199946}
   RoomTemplates: []
+--- !u!114 &-5341127157405296221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 160, y: 240}
+  Name: Secret
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 6e656fb604bf3684b9c8099f2820dc04, type: 3}
+  RoomTemplateSets: []
 --- !u!114 &-4875916505390600377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +258,7 @@ MonoBehaviour:
   - {fileID: 5483497794555058188}
   - {fileID: -868998240122971191}
   - {fileID: 2712398727646937819}
+  - {fileID: -9217247343436428868}
   CorridorIndividualRoomTemplates:
   - {fileID: 3003678028844578220, guid: eec27f4fec317ac418fed1a2db21bb98, type: 3}
   - {fileID: 1332456693336908368, guid: 7fcb61ae790704a4bbe9f766798c8d92, type: 3}
@@ -245,9 +278,10 @@ MonoBehaviour:
   - {fileID: -7906640624254182613}
   - {fileID: 7206654886475656453}
   - {fileID: 5553203321429453495}
+  - {fileID: -5341127157405296221}
   EditorData:
-    PanOffset: {x: 137.0574, y: 42.105892}
-    Zoom: 0.6657988
+    PanOffset: {x: 19.100468, y: -69.43735}
+    Zoom: 1.1795032
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0

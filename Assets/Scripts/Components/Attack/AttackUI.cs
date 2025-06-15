@@ -2,29 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Components.Attack;
+using UnityEngine.Serialization;
 
 public class AttackUI : MonoBehaviour
 {
-    [SerializeField] private AttackComponent attackComponent;
+    [FormerlySerializedAs("attackComponent")]
+    [SerializeField] private AttackComponentTemp attackComponentTemp;
     [SerializeField] private TextMeshProUGUI attackText;
     [SerializeField] private Image attackIndicatorImage;
 
     private void Start()
     {
-        if (attackComponent != null)
+        if (attackComponentTemp != null)
         {
             UpdateUI();
-            attackComponent.OnAttackPerformed += HandleAttackPerformed;
-            attackComponent.OnAttackChanged += HandleAttackChanged;
+            attackComponentTemp.OnAttackPerformed += HandleAttackPerformed;
+            attackComponentTemp.OnAttackChanged += HandleAttackChanged;
         }
     }
 
     private void OnDestroy()
     {
-        if (attackComponent != null)
+        if (attackComponentTemp != null)
         {
-            attackComponent.OnAttackPerformed -= HandleAttackPerformed;
-            attackComponent.OnAttackChanged -= HandleAttackChanged;
+            attackComponentTemp.OnAttackPerformed -= HandleAttackPerformed;
+            attackComponentTemp.OnAttackChanged -= HandleAttackChanged;
         }
     }
 
@@ -42,9 +44,9 @@ public class AttackUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (attackText != null && attackComponent != null)
+        if (attackText != null && attackComponentTemp != null)
         {
-            attackText.text = $"Attack: {attackComponent.BaseAttackDamage}";
+            attackText.text = $"Attack: {attackComponentTemp.BaseAttackDamage}";
         }
     }
 

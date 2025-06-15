@@ -8,8 +8,7 @@ namespace Editor
     public class HealthEditor : UnityEditor.Editor
     {
         private HealthComponent _healthComponent;
-        private int _damageValue = 4;
-        private int _healValue = 5;
+        private int _value = 5;
         private void Awake()
         {
             _healthComponent = (HealthComponent)target;
@@ -18,15 +17,14 @@ namespace Editor
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            _damageValue = EditorGUILayout.IntField("Damage Value", _damageValue);
-            _healValue = EditorGUILayout.IntField("Heal Value", _healValue);
+            _value = EditorGUILayout.IntField("Damage/Heal Value", _value);
             if (GUILayout.Button("Take Damage"))
             {
-                _healthComponent.TakeDamage(_damageValue);
+                _healthComponent.TakeDamage(_value);
             }
             else if (GUILayout.Button("Heal"))
             {
-                _healthComponent.Heal(_healValue);
+                _healthComponent.Heal(_value);
             }
         }
     }
