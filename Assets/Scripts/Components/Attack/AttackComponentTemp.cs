@@ -3,6 +3,7 @@ using UnityEngine;
 using Components.MeleeDamage;
 using Components.RangedDamage;
 using Components.ElementalDamage;
+using Components.Health;
 
 namespace Components.Attack
 {
@@ -10,7 +11,7 @@ namespace Components.Attack
     /// <summary>
     /// Component that handles attack damage and attack events for an entity.
     /// </summary>
-    public class AttackComponent : MonoBehaviour
+    public class AttackComponentTemp : MonoBehaviour, IAttackComponent
     {
         [SerializeField] private DamageType damageType;
 
@@ -20,6 +21,7 @@ namespace Components.Attack
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private GameObject rotatingWeaponPrefab;
         [SerializeField] private WeaponData currentWeapon;
+        private int damage = 5;
         public WeaponData CurrentWeapon
         {
             get => currentWeapon;
@@ -185,6 +187,17 @@ namespace Components.Attack
             {
                 CurrentDamageType = DamageType.Elemental;
             }
+        }
+
+        public void Attack(GameObject target)
+        {
+            var healthComponent = target.GetComponent<HealthComponent>();
+            if (!healthComponent)
+            {
+                Debug.LogWarning($"Target {target.name} does not have a HealthComponent!");
+                return;
+            }
+            healthComponent.TakeDamage(damage);
         }
     }
 }

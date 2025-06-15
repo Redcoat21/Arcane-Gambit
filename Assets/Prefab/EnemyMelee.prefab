@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 9216354126034282982}
   - component: {fileID: 1711576266623236877}
   m_Layer: 0
-  m_Name: HitZone
+  m_Name: Hit Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

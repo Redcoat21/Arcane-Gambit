@@ -23,7 +23,8 @@ namespace Player
         [SerializeField] private HealthUI healthUI;
         [SerializeField] private ManaComponent manaComponent;
         [SerializeField] private ManaUI manaUI;
-        [SerializeField] private AttackComponent attackComponent;
+        [FormerlySerializedAs("attackComponent")]
+        [SerializeField] private AttackComponentTemp attackComponentTemp;
         [SerializeField] private AttackUI attackUI;
         [SerializeField] private MeleeDamageComponent meleeDamageComponent;
         [SerializeField] private MeleeDamageUI meleeDamageUI;
@@ -51,7 +52,7 @@ namespace Player
             movementComponent ??= GetComponent<GroundMovementComponent>();
             healthComponent ??= GetComponent<HealthComponent>();
             manaComponent ??= GetComponent<ManaComponent>();
-            attackComponent ??= GetComponent<AttackComponent>();
+            attackComponentTemp ??= GetComponent<AttackComponentTemp>();
             meleeDamageComponent ??= GetComponent<MeleeDamageComponent>();
             rangedDamageComponent ??= GetComponent<RangedDamageComponent>();
             elementalDamageComponent ??= GetComponent<ElementalDamageComponent>();
@@ -89,7 +90,7 @@ namespace Player
                 SelectedWeaponStorage.selectedWeapon = null;
             }
 
-            attackComponent.CurrentWeapon = weapon1;
+            attackComponentTemp.CurrentWeapon = weapon1;
 
             baseMaxHealth = healthComponent.MaximumHealth;
             Debug.Log("Base Max Health: " + baseMaxHealth);
@@ -100,7 +101,7 @@ namespace Player
             baseSpeed = movementComponent.MoveSpeed;
             Debug.Log("Base Speed: " + baseMaxHealth);
 
-            baseAttack = attackComponent.BaseAttackDamage;
+            baseAttack = attackComponentTemp.BaseAttackDamage;
             Debug.Log("Base Attack: " + baseAttack);
 
             baseMelee = meleeDamageComponent.MeleeMultiplier;
@@ -188,7 +189,7 @@ namespace Player
             manaComponent.MaximumMana = newMaxMana;
             manaComponent.CurrentMana = Mathf.Clamp(currentMana, 0, newMaxMana);
             movementComponent.MoveSpeed = newSpeed;
-            attackComponent.BaseAttackDamage = newAttack;
+            attackComponentTemp.BaseAttackDamage = newAttack;
             meleeDamageComponent.MeleeMultiplier = newMelee;
             rangedDamageComponent.RangedMultiplier = newRanged;
             elementalDamageComponent.ElementalMultiplier = newElemental;
