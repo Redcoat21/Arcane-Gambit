@@ -28,9 +28,11 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
     public int minimumNumberOfEnemiesToSpawn = 1;
 
     [SerializeField]
-    private List<EnemyScript> enemiesToSpawn;
+    private List<Enemy.Enemy> enemiesToSpawn;
 
-    private Dictionary<EnemyScript, ObjectPool<GameObject>> enemyPools = new Dictionary<EnemyScript, ObjectPool<GameObject>>();
+    private Dictionary<Enemy.Enemy, ObjectPool<GameObject>> enemyPools =
+        new Dictionary<Enemy.Enemy, ObjectPool<GameObject>>();
+
     private List<GameObject> activeEnemies = new List<GameObject>();
 
 
@@ -159,10 +161,10 @@ public class EnemySpawnerComponent : DungeonGeneratorPostProcessingComponentGrid
 
         // Keep track of active enemies
         activeEnemies.Add(enemyInstance);
-        
+
         parent.GetComponent<SpriteRenderer>().enabled = false;
     }
-    
+
     public void ReturnEnemyToPool(GameObject enemy)
     {
         foreach (var pool in enemyPools.Values)

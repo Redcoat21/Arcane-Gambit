@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Edgar.Unity;
 using Edgar.Unity.Examples.CurrentRoomDetection;
+using Levels.Room;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -29,9 +31,17 @@ namespace PostProcessing
                     Debug.LogWarning($"Could not find floor tilemap in room {roomInstance.Room.GetDisplayName()}");
                 }
 
+                floorTilemap.AddComponent<CurrentRoomDetectionTriggerHandler>();
+
                 // Add the room manager component
                 var roomManager = roomTemplateInstance.AddComponent<RoomManager>();
+                var combatRoomComponent = roomTemplateInstance.GetComponent<CombatRoom>();
                 roomManager.RoomInstance = roomInstance;
+                Debug.Log("Room instance: " + roomInstance.Room.GetDisplayName());
+                if (combatRoomComponent != null)
+                {
+                    roomManager.CombatRoomComponent = combatRoomComponent;
+                }
             }
         }
 

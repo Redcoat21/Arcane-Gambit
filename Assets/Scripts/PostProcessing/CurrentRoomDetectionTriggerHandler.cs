@@ -1,5 +1,4 @@
-﻿using DefaultNamespace;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PostProcessing
 {
@@ -10,10 +9,15 @@ namespace PostProcessing
         public void Start()
         {
             roomManager = transform.parent.parent.gameObject.GetComponent<RoomManager>();
+            if (roomManager == null)
+            {
+                Debug.LogError("Can't find RoomManager component on parent object.");
+            }
         }
 
         public void OnTriggerEnter2D(Collider2D otherCollider)
         {
+            Debug.Log("OnTriggerEnter2D called with: " + otherCollider.gameObject.name);
             if (otherCollider.gameObject.CompareTag("Player"))
             {
                 roomManager?.OnRoomEnter(otherCollider.gameObject);
