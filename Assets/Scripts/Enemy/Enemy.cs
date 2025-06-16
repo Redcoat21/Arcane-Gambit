@@ -29,11 +29,11 @@ namespace Enemy
 
         public void Update()
         {
-            var nextDestination = enemyAIComponent.GetNextDestination();
-            if (nextDestination != null)
-            {
-                movementComponent.Move(new Vector2(nextDestination.Value.x, nextDestination.Value.y));
-            }
+            // var nextDestination = enemyAIComponent.GetNextDestination();
+            // if (nextDestination != null)
+            // {
+            //     movementComponent.Move(new Vector2(nextDestination.Value.x, nextDestination.Value.y));
+            // }
         }
 
         public void OnEnable()

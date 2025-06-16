@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Edgar.Unity;
+using Levels;
 using Levels.Room;
 using UnityEngine;
 
@@ -11,34 +12,35 @@ namespace PostProcessing
         public RoomInstanceGrid2D RoomInstance { get; set; }
         public CombatRoom CombatRoomComponent { get; set; }
 
+        private bool hasBeenEntered = false;
+
         public void OnRoomEnter(GameObject otherColliderGameObject)
         {
-            var enemySpawns = RoomInstance.RoomTemplateInstance.gameObject.transform.Find("EnemySpawns");
-
-            if (enemySpawns != null)
+            if (!hasBeenEntered)
             {
-                var spawnMarkers = GetRandomSpawnMarkers(GetSpawnMarkers(enemySpawns), CombatRoomComponent.EnemyCount);
+                var enemySpawns = RoomInstance.RoomTemplateInstance.gameObject.transform.Find("EnemySpawns");
 
-                foreach (var child in spawnMarkers)
+                if (enemySpawns != null)
                 {
-                    child.gameObject.SetActive(false);
-                    Debug.Log(child.gameObject.transform.position);
+                    var spawnMarkers = GetRandomSpawnMarkers(GetSpawnMarkers(enemySpawns), CombatRoomComponent.EnemyCount);
+                    SpawnEnemies(spawnMarkers);
+                }
+                else
+                {
+                    Debug.LogWarning("EnemySpawns not found!");
+                }
+
+                if (CombatRoomComponent != null)
+                {
+                    Debug.Log(
+                        $"Spawning {CombatRoomComponent.WaveNumber} waves in room {RoomInstance.RoomTemplateInstance.name}");
+                }
+                else
+                {
+                    Debug.Log($"Room enter {RoomInstance}");
                 }
             }
-            else
-            {
-                Debug.LogWarning("EnemySpawns not found!");
-            }
-
-            if (CombatRoomComponent != null)
-            {
-                Debug.Log(
-                    $"Spawning {CombatRoomComponent.WaveNumber} waves in room {RoomInstance.RoomTemplateInstance.name}");
-            }
-            else
-            {
-                Debug.Log($"Room enter {RoomInstance}");
-            }
+            hasBeenEntered = true;
         }
 
         public void OnRoomLeave(GameObject otherColliderGameObject)
@@ -73,6 +75,28 @@ namespace PostProcessing
 
             var randomMarkers = spawnMarkers.OrderBy(x => Random.value).Take(count).ToList();
             return randomMarkers;
+        }
+
+        private void SpawnEnemies(List<Transform> spawnMarkers)
+        {
+            int totalCount = spawnMarkers.Count;
+            int meleeEnemyCount = Random.Range(1, totalCount);
+            int rangedEnemyCount = totalCount - meleeEnemyCount;
+
+            List<GameObject> enemies = new List<GameObject>();
+
+            for (int i = 0; i < meleeEnemyCount; i++)
+            {
+                var meleeEnemy = EnemyPoolManager.Instance.Get("melee");
+                enemies.Add(meleeEnemy);
+            }
+
+            foreach (var enemy in enemies)
+            {
+                enemy.transform.position = spawnMarkers[Random.Range(0, spawnMarkers.Count)].position;
+                enemy.SetActive(true);
+            }
+
         }
     }
 }
