@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Components.Attack;
 using Components.ElementalDamage;
 using Components.Health;
@@ -9,6 +10,7 @@ using Components.RangedDamage;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -45,6 +47,7 @@ namespace Player
         private float baseElemental;
         public WeaponData weapon1;
         public WeaponData weapon2;
+        public ConsumableData consumable;
 
         private void Awake()
         {
@@ -71,15 +74,18 @@ namespace Player
             elementalDamageUI ??= FindFirstObjectByType<ElementalDamageUI>();
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return null;
             if (SelectedWeaponStorage.selectedWeapon != null)
             {
                 weapon1 = SelectedWeaponStorage.selectedWeapon;
 
                 if (weapon1ImageUI != null)
+                {
                     weapon1ImageUI.sprite = weapon1.weaponSprite;
                     weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+                }
 
                 Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
 
@@ -123,6 +129,10 @@ namespace Player
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             movementComponent?.Move(input);
+
+            if(healthComponent.CurrentHealth <= 0){
+                SceneManager.LoadScene("MainMenuScene");
+            }
 
             UpdateAnimator(input);
         }
