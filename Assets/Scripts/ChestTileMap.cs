@@ -38,7 +38,10 @@ public class TilemapChest : MonoBehaviour
         // Remove the tile from the tilemap
         if (chestTilemap != null)
         {
-            chestTilemap.SetTile(chestTilePos, null);
+            Vector3Int cellPosition = chestTilemap.WorldToCell(transform.position);
+            chestTilemap.SetTile(cellPosition, null);
+            chestTilemap.RefreshTile(cellPosition);
+            Debug.Log("Removing tile at: " + chestTilemap.WorldToCell(transform.position));
         }
 
         // Destroy this trigger object (not the tile itself)
