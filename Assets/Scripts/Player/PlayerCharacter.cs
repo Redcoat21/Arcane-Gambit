@@ -36,6 +36,7 @@ namespace Player
         [SerializeField] private Image weapon1ImageUI;
         [SerializeField] private Image weapon1InventoryImageUI;
         [SerializeField] private CurrencyComponent currencyComponent;
+        [SerializeField] private SpellData equippedSpell;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -47,7 +48,6 @@ namespace Player
         private float baseElemental;
         public WeaponData weapon1;
         public WeaponData weapon2;
-        public SpellData spell;
         public ConsumableData consumable;
 
         private void Awake()
@@ -93,7 +93,7 @@ namespace Player
                 // Clear stored data after equipping
                 SelectedWeaponStorage.selectedWeapon = null;
             }
-
+            EquipSpell(equippedSpell);
             attackComponent.CurrentWeapon = weapon1;
 
             baseMaxHealth = healthComponent.MaximumHealth;
@@ -124,6 +124,23 @@ namespace Player
             }
 
             ApplyInventoryModifiers();
+        }
+
+        public void EquipSpell(SpellData spell)
+        {
+            equippedSpell = spell;
+            if (attackComponent != null)
+            {
+                attackComponent.CurrentSpell = equippedSpell;
+            }
+
+            // Update the UI
+            SpellUI.Instance?.UpdateSpellUI(equippedSpell);
+        }
+
+        public SpellData GetEquippedSpell()
+        {
+            return equippedSpell;
         }
 
         private void FixedUpdate()

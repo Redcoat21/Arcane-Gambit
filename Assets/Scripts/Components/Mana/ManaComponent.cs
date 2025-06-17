@@ -50,5 +50,21 @@ namespace Components.Mana
             currentMana = tempMana > maximumMana ? maximumMana : tempMana;
             OnManaChanged?.Invoke(currentMana);
         }
+
+        /// <summary>
+        /// Reduce mana by a certain amount, returns true if successful, false if not enough mana
+        /// </summary>
+        public bool ReduceMana(int amount)
+        {
+            if (currentMana >= amount)
+            {
+                currentMana -= amount;
+                OnManaChanged?.Invoke(currentMana);
+                return true;
+            }
+
+            Debug.Log("Not enough mana to reduce.");
+            return false;
+        }
     }
 }

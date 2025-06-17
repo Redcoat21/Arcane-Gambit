@@ -7164,6 +7164,7 @@ GameObject:
   - component: {fileID: 932117362281200686}
   - component: {fileID: 293825233094578733}
   - component: {fileID: 8758483940532474560}
+  - component: {fileID: 650859436416639443}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -7277,6 +7278,7 @@ MonoBehaviour:
   weapon1ImageUI: {fileID: 3154857841287588801}
   weapon1InventoryImageUI: {fileID: 320334424210275998}
   currencyComponent: {fileID: -7652540644085256556}
+  equippedSpell: {fileID: 11400000, guid: 26868de92cb481e4f8160f175edda162, type: 2}
   weapon1: {fileID: 0}
   weapon2: {fileID: 0}
   consumable: {fileID: 0}
@@ -7394,6 +7396,8 @@ MonoBehaviour:
   elementalDamageComponent: {fileID: 0}
   rotatingWeaponPrefab: {fileID: 5366978448550004364, guid: 2cf59542997fd62429aece66dea868d3, type: 3}
   currentWeapon: {fileID: 0}
+  spellProjectilePrefab: {fileID: 4962223726852638311, guid: 51b3ab9cf74a27d44babf74e6daeb125, type: 3}
+  currentSpell: {fileID: 11400000, guid: 26868de92cb481e4f8160f175edda162, type: 2}
   baseAttackDamage: 100
   attackCooldown: 1
 --- !u!114 &1411416989006097275
@@ -7621,6 +7625,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 8041332038015792682}
+--- !u!114 &650859436416639443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497758115865933321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e2b45e2c5296e49a5f44a745ae57b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellIcon: {fileID: 3461042326152288874}
 --- !u!1 &2529486636315691961
 GameObject:
   m_ObjectHideFlags: 0

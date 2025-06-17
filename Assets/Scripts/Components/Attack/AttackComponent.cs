@@ -20,6 +20,9 @@ namespace Components.Attack
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private GameObject rotatingWeaponPrefab;
         [SerializeField] private WeaponData currentWeapon;
+        [SerializeField] private GameObject spellProjectilePrefab;
+        [SerializeField] private SpellData currentSpell;
+
         public WeaponData CurrentWeapon
         {
             get => currentWeapon;
@@ -34,11 +37,18 @@ namespace Components.Attack
         private float attackCooldown = 1f;
 
         private float lastAttackTime;
+        private float lastSpellCastTime;
 
         public int BaseAttackDamage
         {
             get => baseAttackDamage;
             set => baseAttackDamage = value;
+        }
+
+        public SpellData CurrentSpell
+        {
+            get => currentSpell;
+            set => currentSpell = value;
         }
 
         public DamageType CurrentDamageType
@@ -122,6 +132,69 @@ namespace Components.Attack
             }
         }
 
+        private void TryCastSpell()
+        {
+            var manaComponent = GetComponent<Mana.ManaComponent>();
+            if (manaComponent == null || manaComponent.CurrentMana < currentSpell.manaCost)
+            {
+                Debug.Log("Not enough mana!");
+                return;
+            }
+
+            CastSpell();
+            lastSpellCastTime = Time.time;
+            manaComponent.ReduceMana(currentSpell.manaCost); // Assume this exists
+            SpellUI.Instance.TriggerCooldown();
+        }
+
+        private void CastSpell()
+        {
+            if (spellProjectilePrefab == null)
+            {
+                Debug.LogWarning("Spell projectile prefab not assigned!");
+                return;
+            }
+
+            // Get world position of the mouse
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+
+            // Direction from player to mouse
+            Vector3 direction = (mousePos - transform.position).normalized;
+
+            // Spawn slightly offset toward the direction (so it doesn't push player)
+            Vector3 spawnPos = transform.position + direction * 1.5f;
+
+            // Instantiate the projectile
+            GameObject projectile = Instantiate(spellProjectilePrefab, spawnPos, Quaternion.identity);
+
+            // Assign spell sprite
+            SpriteRenderer sr = projectile.GetComponent<SpriteRenderer>();
+            if (sr != null && currentSpell.spellSprite != null)
+                sr.sprite = currentSpell.spellSprite;
+
+            // Assign velocity to Rigidbody2D
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 dir = (mousePos - spawnPos).normalized;
+                rb.linearVelocity = dir * 10f;
+
+                // OPTIONAL: Ignore collision with the player
+                Collider2D playerCollider = GetComponent<Collider2D>();
+                Collider2D projectileCollider = projectile.GetComponent<Collider2D>();
+                if (playerCollider != null && projectileCollider != null)
+                {
+                    Physics2D.IgnoreCollision(projectileCollider, playerCollider);
+                }
+            }
+
+            // Auto-destroy after 1 second
+            Destroy(projectile, 1f);
+
+            Debug.Log($"Spell cast: {currentSpell.spellName}");
+        }
+
         /// <summary>
         /// Perform the attack and trigger event.
         /// </summary>
@@ -184,6 +257,13 @@ namespace Components.Attack
             if (Input.GetKeyDown(KeyCode.Alpha3)) // for top row number 3 key
             {
                 CurrentDamageType = DamageType.Elemental;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F)) // cast spell
+            {
+                Debug.Log("spell test");
+                CurrentDamageType = DamageType.Elemental;
+                TryCastSpell();
             }
         }
     }
