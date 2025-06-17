@@ -7,7 +7,7 @@ namespace PostProcessing
     [CreateAssetMenu(fileName = "BakerPostProcessing", menuName = "Level/Nav Mesh Baker", order = 0)]
     public class BakerPostProcessing : DungeonGeneratorPostProcessingGrid2D
     {
-        public override void Run(DungeonGeneratorLevelGrid2D level)
+        public override async void Run(DungeonGeneratorLevelGrid2D level)
         {
             var rooms = level.RoomInstances;
             foreach (var room in rooms)
@@ -16,14 +16,16 @@ namespace PostProcessing
                 if (navigationGameObject != null)
                 {
                     var navigationSurface = navigationGameObject.GetComponent<NavMeshSurface>();
-                    if (Application.isPlaying)
-                    {
-                        navigationSurface.BuildNavMeshAsync();
-                    }
-                    else
-                    {
-                        navigationSurface.BuildNavMesh();
-                    }
+                    // if (Application.isPlaying)
+                    // {
+                    //     await navigationSurface.BuildNavMeshAsync();
+                    // }
+                    // else
+                    // {
+                    //     navigationSurface.BuildNavMesh();
+                    // }
+                    await navigationSurface.BuildNavMeshAsync();
+
                 }
                 else
                 {
@@ -31,6 +33,5 @@ namespace PostProcessing
                 }
             }
         }
-
     }
 }

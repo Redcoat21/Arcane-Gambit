@@ -29,10 +29,9 @@ namespace Enemy
 
         public void Update()
         {
-            // var nextDestination = enemyAIComponent.GetNextDestination();
-            // if (nextDestination != null)
+            // if (enemyAIComponent.Target != null)
             // {
-            //     movementComponent.Move(new Vector2(nextDestination.Value.x, nextDestination.Value.y));
+            //     enemyAIComponent.Move();
             // }
         }
 

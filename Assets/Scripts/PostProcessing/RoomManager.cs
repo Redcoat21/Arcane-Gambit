@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Edgar.Unity;
+using Edgar.Unity.Examples.Gungeon;
 using Levels;
 using Levels.Room;
 using UnityEngine;
@@ -22,22 +23,13 @@ namespace PostProcessing
 
                 if (enemySpawns != null)
                 {
-                    var spawnMarkers = GetRandomSpawnMarkers(GetSpawnMarkers(enemySpawns), CombatRoomComponent.EnemyCount);
+                    var allSpawnMarkers = GetSpawnMarkers(enemySpawns);
+                    var spawnMarkers = GetRandomSpawnMarkers(allSpawnMarkers, CombatRoomComponent.EnemyCount);
                     SpawnEnemies(spawnMarkers);
                 }
                 else
                 {
                     Debug.LogWarning("EnemySpawns not found!");
-                }
-
-                if (CombatRoomComponent != null)
-                {
-                    Debug.Log(
-                        $"Spawning {CombatRoomComponent.WaveNumber} waves in room {RoomInstance.RoomTemplateInstance.name}");
-                }
-                else
-                {
-                    Debug.Log($"Room enter {RoomInstance}");
                 }
             }
             hasBeenEntered = true;
@@ -80,11 +72,11 @@ namespace PostProcessing
         private void SpawnEnemies(List<Transform> spawnMarkers)
         {
             int totalCount = spawnMarkers.Count;
-            int meleeEnemyCount = Random.Range(1, totalCount);
-            int rangedEnemyCount = totalCount - meleeEnemyCount;
+            int meleeEnemyCount = totalCount;
 
-            List<GameObject> enemies = new List<GameObject>();
+            var enemies = new List<GameObject>();
 
+            // Spawn the mêlée enemy first
             for (int i = 0; i < meleeEnemyCount; i++)
             {
                 var meleeEnemy = EnemyPoolManager.Instance.Get("melee");
@@ -93,10 +85,12 @@ namespace PostProcessing
 
             foreach (var enemy in enemies)
             {
-                enemy.transform.position = spawnMarkers[Random.Range(0, spawnMarkers.Count)].position;
+                var randomPosition = spawnMarkers[Random.Range(0, spawnMarkers.Count)].position;
+                var spawnPosition = new Vector3(randomPosition.x, randomPosition.y, randomPosition.z);
+                enemy.transform.position = spawnPosition;
+                enemy.transform.rotation = Quaternion.Euler(0, 0, 0);
                 enemy.SetActive(true);
             }
-
         }
     }
 }

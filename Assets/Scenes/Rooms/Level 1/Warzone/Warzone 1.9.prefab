@@ -4308,6 +4308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4373,6 +4377,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4440,6 +4448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4505,6 +4517,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4572,6 +4588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4637,6 +4657,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4704,6 +4728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4769,6 +4797,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4836,6 +4868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4901,6 +4937,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5034,6 +5074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnMarker (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5099,6 +5143,10 @@ PrefabInstance:
     - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
       propertyPath: m_Name
       value: EnemySpawnMarker (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888233999702806307, guid: 295bebf0252f89d42872a9600888ed73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

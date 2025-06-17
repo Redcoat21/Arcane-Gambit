@@ -24,6 +24,7 @@ namespace Enemy.Components
         public void Awake()
         {
             agent ??= GetComponent<NavMeshAgent>();
+            agent.updateRotation = false;
         }
 
         public Vector3? GetNextDestination()
@@ -41,9 +42,30 @@ namespace Enemy.Components
                     Vector3 nextPos = path.corners[1];
                     return nextPos;
                 }
+                else if (path.corners.Length == 1)
+                {
+                    // If there's only one corner, return the target position
+                    return target.position;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Failed to calculate path to target.");
             }
 
             return null;
+        }
+
+        public void Move()
+        {
+            if (target != null)
+            {
+                agent.SetDestination(target.position);
+            }
+            else 
+            {
+                Debug.LogWarning("Target is not set. Cannot move.");
+            }
         }
     }
 }

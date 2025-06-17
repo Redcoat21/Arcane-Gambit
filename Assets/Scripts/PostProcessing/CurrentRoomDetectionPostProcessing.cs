@@ -36,8 +36,8 @@ namespace PostProcessing
                 // Add the room manager component
                 var roomManager = roomTemplateInstance.AddComponent<RoomManager>();
                 var combatRoomComponent = roomTemplateInstance.GetComponent<CombatRoom>();
+                Debug.Log("Are you " + roomInstance);
                 roomManager.RoomInstance = roomInstance;
-                Debug.Log("Room instance: " + roomInstance.Room.GetDisplayName());
                 if (combatRoomComponent != null)
                 {
                     roomManager.CombatRoomComponent = combatRoomComponent;
