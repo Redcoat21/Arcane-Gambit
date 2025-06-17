@@ -44,7 +44,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 240}
   Name: Shops
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: be60957d7e2c12141994dbe9ce0368eb, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-824059674752750916
 MonoBehaviour:
@@ -119,7 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 160, y: 160}
   Name: Spawn
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 1d1802a99fcb90c4bac12bc305b769c2, type: 3}
   RoomTemplateSets: []
 --- !u!114 &544681103231645741
 MonoBehaviour:
@@ -135,7 +137,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 320}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: b23093451e9c6854aa732bd5b8cffb49, type: 3}
+  - {fileID: 1040728735224142489, guid: bb396f10c4e1868419d1f7f31b9faf2c, type: 3}
+  - {fileID: 1040728735224142489, guid: 2593305a36390a449b478b99d149b081, type: 3}
+  - {fileID: 1040728735224142489, guid: 23ca424e91583d944b3c82f8be5d426f, type: 3}
+  - {fileID: 1040728735224142489, guid: 8353f75012d662c4d93d25ab28c53dd6, type: 3}
+  - {fileID: 1040728735224142489, guid: 3728c997febba0246937b9d87099f549, type: 3}
+  - {fileID: 1040728735224142489, guid: 298501206e1b92a4bba9b09f04f8e15b, type: 3}
+  - {fileID: 1040728735224142489, guid: a24deba7b82837345beba8d9cc7a0859, type: 3}
+  - {fileID: 1040728735224142489, guid: 101db731387bc2648a4e458e1672ffcf, type: 3}
+  - {fileID: 1040728735224142489, guid: 5f5bc166da8322941a71bba947c04171, type: 3}
   RoomTemplateSets: []
 --- !u!114 &778295664853168362
 MonoBehaviour:
@@ -166,7 +178,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 160}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: b23093451e9c6854aa732bd5b8cffb49, type: 3}
+  - {fileID: 1040728735224142489, guid: bb396f10c4e1868419d1f7f31b9faf2c, type: 3}
+  - {fileID: 1040728735224142489, guid: 2593305a36390a449b478b99d149b081, type: 3}
+  - {fileID: 1040728735224142489, guid: 23ca424e91583d944b3c82f8be5d426f, type: 3}
+  - {fileID: 1040728735224142489, guid: 8353f75012d662c4d93d25ab28c53dd6, type: 3}
+  - {fileID: 1040728735224142489, guid: 3728c997febba0246937b9d87099f549, type: 3}
+  - {fileID: 1040728735224142489, guid: 298501206e1b92a4bba9b09f04f8e15b, type: 3}
+  - {fileID: 1040728735224142489, guid: a24deba7b82837345beba8d9cc7a0859, type: 3}
+  - {fileID: 1040728735224142489, guid: 101db731387bc2648a4e458e1672ffcf, type: 3}
+  - {fileID: 1040728735224142489, guid: 5f5bc166da8322941a71bba947c04171, type: 3}
   RoomTemplateSets: []
 --- !u!114 &3598662864386417357
 MonoBehaviour:
@@ -182,7 +204,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 320}
   Name: Loots
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: be2439a006eac604fac28d817e5df254, type: 3}
+  - {fileID: 1040728735224142489, guid: 57e5f85a3b319074cb0c629ac2dd62aa, type: 3}
+  - {fileID: 1040728735224142489, guid: c0db548c69463f64ca1cc42432d403be, type: 3}
+  - {fileID: 1040728735224142489, guid: 1eb2ade79788a7a47a5fcf4355b5bf37, type: 3}
+  - {fileID: 1040728735224142489, guid: 5561080c8b13ad44cbf141ce05491337, type: 3}
+  - {fileID: 1040728735224142489, guid: 09b398bd16ab18c46920d9bf4353e5b9, type: 3}
+  - {fileID: 1040728735224142489, guid: 9ac13f2a97a3d9943ade543f3fffcfdc, type: 3}
+  - {fileID: 1040728735224142489, guid: 911b0f78fdd297a47af87b017268de5b, type: 3}
+  - {fileID: 1040728735224142489, guid: 40ae4210589a2574b9056a352ea97f9b, type: 3}
+  - {fileID: 1040728735224142489, guid: b8093756e79d7bd4b95d04c3aa9eb12e, type: 3}
   RoomTemplateSets: []
 --- !u!114 &3961031881947123673
 MonoBehaviour:
@@ -198,7 +230,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 160, y: 240}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: b23093451e9c6854aa732bd5b8cffb49, type: 3}
+  - {fileID: 1040728735224142489, guid: bb396f10c4e1868419d1f7f31b9faf2c, type: 3}
+  - {fileID: 1040728735224142489, guid: 2593305a36390a449b478b99d149b081, type: 3}
+  - {fileID: 1040728735224142489, guid: 23ca424e91583d944b3c82f8be5d426f, type: 3}
+  - {fileID: 1040728735224142489, guid: 8353f75012d662c4d93d25ab28c53dd6, type: 3}
+  - {fileID: 1040728735224142489, guid: 3728c997febba0246937b9d87099f549, type: 3}
+  - {fileID: 1040728735224142489, guid: 298501206e1b92a4bba9b09f04f8e15b, type: 3}
+  - {fileID: 1040728735224142489, guid: a24deba7b82837345beba8d9cc7a0859, type: 3}
+  - {fileID: 1040728735224142489, guid: 101db731387bc2648a4e458e1672ffcf, type: 3}
+  - {fileID: 1040728735224142489, guid: 5f5bc166da8322941a71bba947c04171, type: 3}
   RoomTemplateSets: []
 --- !u!114 &4264492743307885199
 MonoBehaviour:
@@ -214,7 +256,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 640, y: 320}
   Name: Boss
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 5a957c77c419bce47843fdfb2dc02ba4, type: 3}
+  - {fileID: 1040728735224142489, guid: fd82fc0dbac861042b90449f58c575dd, type: 3}
+  - {fileID: 1040728735224142489, guid: dfe5822f76f4b7245bbb0b3418e2c3ce, type: 3}
+  - {fileID: 1040728735224142489, guid: e74c39b6936387544aae4a77c2143d05, type: 3}
   RoomTemplateSets: []
 --- !u!114 &5290935169593015583
 MonoBehaviour:
@@ -275,7 +321,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 640, y: 160}
   Name: Loots
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: be2439a006eac604fac28d817e5df254, type: 3}
+  - {fileID: 1040728735224142489, guid: 57e5f85a3b319074cb0c629ac2dd62aa, type: 3}
+  - {fileID: 1040728735224142489, guid: c0db548c69463f64ca1cc42432d403be, type: 3}
+  - {fileID: 1040728735224142489, guid: 1eb2ade79788a7a47a5fcf4355b5bf37, type: 3}
+  - {fileID: 1040728735224142489, guid: 5561080c8b13ad44cbf141ce05491337, type: 3}
+  - {fileID: 1040728735224142489, guid: 09b398bd16ab18c46920d9bf4353e5b9, type: 3}
+  - {fileID: 1040728735224142489, guid: 9ac13f2a97a3d9943ade543f3fffcfdc, type: 3}
+  - {fileID: 1040728735224142489, guid: 911b0f78fdd297a47af87b017268de5b, type: 3}
+  - {fileID: 1040728735224142489, guid: 40ae4210589a2574b9056a352ea97f9b, type: 3}
+  - {fileID: 1040728735224142489, guid: b8093756e79d7bd4b95d04c3aa9eb12e, type: 3}
   RoomTemplateSets: []
 --- !u!114 &6329302091684300193
 MonoBehaviour:
@@ -336,7 +392,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 240}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: b23093451e9c6854aa732bd5b8cffb49, type: 3}
+  - {fileID: 1040728735224142489, guid: bb396f10c4e1868419d1f7f31b9faf2c, type: 3}
+  - {fileID: 1040728735224142489, guid: 2593305a36390a449b478b99d149b081, type: 3}
+  - {fileID: 1040728735224142489, guid: 23ca424e91583d944b3c82f8be5d426f, type: 3}
+  - {fileID: 1040728735224142489, guid: 8353f75012d662c4d93d25ab28c53dd6, type: 3}
+  - {fileID: 1040728735224142489, guid: 3728c997febba0246937b9d87099f549, type: 3}
+  - {fileID: 1040728735224142489, guid: 298501206e1b92a4bba9b09f04f8e15b, type: 3}
+  - {fileID: 1040728735224142489, guid: a24deba7b82837345beba8d9cc7a0859, type: 3}
+  - {fileID: 1040728735224142489, guid: 101db731387bc2648a4e458e1672ffcf, type: 3}
+  - {fileID: 1040728735224142489, guid: 5f5bc166da8322941a71bba947c04171, type: 3}
   RoomTemplateSets: []
 --- !u!114 &8091545520133790361
 MonoBehaviour:
@@ -352,5 +418,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 160}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: b23093451e9c6854aa732bd5b8cffb49, type: 3}
+  - {fileID: 1040728735224142489, guid: bb396f10c4e1868419d1f7f31b9faf2c, type: 3}
+  - {fileID: 1040728735224142489, guid: 2593305a36390a449b478b99d149b081, type: 3}
+  - {fileID: 1040728735224142489, guid: 23ca424e91583d944b3c82f8be5d426f, type: 3}
+  - {fileID: 1040728735224142489, guid: 8353f75012d662c4d93d25ab28c53dd6, type: 3}
+  - {fileID: 1040728735224142489, guid: 3728c997febba0246937b9d87099f549, type: 3}
+  - {fileID: 1040728735224142489, guid: 298501206e1b92a4bba9b09f04f8e15b, type: 3}
+  - {fileID: 1040728735224142489, guid: a24deba7b82837345beba8d9cc7a0859, type: 3}
+  - {fileID: 1040728735224142489, guid: 101db731387bc2648a4e458e1672ffcf, type: 3}
+  - {fileID: 1040728735224142489, guid: 5f5bc166da8322941a71bba947c04171, type: 3}
   RoomTemplateSets: []

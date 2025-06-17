@@ -12,6 +12,11 @@ namespace Edgar.Unity
         /// Level graph that will be used in the generator.
         /// </summary>
         public LevelGraph LevelGraph;
+        public LevelGraph LevelGraph2;
+        public LevelGraph LevelGraph3;
+        public LevelGraph LevelGraph4;
+        public LevelGraph LevelGraph5;
+        public LevelGraph LevelGraph6;
 
         /// <summary>
         /// Whether to add corridors between individual rooms in the level graph.
