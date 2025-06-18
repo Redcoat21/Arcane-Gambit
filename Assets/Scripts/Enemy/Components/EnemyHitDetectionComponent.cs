@@ -26,7 +26,7 @@ namespace Enemy.Components
         private void OnTriggerEnter2D(Collider2D other)
         {
             // Check if the colliding object is a player weapon
-            if (other.CompareTag("PlayerWeapon") || other.CompareTag("PlayerProjectile"))
+            if (other.CompareTag("PlayerWeapon"))
             {
                 // Try to get the damage component from the weapon
                 // WeaponDamageComponent damageComponent = other.GetComponent<WeaponDamageComponent>();
@@ -46,10 +46,10 @@ namespace Enemy.Components
                 ApplyDamage(Mathf.RoundToInt(DamageManager.DamageCounter / LevelManager.LevelCounter));
                 
                 // If it's a projectile, you might want to destroy it
-                if (other.CompareTag("PlayerProjectile"))
-                {
-                    Destroy(other.gameObject);
-                }
+                // if (other.CompareTag("PlayerProjectile"))
+                // {
+                //     Destroy(other.gameObject);
+                // }
             }
         }
         

@@ -4,7 +4,7 @@ using Player;
 using System.Linq;
 
 [CustomEditor(typeof(InventoryComponent))]
-public class InventoryComponentEditor : Editor
+public class InventoryComponentEditor : UnityEditor.Editor
 {
 private ItemData[] allItems;
 private void OnEnable()
