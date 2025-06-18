@@ -31,7 +31,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 160}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 2af95d4088c72384bbba48466f4b1d1f, type: 3}
+  - {fileID: 1040728735224142489, guid: 53cebae8f8b0d7d42951f17d9132e755, type: 3}
+  - {fileID: 1040728735224142489, guid: 645fb8d372f68c64cacf435c1e5a18df, type: 3}
+  - {fileID: 1040728735224142489, guid: f9e716d834e8bb8418cb8b2183d40084, type: 3}
+  - {fileID: 1040728735224142489, guid: 6e6701772e394cd48a940488cae8a71b, type: 3}
+  - {fileID: 1040728735224142489, guid: 4b0a05a11548c644191121b74ca1cf82, type: 3}
+  - {fileID: 1040728735224142489, guid: 485fc9be941d4454b84709423f656d75, type: 3}
+  - {fileID: 1040728735224142489, guid: 63bd7de8316be7f4c9aa20eb9b741a44, type: 3}
+  - {fileID: 1040728735224142489, guid: b3e60e1791d360e468a1bda7458085e9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-8666885313339379635
 MonoBehaviour:
@@ -128,6 +138,7 @@ MonoBehaviour:
   Position: {x: 160, y: 160}
   Name: Spawn
   IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 238227669fb56a44b95bc61769fbfb57, type: 3}
   - {fileID: 1040728735224142489, guid: 238227669fb56a44b95bc61769fbfb57, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-3483008003318040463
@@ -230,7 +241,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 160}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 2af95d4088c72384bbba48466f4b1d1f, type: 3}
+  - {fileID: 1040728735224142489, guid: 53cebae8f8b0d7d42951f17d9132e755, type: 3}
+  - {fileID: 1040728735224142489, guid: 645fb8d372f68c64cacf435c1e5a18df, type: 3}
+  - {fileID: 1040728735224142489, guid: f9e716d834e8bb8418cb8b2183d40084, type: 3}
+  - {fileID: 1040728735224142489, guid: 6e6701772e394cd48a940488cae8a71b, type: 3}
+  - {fileID: 1040728735224142489, guid: 4b0a05a11548c644191121b74ca1cf82, type: 3}
+  - {fileID: 1040728735224142489, guid: 485fc9be941d4454b84709423f656d75, type: 3}
+  - {fileID: 1040728735224142489, guid: 63bd7de8316be7f4c9aa20eb9b741a44, type: 3}
+  - {fileID: 1040728735224142489, guid: b3e60e1791d360e468a1bda7458085e9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -278,8 +299,8 @@ MonoBehaviour:
   - {fileID: 5553203321429453495}
   - {fileID: -9067363717446114987}
   EditorData:
-    PanOffset: {x: -44.58754, y: -17.235294}
-    Zoom: 1.0447912
+    PanOffset: {x: 20.829916, y: -15.694508}
+    Zoom: 0.7382862
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
@@ -327,7 +348,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 80}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 2af95d4088c72384bbba48466f4b1d1f, type: 3}
+  - {fileID: 1040728735224142489, guid: 53cebae8f8b0d7d42951f17d9132e755, type: 3}
+  - {fileID: 1040728735224142489, guid: 645fb8d372f68c64cacf435c1e5a18df, type: 3}
+  - {fileID: 1040728735224142489, guid: f9e716d834e8bb8418cb8b2183d40084, type: 3}
+  - {fileID: 1040728735224142489, guid: 6e6701772e394cd48a940488cae8a71b, type: 3}
+  - {fileID: 1040728735224142489, guid: 4b0a05a11548c644191121b74ca1cf82, type: 3}
+  - {fileID: 1040728735224142489, guid: 485fc9be941d4454b84709423f656d75, type: 3}
+  - {fileID: 1040728735224142489, guid: 63bd7de8316be7f4c9aa20eb9b741a44, type: 3}
+  - {fileID: 1040728735224142489, guid: b3e60e1791d360e468a1bda7458085e9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &4593153180323968219
 MonoBehaviour:
@@ -401,7 +432,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 480, y: 320}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 2af95d4088c72384bbba48466f4b1d1f, type: 3}
+  - {fileID: 1040728735224142489, guid: 53cebae8f8b0d7d42951f17d9132e755, type: 3}
+  - {fileID: 1040728735224142489, guid: 645fb8d372f68c64cacf435c1e5a18df, type: 3}
+  - {fileID: 1040728735224142489, guid: f9e716d834e8bb8418cb8b2183d40084, type: 3}
+  - {fileID: 1040728735224142489, guid: 6e6701772e394cd48a940488cae8a71b, type: 3}
+  - {fileID: 1040728735224142489, guid: 4b0a05a11548c644191121b74ca1cf82, type: 3}
+  - {fileID: 1040728735224142489, guid: 485fc9be941d4454b84709423f656d75, type: 3}
+  - {fileID: 1040728735224142489, guid: 63bd7de8316be7f4c9aa20eb9b741a44, type: 3}
+  - {fileID: 1040728735224142489, guid: b3e60e1791d360e468a1bda7458085e9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &7206654886475656453
 MonoBehaviour:
@@ -417,7 +458,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: {x: 320, y: 320}
   Name: Warzone
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 1040728735224142489, guid: 844aaf795e2d37f42a388920e4b68a08, type: 3}
+  - {fileID: 1040728735224142489, guid: 2af95d4088c72384bbba48466f4b1d1f, type: 3}
+  - {fileID: 1040728735224142489, guid: 53cebae8f8b0d7d42951f17d9132e755, type: 3}
+  - {fileID: 1040728735224142489, guid: 645fb8d372f68c64cacf435c1e5a18df, type: 3}
+  - {fileID: 1040728735224142489, guid: f9e716d834e8bb8418cb8b2183d40084, type: 3}
+  - {fileID: 1040728735224142489, guid: 6e6701772e394cd48a940488cae8a71b, type: 3}
+  - {fileID: 1040728735224142489, guid: 4b0a05a11548c644191121b74ca1cf82, type: 3}
+  - {fileID: 1040728735224142489, guid: 485fc9be941d4454b84709423f656d75, type: 3}
+  - {fileID: 1040728735224142489, guid: 63bd7de8316be7f4c9aa20eb9b741a44, type: 3}
+  - {fileID: 1040728735224142489, guid: b3e60e1791d360e468a1bda7458085e9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &8705116266714265019
 MonoBehaviour:
