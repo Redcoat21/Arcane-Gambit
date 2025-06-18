@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitDoor: MonoBehaviour
+public class ExitDoor : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "MainScene 2";
+    [SerializeField] private string gameSceneName = "MainScene 2";
+    [SerializeField] private string mainMenuSceneName = "MainMenuScene";
     [SerializeField] private float interactionRange = 2f;
 
     private bool playerNearby = false;
@@ -12,13 +13,19 @@ public class ExitDoor: MonoBehaviour
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            ReloadScene();
-        }
-    }
+            if (LevelManager.LevelCounter == 9)
+            {
+                LevelManager.LevelCounter = 1;
+                SceneManager.LoadScene(mainMenuSceneName);
+            }
+            else
+            {
+                LevelManager.LevelCounter++;
+                SceneManager.LoadScene(gameSceneName);
+            }
 
-    private void ReloadScene()
-    {
-        SceneManager.LoadScene(sceneName);
+            Debug.Log("Current Level: " + LevelManager.LevelCounter);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

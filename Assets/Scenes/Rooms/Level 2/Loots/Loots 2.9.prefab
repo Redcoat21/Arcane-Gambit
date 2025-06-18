@@ -106,7 +106,7 @@ MonoBehaviour:
       Margin1: 1
       Margin2: 1
       Enabled: 1
-  DefaultSocket: {fileID: 0}
+  DefaultSocket: {fileID: 11400000, guid: debec4583c48ea84b84a0d00733c242b, type: 2}
   DefaultDirection: 0
 --- !u!1 &2079247652228141532
 GameObject:

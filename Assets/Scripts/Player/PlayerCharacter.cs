@@ -36,6 +36,7 @@ namespace Player
         [SerializeField] private Image weapon1ImageUI;
         [SerializeField] private Image weapon1InventoryImageUI;
         [SerializeField] private CurrencyComponent currencyComponent;
+        [SerializeField] private SpellData equippedSpell;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -90,9 +91,9 @@ namespace Player
                 Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
 
                 // Clear stored data after equipping
-                SelectedWeaponStorage.selectedWeapon = null;
+                // SelectedWeaponStorage.selectedWeapon = null;
             }
-
+            EquipSpell(equippedSpell);
             attackComponent.CurrentWeapon = weapon1;
 
             baseMaxHealth = healthComponent.MaximumHealth;
@@ -125,12 +126,30 @@ namespace Player
             ApplyInventoryModifiers();
         }
 
+        public void EquipSpell(SpellData spell)
+        {
+            equippedSpell = spell;
+            if (attackComponent != null)
+            {
+                attackComponent.CurrentSpell = equippedSpell;
+            }
+
+            // Update the UI
+            SpellUI.Instance?.UpdateSpellUI(equippedSpell);
+        }
+
+        public SpellData GetEquippedSpell()
+        {
+            return equippedSpell;
+        }
+
         private void FixedUpdate()
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             movementComponent?.Move(input);
 
             if(healthComponent.CurrentHealth <= 0){
+                LevelManager.LevelCounter = 1;
                 SceneManager.LoadScene("MainMenuScene");
             }
 
