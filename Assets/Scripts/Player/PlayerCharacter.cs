@@ -91,7 +91,7 @@ namespace Player
                 Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
 
                 // Clear stored data after equipping
-                SelectedWeaponStorage.selectedWeapon = null;
+                // SelectedWeaponStorage.selectedWeapon = null;
             }
             EquipSpell(equippedSpell);
             attackComponent.CurrentWeapon = weapon1;
@@ -149,6 +149,7 @@ namespace Player
             movementComponent?.Move(input);
 
             if(healthComponent.CurrentHealth <= 0){
+                LevelManager.LevelCounter = 1;
                 SceneManager.LoadScene("MainMenuScene");
             }
 
