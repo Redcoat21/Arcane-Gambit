@@ -9,69 +9,117 @@ public class TilemapShop : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private GameObject shopDialogPanel;
     [SerializeField] private TextMeshProUGUI shopDialogText;
-    [SerializeField] private Button yesButton;
-    [SerializeField] private Button noButton;
+    [SerializeField] private Button buyPotionButton;
+    [SerializeField] private Button buyWeaponButton;
+    [SerializeField] private Button buySpellButton;
+    [SerializeField] private Button leaveButton;
 
-    [Header("Shop Settings")]
-    [SerializeField] private List<ConsumableData> possiblePotions; // List of all potions
+    [Header("Items")]
+    [SerializeField] private List<ConsumableData> potions;
+    [SerializeField] private List<WeaponData> weapons;
+    [SerializeField] private List<SpellData> spells;
+
+    [Header("Prices")]
     [SerializeField] private int potionCost = 100;
+    [SerializeField] private int weaponCost = 250;
+    [SerializeField] private int spellCost = 200;
 
-    private bool playerNearby = false;
     private PlayerCharacter player;
-    private ConsumableData currentPotion;
+    private bool playerNearby = false;
 
     private void Start()
     {
         shopDialogPanel.SetActive(false);
 
-        yesButton.onClick.AddListener(() =>
-        {
-            TryBuyPotion();
-            shopDialogPanel.SetActive(false);
-        });
-
-        noButton.onClick.AddListener(() =>
-        {
-            shopDialogPanel.SetActive(false);
-        });
+        buyPotionButton.onClick.AddListener(BuyPotion);
+        buyWeaponButton.onClick.AddListener(BuyWeapon);
+        buySpellButton.onClick.AddListener(BuySpell);
+        leaveButton.onClick.AddListener(() => shopDialogPanel.SetActive(false));
     }
 
     private void Update()
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            ShowDialog();
+            shopDialogPanel.SetActive(true);
+            shopDialogText.text = "Welcome to the shop! What would you like to buy?";
         }
     }
 
-    private void ShowDialog()
+    private void BuyPotion()
     {
-        if (possiblePotions.Count == 0) return;
+        if (potions.Count == 0 || player == null) return;
 
-        // Pick a random potion
-        currentPotion = possiblePotions[Random.Range(0, possiblePotions.Count)];
+        var potion = potions[Random.Range(0, potions.Count)];
+        var coins = player.GetComponent<CurrencyComponent>();
+        if (coins == null || coins.CurrentGold < potionCost)
+        {
+            shopDialogText.text = "Not enough coins for potion.";
+            return;
+        }
 
-        // Show dialog text
-        // shopDialogText.text = $"Buy <b>{currentPotion.itemName}</b> for {potionCost} coins?\n\n{currentPotion.GetStatDescription()}";
-        shopDialogPanel.SetActive(true);
+        coins.SpendGold(potionCost);
+        player.consumable = potion;
+        PlayerManager.Consumable = potion;
+        Debug.Log($"Bought potion: {potion.itemName}");
+
+        var healthComponent = player.GetComponent<Components.Health.HealthComponent>();
+        var manaComponent = player.GetComponent<Components.Mana.ManaComponent>();
+
+        if (potion.restoreHealth > 0 && healthComponent != null)
+        {
+            int healthAmount = Mathf.RoundToInt(healthComponent.MaximumHealth * (potion.restoreHealth / 100f));
+            healthComponent.CurrentHealth = Mathf.Min(healthComponent.CurrentHealth + healthAmount, healthComponent.MaximumHealth);
+        }
+
+        if (potion.restoreMana > 0 && manaComponent != null)
+        {
+            int manaAmount = Mathf.RoundToInt(manaComponent.MaximumMana * (potion.restoreMana / 100f));
+            manaComponent.CurrentMana = Mathf.Min(manaComponent.CurrentMana + manaAmount, manaComponent.MaximumMana);
+        }
+        player.BuyPotion();
+
+        shopDialogText.text = $"Bought <b>{potion.itemName}</b>!\n{potion.GetStatDescription()}";
     }
 
-    private void TryBuyPotion()
+    private void BuyWeapon()
     {
-        var coinComponent = player.GetComponent<CurrencyComponent>();
+        if (weapons.Count == 0 || player == null) return;
 
-        if (coinComponent != null && coinComponent.CurrentGold >= potionCost)
+        var weapon = weapons[Random.Range(0, weapons.Count)];
+        var coins = player.GetComponent<CurrencyComponent>();
+        if (coins == null || coins.CurrentGold < weaponCost)
         {
-            coinComponent.CurrentGold -= potionCost;
-            player.consumable = currentPotion; // just assign it here
-            shopDialogText.text = $"Very well then, enjoy your {currentPotion.itemName}!";
-            Debug.Log($"Bought {currentPotion.itemName}");
+            shopDialogText.text = "Not enough coins for weapon.";
+            return;
         }
-        else
+
+        coins.SpendGold(weaponCost);
+        player.BuyWeapon(weapon);
+        PlayerManager.Weapon1 = weapon;
+        shopDialogText.text = $"Bought <b>{weapon.weaponName}</b>!\n" +
+                      $"ATK: {weapon.attack}, " +
+                      $"Type: {(weapon.isMelee ? "Melee" : "Ranged")}, " +
+                      $"Rarity: {weapon.rarity}, " +
+                      $"Attack Speed: {weapon.attackSpeed}";
+    }
+
+    private void BuySpell()
+    {
+        if (spells.Count == 0 || player == null) return;
+
+        var spell = spells[Random.Range(0, spells.Count)];
+        var coins = player.GetComponent<CurrencyComponent>();
+        if (coins == null || coins.CurrentGold < spellCost)
         {
-            shopDialogText.text = $"Seems to me, you're short on cash!";
-            Debug.Log("Not enough coins!");
+            shopDialogText.text = "Not enough coins for spell.";
+            return;
         }
+
+        coins.SpendGold(spellCost);
+        player.BuySpell(spell);
+        PlayerManager.EquippedSpell = spell;
+        shopDialogText.text = $"Bought <b>{spell.spellName}</b>!\n{spell.GetStatDescription()}";
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -87,8 +135,8 @@ public class TilemapShop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerNearby = false;
             player = null;
+            playerNearby = false;
             shopDialogPanel.SetActive(false);
         }
     }

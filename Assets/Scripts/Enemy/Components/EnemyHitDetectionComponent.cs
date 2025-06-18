@@ -29,18 +29,21 @@ namespace Enemy.Components
             if (other.CompareTag("PlayerWeapon") || other.CompareTag("PlayerProjectile"))
             {
                 // Try to get the damage component from the weapon
-                WeaponDamageComponent damageComponent = other.GetComponent<WeaponDamageComponent>();
+                // WeaponDamageComponent damageComponent = other.GetComponent<WeaponDamageComponent>();
                 
-                if (damageComponent != null)
-                {
-                    int damage = damageComponent.GetDamage();
-                    ApplyDamage(damage);
-                }
-                else
-                {
-                    // If no damage component found, apply default damage
-                    ApplyDamage(1);
-                }
+                // if (damageComponent != null)
+                // {
+                //     int damage = damageComponent.GetDamage();
+                //     Debug.Log("attack to enemy: " + damage);
+                //     ApplyDamage(damage);
+                // }
+                // else
+                // {
+                //     // If no damage component found, apply default damage
+                //     ApplyDamage(1);
+                // }
+                Debug.Log(DamageManager.DamageCounter);
+                ApplyDamage(Mathf.RoundToInt(DamageManager.DamageCounter / LevelManager.LevelCounter));
                 
                 // If it's a projectile, you might want to destroy it
                 if (other.CompareTag("PlayerProjectile"))

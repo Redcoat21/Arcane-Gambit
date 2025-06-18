@@ -32,7 +32,7 @@ namespace Enemy
                 Debug.LogWarning("Target is invulnerable or does not have a HealthComponent.");
                 return;
             }
-            healthComponent.TakeDamage(damage);
+            healthComponent.TakeDamage(damage*LevelManager.LevelCounter);
         }
     }
 }

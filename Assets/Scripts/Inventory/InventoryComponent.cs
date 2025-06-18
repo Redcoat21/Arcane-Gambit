@@ -24,6 +24,12 @@ public class InventoryComponent : MonoBehaviour
         OnInventoryChanged?.Invoke();
     }
 
+    public void LoadFromPlayerManager()
+    {
+        items = new List<InventoryItem>(PlayerManager.InventoryItems);
+        OnInventoryChanged?.Invoke();
+    }
+
     public void RemoveItem(ItemData itemData, int quantity = 1)
     {
         InventoryItem existing = items.Find(i => i.itemData == itemData);

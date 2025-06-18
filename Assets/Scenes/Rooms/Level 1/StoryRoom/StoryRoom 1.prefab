@@ -4534,16 +4534,8 @@ MonoBehaviour:
   storyDialogPanel: {fileID: 9008290525938441776}
   storyText: {fileID: 82824104061707932}
   continueButton: {fileID: 5649240326544776640}
-  storyLines:
-  - '[Phone vibrating...]'
-  - 'Sister: Hey... I didn''t know how to say this...'
-  - 'Sister: Dad passed away this morning.'
-  - 'Sister: Hello, are you there?'
-  - 'Sister: I know you''re not too fond of him.'
-  - 'Sister: But you could atleast attend his funeral.'
-  - 'Sister: ...'
-  - 'Sister: Vandern Funeral next Tuesday 2 o''clock, see you there.'
-  - '[Phone stops...]'
+  storyLineSets:
+  - lines: []
 --- !u!61 &162616874947378433
 BoxCollider2D:
   m_ObjectHideFlags: 0

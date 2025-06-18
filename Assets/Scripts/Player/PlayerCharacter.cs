@@ -78,24 +78,7 @@ namespace Player
         private IEnumerator Start()
         {
             yield return null;
-            if (SelectedWeaponStorage.selectedWeapon != null)
-            {
-                weapon1 = SelectedWeaponStorage.selectedWeapon;
-
-                if (weapon1ImageUI != null)
-                {
-                    weapon1ImageUI.sprite = weapon1.weaponSprite;
-                    weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
-                }
-
-                Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
-
-                // Clear stored data after equipping
-                // SelectedWeaponStorage.selectedWeapon = null;
-            }
-            EquipSpell(equippedSpell);
-            attackComponent.CurrentWeapon = weapon1;
-
+            yield return new WaitForSeconds(0.05f);
             baseMaxHealth = healthComponent.MaximumHealth;
             Debug.Log("Base Max Health: " + baseMaxHealth);
 
@@ -116,6 +99,79 @@ namespace Player
 
             baseElemental = elementalDamageComponent.ElementalMultiplier;
             Debug.Log("Base Elemental Damage: " + baseElemental);
+            Debug.Log("PlayerManager found.");
+
+                // Load inventory if PlayerManager has data
+                if (PlayerManager.InventoryItems.Count > 0)
+                {
+                    Debug.Log($"Loading {PlayerManager.InventoryItems.Count} item(s) from PlayerManager.");
+                    foreach (var item in PlayerManager.InventoryItems)
+                    {
+                        inventoryComponent.AddItem(item.itemData, item.quantity);
+                        Debug.Log($"Added item from PlayerManager: {item.itemData.itemName} x{item.quantity}");
+                    }
+                    // inventoryComponent.LoadFromPlayerManager();
+                }
+                else
+                {
+                    Debug.Log("PlayerManager inventory is empty.");
+                }
+
+                // Equip weapon from manager if available
+                if (PlayerManager.Weapon1 != null)
+                {
+                    weapon1 = PlayerManager.Weapon1;
+                    
+                    weapon1ImageUI.sprite = weapon1.weaponSprite;
+                    weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+                    attackComponent.CurrentWeapon = weapon1;
+                    Debug.Log($"Loaded weapon1 from PlayerManager: {weapon1.weaponName}");
+                }
+                else
+                {
+                    Debug.Log("No weapon1 found in PlayerManager.");
+                }
+
+                // Load spell
+                if (PlayerManager.EquippedSpell != null)
+                {
+                    EquipSpell(PlayerManager.EquippedSpell);
+                    Debug.Log($"Loaded spell from PlayerManager: {equippedSpell.spellName}");
+                }
+                else
+                {
+                    EquipSpell(equippedSpell);
+                    Debug.Log("No equipped spell found in PlayerManager.");
+                }
+
+                // Optional: Consumable
+                if (PlayerManager.Consumable != null)
+                {
+                    consumable = PlayerManager.Consumable;
+                    Debug.Log($"Loaded consumable from PlayerManager: {consumable.itemName}");
+                }
+                else
+                {
+                    Debug.Log("No consumable found in PlayerManager.");
+                }
+            if (SelectedWeaponStorage.selectedWeapon != null)
+            {
+                weapon1 = SelectedWeaponStorage.selectedWeapon;
+
+                if (weapon1ImageUI != null)
+                {
+                    weapon1ImageUI.sprite = weapon1.weaponSprite;
+                    weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+                }
+
+                Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
+
+                // Clear stored data after equipping
+                SelectedWeaponStorage.selectedWeapon = null;
+                
+                attackComponent.CurrentWeapon = weapon1;
+                PlayerManager.Weapon1 = weapon1;
+            }
 
             Debug.Log("== Inventory Contents at Start ==");
             foreach (var item in inventoryComponent.GetItems())
@@ -129,10 +185,7 @@ namespace Player
         public void EquipSpell(SpellData spell)
         {
             equippedSpell = spell;
-            if (attackComponent != null)
-            {
-                attackComponent.CurrentSpell = equippedSpell;
-            }
+            attackComponent.CurrentSpell = equippedSpell;
 
             // Update the UI
             SpellUI.Instance?.UpdateSpellUI(equippedSpell);
@@ -150,6 +203,7 @@ namespace Player
 
             if(healthComponent.CurrentHealth <= 0){
                 LevelManager.LevelCounter = 1;
+                PlayerManager.Reset();
                 SceneManager.LoadScene("MainMenuScene");
             }
 
@@ -200,9 +254,19 @@ namespace Player
                 }
             }
 
+            // Store previous max values
+            int previousMaxHP = healthComponent.MaximumHealth;
+            int previousMaxMana = manaComponent.MaximumMana;
+
+            // Calculate new max values
             int newMaxHP = Mathf.RoundToInt(baseMaxHealth + hpBonus);
-            int currentHP = healthComponent.CurrentHealth;
             int newMaxMana = Mathf.RoundToInt(baseMaxMana + manaBonus);
+
+            // Calculate how much to heal/add to current HP/Mana
+            int hpGain = newMaxHP - previousMaxHP;
+            int manaGain = newMaxMana - previousMaxMana;
+
+            int currentHP = healthComponent.CurrentHealth;
             int currentMana = manaComponent.CurrentMana;
             float newSpeed = baseSpeed + speedBonus;
             int newAttack = Mathf.RoundToInt(baseAttack + attackBonus);
@@ -211,9 +275,9 @@ namespace Player
             float newElemental = baseElemental + elementalBonus;
 
             healthComponent.MaximumHealth = newMaxHP;
-            healthComponent.CurrentHealth = Mathf.Clamp(currentHP, 0, newMaxHP);
+            healthComponent.CurrentHealth = Mathf.Clamp(healthComponent.CurrentHealth + hpGain, 0, newMaxHP);
             manaComponent.MaximumMana = newMaxMana;
-            manaComponent.CurrentMana = Mathf.Clamp(currentMana, 0, newMaxMana);
+            manaComponent.CurrentMana = Mathf.Clamp(manaComponent.CurrentMana + manaGain, 0, newMaxMana);
             movementComponent.MoveSpeed = newSpeed;
             attackComponent.BaseAttackDamage = newAttack;
             meleeDamageComponent.MeleeMultiplier = newMelee;
@@ -227,7 +291,57 @@ namespace Player
             meleeDamageUI.UpdateUI();
             rangedDamageUI.UpdateUI();
             elementalDamageUI.UpdateUI();
+
+            PlayerManager.SetHealth(healthComponent.CurrentHealth, healthComponent.MaximumHealth);
+            PlayerManager.SetMana(manaComponent.CurrentMana, manaComponent.MaximumMana);
+            PlayerManager.MoveSpeed = movementComponent.MoveSpeed;
+            PlayerManager.BaseAttack = attackComponent.BaseAttackDamage;
+            PlayerManager.MeleeMultiplier = meleeDamageComponent.MeleeMultiplier;
+            PlayerManager.RangedMultiplier = rangedDamageComponent.RangedMultiplier;
+            PlayerManager.ElementalMultiplier = elementalDamageComponent.ElementalMultiplier;
+            PlayerManager.UpdateInventory(inventoryComponent.GetItems());
+            // PlayerManager.EquippedSpell = equippedSpell;
+            // PlayerManager.Weapon1 = weapon1;
+        }
+
+        public void BuyWeapon(WeaponData newWeapon)
+        {
+            if (newWeapon == null) return;
+
+            weapon1 = newWeapon;
+
+            // Apply to attack component
+            if (attackComponent != null)
+                attackComponent.CurrentWeapon = weapon1;
+
+            // Update UI
+            if (weapon1ImageUI != null)
+                weapon1ImageUI.sprite = weapon1.weaponSprite;
+            if (weapon1InventoryImageUI != null)
+                weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+
+            // Update PlayerManager
+            PlayerManager.Weapon1 = weapon1;
+
+            Debug.Log($"Weapon bought: {weapon1.weaponName}");
+        }
+
+        public void BuySpell(SpellData newSpell)
+        {
+            if (newSpell == null) return;
+
+            EquipSpell(newSpell);
+
+            // Update PlayerManager
+            PlayerManager.EquippedSpell = newSpell;
+
+            Debug.Log($"Spell bought: {newSpell.spellName}");
+        }
+
+        public void BuyPotion()
+        {
+            healthUI.UpdateUI();
+            manaUI.UpdateUI();
         }
     }
 }
-

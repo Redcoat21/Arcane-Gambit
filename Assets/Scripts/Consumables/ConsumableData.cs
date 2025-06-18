@@ -13,9 +13,9 @@ public class ConsumableData : ScriptableObject
 
     public string GetStatDescription()
     {
-        return $"Health: +{restoreHealth}%\n" +
-               $"Mana: +{restoreMana}%\n" +
-               $"Rarity: {rarity}" +
+        return $"Health: +{restoreHealth}%, " +
+               $"Mana: +{restoreMana}%, " +
+               $"Rarity: {rarity}, " +
                $"Effect: {effect}";
     }
 }

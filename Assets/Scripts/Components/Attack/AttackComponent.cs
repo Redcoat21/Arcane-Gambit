@@ -212,7 +212,7 @@ namespace Components.Attack
             OnAttackChanged?.Invoke(baseAttackDamage);
         }
 
-        private int CalculateDamage()
+        public int CalculateDamage()
         {
             meleeDamageComponent ??= GetComponent<MeleeDamageComponent>();
             rangedDamageComponent ??= GetComponent<RangedDamageComponent>();
@@ -230,7 +230,7 @@ namespace Components.Attack
                     multiplier = elementalDamageComponent != null ? elementalDamageComponent.ElementalMultiplier : 0f;
                     break;
             }
-            
+            DamageManager.DamageCounter = Mathf.RoundToInt(baseAttackDamage + baseAttackDamage * (multiplier/100));
             return Mathf.RoundToInt(baseAttackDamage + baseAttackDamage * (multiplier/100));
         }
 

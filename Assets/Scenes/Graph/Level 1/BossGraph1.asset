@@ -236,8 +236,8 @@ MonoBehaviour:
   - {fileID: -6309005077733771551}
   - {fileID: 976856884658201362}
   EditorData:
-    PanOffset: {x: 61.801243, y: -38.1026}
-    Zoom: 0.8951296
+    PanOffset: {x: 7.9652348, y: -57.859352}
+    Zoom: 1.1385431
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
   IsDirected: 0
@@ -273,10 +273,7 @@ MonoBehaviour:
   Position: {x: 160, y: 160}
   Name: Boss
   IndividualRoomTemplates:
-  - {fileID: 1040728735224142489, guid: 7c6c6647b2026954ea7d43a37ce027e8, type: 3}
-  - {fileID: 1040728735224142489, guid: 4703be96229765f48851078fbc88cc8c, type: 3}
-  - {fileID: 1040728735224142489, guid: a0c26a85ab3ca4245a223c0c23d54143, type: 3}
-  - {fileID: 1040728735224142489, guid: 30e9d56b1e1bc144e911139740a9fbe1, type: 3}
+  - {fileID: 1040728735224142489, guid: bdcdfc6d96a340f438a437ab7ccdafdb, type: 3}
   RoomTemplateSets: []
 --- !u!114 &2858300830907339634
 MonoBehaviour:

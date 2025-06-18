@@ -17,6 +17,11 @@ namespace Player
             set => currentGold = value;
         }
 
+        private void Start()
+        {
+            CurrentGold = PlayerManager.Currency;
+        }
+
         // Event that triggers when gold amount changes
         public event Action<int> OnGoldChanged;
 
@@ -29,6 +34,7 @@ namespace Player
             if (amount <= 0) return;
             
             currentGold += amount;
+            PlayerManager.Currency += amount;
             OnGoldChanged?.Invoke(currentGold);
         }
 
@@ -43,6 +49,7 @@ namespace Player
             if (currentGold < amount) return false;
             
             currentGold -= amount;
+            PlayerManager.Currency -= amount;
             OnGoldChanged?.Invoke(currentGold);
             return true;
         }

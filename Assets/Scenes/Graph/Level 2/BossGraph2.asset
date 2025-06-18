@@ -265,10 +265,7 @@ MonoBehaviour:
   Position: {x: 640, y: 320}
   Name: Boss
   IndividualRoomTemplates:
-  - {fileID: 1040728735224142489, guid: 5a957c77c419bce47843fdfb2dc02ba4, type: 3}
-  - {fileID: 1040728735224142489, guid: fd82fc0dbac861042b90449f58c575dd, type: 3}
-  - {fileID: 1040728735224142489, guid: dfe5822f76f4b7245bbb0b3418e2c3ce, type: 3}
-  - {fileID: 1040728735224142489, guid: e74c39b6936387544aae4a77c2143d05, type: 3}
+  - {fileID: 1040728735224142489, guid: f5259107477fbd8498adf75633b24fed, type: 3}
   RoomTemplateSets: []
 --- !u!114 &5290935169593015583
 MonoBehaviour:

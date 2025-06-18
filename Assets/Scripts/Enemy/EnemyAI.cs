@@ -7,7 +7,7 @@ namespace Enemy
     public class EnemyAI : MonoBehaviour
     {
         [Header("Detection")]
-        public float visionRange = 5f;
+        public float visionRange = 1000f;
         public LayerMask obstacleMask;
 
         [Header("Navigation")]
@@ -51,14 +51,15 @@ namespace Enemy
                 return false;
 
             // Line of sight check
+            Vector2 direction = (player.position - transform.position).normalized;
             RaycastHit2D hit = Physics2D.Raycast(
                 transform.position,
-                player.position - transform.position,
+                direction,
                 visionRange,
                 obstacleMask
             );
-            
-            return hit.collider == null;
+
+            return hit.collider != null && hit.collider.CompareTag("Player");
         }
 
         void ChasePlayer()

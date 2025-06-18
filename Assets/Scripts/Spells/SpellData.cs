@@ -15,10 +15,9 @@ public class SpellData : ScriptableObject
 
     public string GetStatDescription()
     {
-        return $"ATK: {attack}\n" +
-               $"Mana Cost: {manaCost}\n" +
-               $"Cooldown: {cooldown}s\n" +
-               $"Rarity: {rarity}" +
-               $"Level: {level}";
+        return $"ATK: {attack}, " +
+               $"Mana Cost: {manaCost}, " +
+               $"Cooldown: {cooldown}s, " +
+               $"Rarity: {rarity}";
     }
 }

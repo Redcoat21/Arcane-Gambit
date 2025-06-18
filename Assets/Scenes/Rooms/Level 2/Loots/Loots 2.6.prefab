@@ -73,7 +73,7 @@ MonoBehaviour:
       To: {x: 0, y: 6, z: 0}
       Length: 2
       Direction: 0
-      Socket: {fileID: 0}
+      Socket: {fileID: 11400000, guid: debec4583c48ea84b84a0d00733c242b, type: 2}
     - From: {x: 6, y: -1, z: 0}
       To: {x: 6, y: -4, z: 0}
       Length: 2
