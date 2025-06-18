@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 544681103231645741}
   To: {fileID: 3598662864386417357}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &-5262241805268955602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,7 +31,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 3961031881947123673}
   To: {fileID: -4383362491069365452}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &-4383362491069365452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +65,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 3151125593969828186}
   To: {fileID: 8091545520133790361}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: -4383362491069365452}
   To: {fileID: 3151125593969828186}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &3151125593969828186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 3598662864386417357}
   To: {fileID: 4264492743307885199}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &5454089103997565048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 8091545520133790361}
   To: {fileID: 6205333019158570018}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &5507749211993133296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +318,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 179658917071622415}
   To: {fileID: 3151125593969828186}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &6205333019158570018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: -4383362491069365452}
   To: {fileID: 7578776829517922869}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &6495832286367299811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: -4383362491069365452}
   To: {fileID: 544681103231645741}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &7153076203436375537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +395,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 8091545520133790361}
   To: {fileID: 7578776829517922869}
-  RoomTemplates: []
+  RoomTemplates:
+  - {fileID: 3003678028844578220, guid: fff9a8fb7a653264c94f7189c0b9fd80, type: 3}
+  - {fileID: 1332456693336908368, guid: c251b5537dfc3f54f94636b6b95766aa, type: 3}
 --- !u!114 &7578776829517922869
 MonoBehaviour:
   m_ObjectHideFlags: 0
