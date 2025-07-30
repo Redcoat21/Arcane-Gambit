@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054309ade27fa15409e93dc09e9439e6, type: 3}
+  m_Name: spell_5
+  m_EditorClassIdentifier: 
+  spellName: Slipstream
+  description: "A silvery blur cuts through air and space. The fish doesn\u2019t
+    belong here \u2014 but then again, do you?"
+  spellSprite: {fileID: 21300000, guid: b416145d20baa364598d07e1740ae2fb, type: 3}
+  attack: 80
+  manaCost: 40
+  cooldown: 30
+  rarity: 2
+  effect: fish
+  level: 0

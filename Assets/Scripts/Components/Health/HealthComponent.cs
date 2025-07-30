@@ -29,6 +29,9 @@ namespace Components.Health
 
         // OnHealthChanged is an event that will be triggered when the health of the object changes
         public event Action<int> OnHealthChanged;
+        
+        // OnDeath is an event that will be triggered when health reaches zero or below
+        public event Action OnDeath;
 
         
         private void Awake()
@@ -44,6 +47,13 @@ namespace Components.Health
         {
             currentHealth -= damage;
             OnHealthChanged?.Invoke(currentHealth);
+            
+            // Check if entity has died
+            if (currentHealth <= 0)
+            {
+                // Invoke death event
+                OnDeath?.Invoke();
+            }
         }
         
         /// <summary>

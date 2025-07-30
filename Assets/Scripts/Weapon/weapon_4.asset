@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d943c46bb67aa854a98cd1e314b0e579, type: 3}
+  m_Name: weapon_4
+  m_EditorClassIdentifier: 
+  weaponName: "Father\u2019s Hammer"
+  description: "It was never meant for battle, yet here it is. You swing it like
+    he would\u2019ve \u2014 with purpose, or pretending to have it."
+  weaponSprite: {fileID: 21300000, guid: 0198218525425d546b5132f3884567d6, type: 3}
+  attack: 35
+  isMelee: 1
+  rarity: 0
+  attackSpeed: 1.5

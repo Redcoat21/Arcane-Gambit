@@ -1,13 +1,14 @@
 using System;
-using Components.Health;
-using Components.Movements;
-using Components.Mana;
 using Components.Attack;
 using Components.ElementalDamage;
-using Components.RangedDamage;
+using Components.Health;
+using Components.Mana;
 using Components.MeleeDamage;
+using Components.Movements;
+using Components.RangedDamage;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Player
 {
@@ -30,6 +31,9 @@ namespace Player
         [SerializeField] private RangedDamageUI rangedDamageUI;
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
         [SerializeField] private ElementalDamageUI elementalDamageUI;
+        [SerializeField] private Image weapon1ImageUI;
+        [SerializeField] private Image weapon1InventoryImageUI;
+        [SerializeField] private CurrencyComponent currencyComponent;
 
         private Vector2 lastMoveDirection;
         private int baseMaxHealth;
@@ -39,6 +43,8 @@ namespace Player
         private float baseMelee;
         private float baseRanged;
         private float baseElemental;
+        public WeaponData weapon1;
+        public WeaponData weapon2;
 
         private void Awake()
         {
@@ -52,6 +58,7 @@ namespace Player
             animator ??= GetComponent<Animator>();
             spriteRenderer ??= GetComponent<SpriteRenderer>();
             inventoryComponent ??= GetComponent<InventoryComponent>();
+            currencyComponent ??= GetComponent<CurrencyComponent>();
             if (inventoryComponent != null){
                 inventoryComponent.OnInventoryChanged += ApplyInventoryModifiers;
             }
@@ -66,6 +73,22 @@ namespace Player
 
         private void Start()
         {
+            if (SelectedWeaponStorage.selectedWeapon != null)
+            {
+                weapon1 = SelectedWeaponStorage.selectedWeapon;
+
+                if (weapon1ImageUI != null)
+                    weapon1ImageUI.sprite = weapon1.weaponSprite;
+                    weapon1InventoryImageUI.sprite = weapon1.weaponSprite;
+
+                Debug.Log($"Equipped weapon1: {weapon1.weaponName}");
+
+                // Clear stored data after equipping
+                SelectedWeaponStorage.selectedWeapon = null;
+            }
+
+            attackComponent.CurrentWeapon = weapon1;
+
             baseMaxHealth = healthComponent.MaximumHealth;
             Debug.Log("Base Max Health: " + baseMaxHealth);
 
@@ -178,3 +201,4 @@ namespace Player
         }
     }
 }
+

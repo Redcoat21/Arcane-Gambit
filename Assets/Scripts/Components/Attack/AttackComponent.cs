@@ -18,6 +18,13 @@ namespace Components.Attack
         [SerializeField] private MeleeDamageComponent meleeDamageComponent;
         [SerializeField] private RangedDamageComponent rangedDamageComponent;
         [SerializeField] private ElementalDamageComponent elementalDamageComponent;
+        [SerializeField] private GameObject rotatingWeaponPrefab;
+        [SerializeField] private WeaponData currentWeapon;
+        public WeaponData CurrentWeapon
+        {
+            get => currentWeapon;
+            set => currentWeapon = value;
+        }
 
         [SerializeField]
         [Range(1, 1000)]
@@ -67,6 +74,54 @@ namespace Components.Attack
             }
         }
 
+        private void SpawnRotatingWeapon()
+        {
+            if (rotatingWeaponPrefab == null)
+            {
+                Debug.LogWarning("Rotating weapon prefab is not assigned!");
+                return;
+            }
+
+            if (currentWeapon == null)
+            {
+                Debug.LogWarning("Current weapon is not assigned!");
+                return;
+            }
+
+            if (currentWeapon.weaponSprite == null)
+            {
+                Debug.LogWarning($"Weapon '{currentWeapon.weaponName}' has no sprite assigned!");
+                return;
+            }
+
+            GameObject instance = Instantiate(rotatingWeaponPrefab, transform.position + Vector3.right * 1.5f, Quaternion.identity);
+
+            SpriteRenderer sr = instance.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.sprite = currentWeapon.weaponSprite;
+                sr.enabled = true;
+                sr.sortingOrder = 10;
+                Debug.Log("Sprite assigned at runtime: " + sr.sprite.name);
+            }
+            else
+            {
+                Debug.LogWarning("SpriteRenderer not found on instantiated weapon prefab.");
+            }
+
+            WeaponRotator rotator = instance.GetComponent<WeaponRotator>();
+            if (rotator != null)
+            {
+                rotator.pivot = this.transform;
+                rotator.duration = currentWeapon != null ? currentWeapon.attackSpeed : attackCooldown;
+                rotator.rotationSpeed = 360f / currentWeapon.attackSpeed;
+            }
+            else
+            {
+                Debug.LogWarning("WeaponRotator component not found on instantiated prefab.");
+            }
+        }
+
         /// <summary>
         /// Perform the attack and trigger event.
         /// </summary>
@@ -74,6 +129,8 @@ namespace Components.Attack
         {
             lastAttackTime = Time.time;
             int totalDamage = CalculateDamage();
+
+            SpawnRotatingWeapon();
 
             // Optionally: play animation, sound, or spawn projectile here
 
@@ -108,6 +165,12 @@ namespace Components.Attack
         {
             if (Input.GetMouseButtonDown(0)) // left mouse click
             {
+                if(currentWeapon.isMelee){
+                    CurrentDamageType = DamageType.Melee;
+                }
+                else{
+                    CurrentDamageType = DamageType.Ranged;
+                }
                 TryAttack();
             }
             if (Input.GetKeyDown(KeyCode.Alpha1)) // top row number 1 key
